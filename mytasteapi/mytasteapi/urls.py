@@ -23,7 +23,7 @@ from django.views.static import serve
 urlpatterns = [
     path('admin', admin.site.urls),
     re_path(r'media/(?P<path>.*)', serve, {"document_root": settings.MEDIA_ROOT}),
-    path('v1/', include('index.urls')),
-    path('v1/', include('user.urls')),
-    path('v1/', include('scene.urls'))
+    path('', include('index.urls')),
+    path('', include('user.urls')),
+    path('', include('scene.urls'))
 ]

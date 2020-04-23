@@ -8,7 +8,7 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
-    url('carousel/', views.CarouselListAPIView.as_view()),
+    path('carousel/', views.CarouselListAPIView.as_view()),
     # url('nav/header/', views.HeaderNavigationListAPIView.as_view()),
     # url('nav/footer/', views.FooterNavigationListAPIView.as_view()),
 ]

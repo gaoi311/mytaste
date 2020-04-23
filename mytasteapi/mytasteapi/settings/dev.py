@@ -9,6 +9,7 @@ https://docs.djangoproject.com/en/3.0/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.0/ref/settings/
 """
+import datetime
 import sys
 import os
 
@@ -26,10 +27,9 @@ SECRET_KEY = '@a)@e4_)mt3)nou%ec1sf$%y6r45i(+s3l1-s1-lm#dh115b_k'
 DEBUG = True
 
 ALLOWED_HOSTS = [
-'api.mytaste.com',
+    'api.mytaste.com',
     'www.mytaste.com'
 ]
-
 
 # Application definition
 
@@ -41,16 +41,20 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-# 跨域设置
+    # 跨域设置
     'corsheaders',
 
     # rest framework
     'rest_framework',
 
+    # 字段筛选
+    'django_filters',
+
     # 子应用
     'index',
     'user',
-    'scene'
+    'scene',
+    'hotel'
 ]
 
 MIDDLEWARE = [
@@ -85,7 +89,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'mytasteapi.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
@@ -99,7 +102,6 @@ DATABASES = {
         'PORT': '3306',
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
@@ -119,7 +121,10 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
+# 自定义用户认证类
+AUTHENTICATION_BACKENDS = [
+    'user.utils.MutliLogin',
+]
 # Internationalization
 # https://docs.djangoproject.com/en/3.0/topics/i18n/
 
@@ -133,18 +138,7 @@ USE_L10N = True
 
 USE_TZ = True
 
-
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/3.0/howto/static-files/
-
-# cross domain
-# CORS_ORIGIN_WITHLIST = (
-#     'http://www.mytaste.com:8001/carousel'
-# )
-
-# CORS_ALLOW_CREDENTIALS = True
 CORS_ORIGIN_ALLOW_ALL = True
-# CORS_ORIGIN_WHITELIST = ('www.mytaste.com:8001')
 
 CORS_ALLOW_METHODS = (
     'DELETE',
@@ -169,7 +163,6 @@ CORS_ALLOW_HEADERS = (
     'x-requested-with',
     'Pragma',
 )
-
 
 # static file
 STATIC_URL = '/static/'
@@ -229,15 +222,15 @@ LOGGING = {
 
 AUTH_USER_MODEL = 'user.User'
 
-# REST_FRAMEWORK = {
-#     'DEFAULT_AUTHENTICATION_CLASSES': (
-#         'rest_framework_jwt.authentication.JSONWebTokenAuthentication',
-#         'rest_framework.authentication.SessionAuthentication',
-#         'rest_framework.authentication.BasicAuthentication',
-#     ),
-# }
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework_jwt.authentication.JSONWebTokenAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
+        'rest_framework.authentication.BasicAuthentication',
+    ),
+}
 
-# JWT_AUTH = {
-#     'JWT_EXPIRATION_DELTA': datetime.timedelta(weeks=1),
-#     'JWT_RESPONSE_PAYLOAD_HANDLER': 'myTasteApi.utils.utils_function.jwt_response_payload_handler',
-# }
+JWT_AUTH = {
+    'JWT_EXPIRATION_DELTA': datetime.timedelta(weeks=1),
+    'JWT_RESPONSE_PAYLOAD_HANDLER': 'mytasteapi.utils.utils_function.jwt_response_payload_handler',
+}

@@ -13,23 +13,14 @@ class City(models.Model):
     city_index = models.IntegerField(verbose_name="省属市索引")
     province = models.ForeignKey(to=Province, on_delete=models.CASCADE, verbose_name="所在省")
     name = models.CharField(max_length=100)
+    hot = models.IntegerField(default=1000, verbose_name="热度")
+    summary = models.CharField(max_length=1024, default="", verbose_name="景点概括")
+
 
     class Meta:
         db_table = 'mt_city'
         verbose_name = "地级市"
         verbose_name_plural = verbose_name
-
-
-'''
-‘dest_id’(景点ID), ‘dest_name’(景点名称), ‘dest_en_name’(景点英文名称), ‘navigation_bar’(导航栏), 
-‘real_city’(真实城市), ‘city’(所在城市或地区), ‘special_remind’(特别提醒), ‘photos’(景点图片链接), 
-‘score’(评分), ‘ranking’(景点排名), ‘recommend_playtime’(建议游玩时间), ‘comment_num’(点评数), 
-‘lat’(纬度), ‘lng’(经度), ‘percent’(占来本市驴友的百分比), ‘travelbook_num’(旅行攻略数),
-‘summary_description’(景点概述), ‘address’(地址), ‘phone’(电话), ‘website’(网站), 
-‘opening_hours’(开放时间), ‘admission_ticket’(门票),‘tourist_season’(旅游时节), 
-‘traffic_guide’(交通指南), ‘tips’(小贴士), ‘grade’(景点等级), 
-‘time_reference’(用时参考), ‘url’(景点详情页链接) 
-'''
 
 
 class Scene(models.Model):
@@ -53,6 +44,7 @@ class Scene(models.Model):
     ename = models.CharField(max_length=255, blank=True, verbose_name="英文名称")
     city = models.ForeignKey(to=City, on_delete=models.CASCADE, verbose_name="所在城市")
     province = models.ForeignKey(to=Province, on_delete=models.CASCADE, verbose_name="所在省")
+    country = models.CharField(max_length=255, default="中国", verbose_name="所在国家")
     address = models.CharField(max_length=1024, blank=True, verbose_name="地址")
     hot = models.IntegerField(default=0, verbose_name="热度（点击量）")
     main_photo = models.ImageField(upload_to="scene", blank=True, null=True, verbose_name="主展示图片")

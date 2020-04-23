@@ -1,3 +1,53 @@
+from time import sleep
+
+from rest_framework.generics import ListAPIView, RetrieveAPIView
+from rest_framework.response import Response
+from rest_framework.views import APIView
+from rest_framework.pagination import PageNumberPagination
+from django_filters.rest_framework import DjangoFilterBackend
+from rest_framework.filters import OrderingFilter
+
+from .serializers import SceneSerializer, SceneSummarySerializer, CitySerializer, ProvinceSerializer
+from .models import Scene, City, Province
+
+class CityScenesPagination(PageNumberPagination):
+    page_query_param = "page"
+    page_size_query_param = "page_size"
+    max_page_size = 100
+    page_size = 8
+
+
+class ScenesSummaryAPIView(APIView):
+    def get(self, request):
+        country = request.query_params.dict().get('country', "中国")
+        province = request.query_params.dict().get('province', "")
+        city = request.query_params.dict().get('city', "")
+        order = request.query_params.dict().get('order', "")
+        scenes_queryset = Scene.objects.filter(country__contains=country, province__name__contains=province,
+                                             city__name__contains=city).order_by(order)[:8]
+        ser_obj = SceneSummarySerializer(scenes_queryset, many=True)
+        return Response(ser_obj.data)
+
+
+class CityScenesAPIView(APIView):
+    def get(self, request, *args, **kwargs):
+        city_id = kwargs.get('pk')
+        page = CityScenesPagination()
+        scenes_queryset = Scene.objects.filter(city_id=city_id).order_by('-hot')
+        page_scenes = page.paginate_queryset(queryset=scenes_queryset, request=request, view=self)
+        ser_obj = SceneSummarySerializer(page_scenes, many=True)
+        return page.get_paginated_response(ser_obj.data)
+
+
+class SceneAPIView(RetrieveAPIView):
+    queryset = Scene.objects.all()
+    serializer_class = SceneSerializer
+
+
+class CityAPIView(RetrieveAPIView):
+    queryset = City.objects.all()
+    serializer_class = CitySerializer
+
 '''
 import random
 
@@ -143,7 +193,7 @@ def get_detail(url, ticket, province_id, city_name, img_link):
     if citys.count() == 1:
         city_id = citys.first().id
     else:
-        city_id = 392
+        city_id = 393
     # 该景点在携程网站上对应的id，用于爬取热度
     # https://you.ctrip.com/sight/beijing1/229.html
     ctrip_scene_id = url.split('/')[-1].split('.')[0]
@@ -294,4 +344,3 @@ def antiantispider():
     ]
     return {"User-Agent": random.choice(user_agent_list)}
 '''
-

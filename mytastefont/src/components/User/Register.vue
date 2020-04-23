@@ -26,9 +26,9 @@
                                 <div class="form-group">
                                     <div class="line">
                                         <div class="row">
-                                            <label class="col-xs-3 control-label text-left" for="phone">手机号码</label>
+                                            <label class="col-xs-3 control-label text-left" for="username">手机号码</label>
                                             <div class="col-xs-9 input">
-                                                <input id="phone" v-model="phone" type="text" class="form-control" maxlength="60"
+                                                <input id="username" v-model="username" type="text" class="form-control" maxlength="60"
                                                        value="" autofocus>
                                             </div>
                                         </div>
@@ -57,22 +57,15 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <div class="row">
-                                        <div class=" col-sm-12">
-                                            <div id="slider" class="dragdealer">
-                                                <div class="handle"
-                                                     style="perspective: 1000px; backface-visibility: hidden; transform: translateX(0px); border-color: rgb(236, 236, 236);">
-                                                    <div class="doing">
-                                                        <span class="glyphicon glyphicon-menu-right"></span>
-                                                        <span class="glyphicon glyphicon-menu-right"></span>
-                                                    </div>
-                                                    <div class="done hidden">
-                                                        <span class="glyphicon glyphicon-ok"></span>
-                                                    </div>
-                                                </div>
-                                                <div class="mask" style="width: 0%;"></div>
-                                                <span class="handler-information">向右滑动验证</span>
-                                                <span class="handler-information handle-success hidden">验证通过</span>
+                                    <div class="line">
+                                        <div class="row">
+                                            <label class="col-xs-3 control-label text-left" for="sms_code">验证码</label>
+                                            <div class="col-xs-3 input">
+                                                <input id="sms_code" v-model="sms_code" type="text" maxlength="20"
+                                                       class="form-control" value="">
+                                            </div>
+                                            <div class="col-xs-6">
+                                                <button @click="get_sms_code">验证码</button>
                                             </div>
                                         </div>
                                     </div>
@@ -124,9 +117,10 @@
         name: "Register",
         data(){
             return {
-                phone: "",
+                username: "",
                 password: "",
-                repassword: ""
+                repassword: "",
+                sms_code: ""
             }
         },
         methods:{
@@ -137,18 +131,28 @@
                         url: `${this.$settings.HOST}/register/`,
                         method: "POST",
                         data: {
-                            phone: this.phone,
-                            password: this.password
+                            phone: this.username,
+                            password: this.password,
+                            sms_code: this.sms_code
                         }
                     }).then(response=>{
-                        if (response.data.ok) {
-                            this.open_success();
-                            this.$router.push('/');
-                        }else {
-                            this.open_error("亲亲，该手机号已经有人注册了哦！");
-                        }
+                        localStorage.removeItem('token');
+                        localStorage.removeItem('username');
+                        localStorage.removeItem('id');
+                        sessionStorage.id = response.data.id;
+                        sessionStorage.username = response.data.username;
+                        sessionStorage.token = response.data.token;
+                        this.open_success();
+                        this.$router.push("/");
                     }).catch(error=>{
-                        console.log(error.response);
+                        let message;
+                        if (error.response.data.phone){
+                            message = error.response.data.phone[0];
+                        }
+                        if (error.response.data.password){
+                            message = error.response.data.password[0];
+                        }
+                        this.open_error(message);
                     })
                 } else {
                     this.open_error("亲亲，两次密码不一样哦！")
@@ -160,6 +164,14 @@
             open_success() {
                 this.$message.success("注册成功！");
             },
+            get_sms_code(){
+                this.$axios({
+                    url: `${this.$settings.HOST}/phone/${this.username}/`,
+                    methods: 'GET',
+                }).catch(error=>{
+                    this.open_error(error.response.data.message[0]);
+                })
+            }
         }
     }
 </script>
