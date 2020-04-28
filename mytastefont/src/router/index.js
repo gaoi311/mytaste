@@ -28,9 +28,9 @@ const routes = [
         component: __import__('User/Register')
     },
     {
-        path: '/scene/:id',
-        name: 'scene',
-        component: __import__('Travel/Scene')
+        path: '/city/:id',
+        name: 'city',
+        component: __import__('Travel/City')
     },
     {
         path: '/destination',
@@ -38,10 +38,36 @@ const routes = [
         component: __import__('Travel/Destination')
     },
     {
-        path: '/city/:id',
-        name: 'city',
-        component: __import__('Travel/City')
-    }
+        path: '/hotel/:id',
+        name: 'hotel',
+        component: __import__('Hotel/Hotel')
+    },
+    {
+        path: '/hotels/:id',
+        name: 'hotels',
+        component: __import__('Hotel/HotelList')
+    },
+    {
+        path: '/scene/:id',
+        name: 'scene',
+        component: __import__('Travel/Scene')
+    },
+    {
+        path: '/scenes/:id',
+        name: 'scenes',
+        component: __import__('Travel/SceneList')
+    },
+    {
+        path: '/self',
+        name: 'self',
+        component: __import__('User/User')
+    },
+    {
+        path: '/self/info',
+        name: 'info',
+        component: __import__('User/UserInfo')
+    },
+
 ];
 
 const router = new VueRouter({

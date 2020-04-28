@@ -25,5 +25,6 @@ urlpatterns = [
     re_path(r'media/(?P<path>.*)', serve, {"document_root": settings.MEDIA_ROOT}),
     path('', include('index.urls')),
     path('', include('user.urls')),
-    path('', include('scene.urls'))
+    path('', include('scene.urls')),
+    path('', include('hotel.urls'))
 ]

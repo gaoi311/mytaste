@@ -4,15 +4,10 @@
             <Header></Header>
         </el-header>
         <el-main>
-
             <!--开始-->
-
             <el-row>
-                <el-col :span="16" :offset="3">
+                <el-col :span="18" :offset="3">
                     <h1>{{city.name}}</h1>
-                </el-col>
-                <el-col :span="2" style="margin-top: 30px">
-                    <el-link type="primary" href="#">加入收藏</el-link>
                 </el-col>
             </el-row>
             <el-row>
@@ -33,7 +28,6 @@
                         <p>{{city.summary}}</p>
                     </el-col>
                 </el-row>
-                <hr>
                 <el-row>
                     <el-col :span="18" :offset="3">
                         <ul class="scenic-list clearfix">
@@ -49,10 +43,33 @@
                         </ul>
                     </el-col>
                 </el-row>
+
+                <hr>
+
             </div>
 
             <div v-show="activeName==='second'">
-                xxxxxxxh
+                <el-row>
+                    <el-col :span="18" :offset="3">
+                        <h2>酒店</h2>
+                    </el-col>
+                </el-row>
+                <hr>
+                <el-row>
+                    <el-col :span="18" :offset="3">
+                        <ul class="scenic-list clearfix">
+                            <li class="scenes_list" v-for="hotel in hotels" :key="hotel.id">
+                                <router-link class="img_a" :to="'/hotel/' + hotel.id" target="_blank"
+                                             style="color: #333;font-size: 14px;">
+                                    <div class="img">
+                                        <img :src="mainPhotoSrc(hotel.main_photo)" width="192" height="130">
+                                    </div>
+                                    <h3>{{hotel.name}}</h3>
+                                </router-link>
+                            </li>
+                        </ul>
+                    </el-col>
+                </el-row>
             </div>
             <div v-show="activeName==='third'">
                 xxxxxxxt
@@ -65,7 +82,7 @@
                     background
                     layout="prev, pager, next"
                     :page-size="pageSize"
-                    :total="scenesCount"
+                    :total="itemsCount"
                     @current-change="handleCurrentChange"
                     style="text-align: center">
             </el-pagination>
@@ -82,12 +99,14 @@
         name: "City",
         data() {
             return {
+                id: 0,
                 pageSize: 8,
-                scenesCount: 0,
+                itemsCount: 0,
                 page: 1,
                 city: undefined,
                 activeName: 'first',
                 scenes: [],
+                hotels: []
             }
         },
         computed: {
@@ -101,7 +120,7 @@
             getCity(id) {
                 this.$axios({
                     url: `${this.$settings.HOST}/city/${id}/`,
-                    methods: "GET",
+                    method: "GET",
                 }).then(response => {
                     this.city = response.data;
                 }).catch(error => {
@@ -111,23 +130,56 @@
             getScenes(id) {
                 this.$axios({
                     url: `${this.$settings.HOST}/scenes/${id}/`,
-                    methods: "GET",
+                    method: "GET",
                     params: {
                         page: this.page,
                         page_size: this.pageSize
                     }
                 }).then(response => {
                     this.scenes = response.data.results;
-                    this.scenesCount = response.data.count;
+                    this.itemsCount = response.data.count;
+                }).catch(error => {
+                    alert(error.response.data);
+                })
+            },
+            getHotels(id) {
+                this.$axios({
+                    url: `${this.$settings.HOST}/hotels/${id}/`,
+                    method: "GET",
+                    params: {
+                        page: this.page,
+                        page_size: this.pageSize
+                    }
+                }).then(response => {
+                    this.hotels = response.data.results;
+                    this.itemsCount = response.data.count;
                 }).catch(error => {
                     alert(error.response.data);
                 })
             },
             handleCurrentChange(page) {
                 this.page = page;
-                this.getScenes(this.id);
+                switch (this.activeName) {
+                    case 'first':
+                        this.getScenes(this.id);
+                        break;
+                    case 'second':
+                        this.getHotels(this.id);
+                        break;
+                }
             },
             handleClick(tab, event) {
+                if (tab.name === 'first') {
+                    this.page = 1;
+                    this.getScenes(this.id);
+                } else if (tab.name === 'second') {
+                    this.page = 1;
+                    this.getHotels(this.id);
+                } else if (tab.name === 'third') {
+                    this.getLocalHotelList();
+                } else if (tab.name === 'fourth') {
+                    this.getLocalHotelList();
+                }
             }
         },
         created() {

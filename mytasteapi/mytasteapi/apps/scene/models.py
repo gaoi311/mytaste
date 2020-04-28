@@ -1,5 +1,7 @@
 from django.db import models
 
+from user.models import User
+
 class Province(models.Model):
     name = models.CharField(max_length=50, verbose_name="省份")
 
@@ -71,3 +73,19 @@ class Scene(models.Model):
 
     def __str__(self):
         return self.name
+
+
+class SceneComment(models.Model):
+    content = models.CharField(max_length=10240, verbose_name="评论内容")
+    score = models.SmallIntegerField(verbose_name="评分")
+    created_time = models.DateTimeField(auto_now_add=True, verbose_name="发表时间")
+    user = models.ForeignKey(to=User, verbose_name="用户", on_delete=models.CASCADE)
+    scene = models.ForeignKey(to=Scene, verbose_name="景点", on_delete=models.CASCADE)
+
+    class Meta:
+        db_table = "mt_scene_comment"
+        verbose_name = "景点评论"
+        verbose_name_plural = verbose_name
+
+    def __str__(self):
+        return str(self.user) + str(self.scene)

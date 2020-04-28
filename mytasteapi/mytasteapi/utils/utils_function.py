@@ -6,13 +6,7 @@
 from django.shortcuts import redirect
 
 
-def jwt_response_payload_handler(token, user=None, request=None):
-    return {
-        'token': token,
-        'username': user.username,
-        'id': user.id
-        # 'avator': user.avatar
-    }
+
 
 
 def login_required(fn):

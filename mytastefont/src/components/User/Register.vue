@@ -1,121 +1,69 @@
 <template>
-    <div class="register1">
-        <div class="vertical-center pdt" style="margin-top: 7%;">
-            <div class="container login-container register">
-                <div class="row">
-                    <div class="col-sm-12">
-                        <div class="login-form">
-                            <router-link to="/">
-                                <img class="logo" src="https://a.hecdn.net/img/sso/1/logo.png">
-                                <img class="logo logo-white" src="https://a.hecdn.net/img/sso/1/logo-white.png">
-                            </router-link>
-                            <form class="form-horizontal">
-                                <div class="form-group">
-                                    <div class="row">
-                                        <div class="col-sm-4">
-                                            <h1>注册</h1>
-                                        </div>
-                                        <div class="col-sm-8 hidden-xs">
-                                            <div class="account text-right" style="padding: 10px 0">
-                                                <span>已有账号?</span>
-                                                <router-link to="/login">点击登录</router-link>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <div class="line">
-                                        <div class="row">
-                                            <label class="col-xs-3 control-label text-left" for="username">手机号码</label>
-                                            <div class="col-xs-9 input">
-                                                <input id="username" v-model="username" type="text" class="form-control" maxlength="60"
-                                                       value="" autofocus>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <div class="line">
-                                        <div class="row">
-                                            <label class="col-xs-3 control-label text-left" for="password">设置密码</label>
-                                            <div class="col-xs-9 input">
-                                                <input id="password" v-model="password" type="password" maxlength="20" class="form-control"
-                                                       value="">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <div class="line">
-                                        <div class="row">
-                                            <label class="col-xs-3 control-label text-left" for="password">重复密码</label>
-                                            <div class="col-xs-9 input">
-                                                <input id="repassword" v-model="repassword" type="password" maxlength="20"
-                                                       class="form-control" value="">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <div class="line">
-                                        <div class="row">
-                                            <label class="col-xs-3 control-label text-left" for="sms_code">验证码</label>
-                                            <div class="col-xs-3 input">
-                                                <input id="sms_code" v-model="sms_code" type="text" maxlength="20"
-                                                       class="form-control" value="">
-                                            </div>
-                                            <div class="col-xs-6">
-                                                <button @click="get_sms_code">验证码</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-group tip-container" style="display: none;">
-                                    <div class="col-sm-12">
-                                        <div class="tip text-center">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <button id="submitForm" @click="registerHandler" type="button" class="btn btn-block">同意服务条款并提交注册</button>
-                                </div>
-                                <div class="form-group">
-                                    <div class="row">
-                                        <!--<div class="col-sm-12 visible-xs">-->
-                                            <!--<div class="account text-center">-->
-                                                <!--<span>已有账号?</span>-->
-                                                <!--<a href="https://id.heweather.com/login?redirect=https://console.heweather.com">点击登录</a>-->
-                                            <!--</div>-->
-                                        <!--</div>-->
-                                        <div class="col-sm-12 input hidden-xs">
-                                            <!--<a href="https://www.heweather.com/terms/tos" class="company">迈味旅游服务条款</a>-->
-                                            <router-link to="/" class="company">迈味旅游服务条款</router-link>
-                                        </div>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
+    <el-container>
+        <el-main
+                style="width: 500px; height: 400px; background-color: #ffffff; border-radius: 5%; position: absolute; z-index: 9"
+                class="center-in-center">
+            <el-row style="margin-top: 15px">
+                <el-col :span="9" :offset="7" style="text-align: center; font-size: 20px" class="active">
+                    一键注册迈味旅行
+                </el-col>
+            </el-row>
+            <el-row style="margin-top: 20px;">
+                <el-col :span="18" :offset="3">
+                    <el-input
+                            placeholder="手机"
+                            prefix-icon="el-icon-user"
+                            v-model="username">
+                    </el-input>
+                </el-col>
+            </el-row>
+            <el-row style="margin-top: 20px">
+                <el-col :span="18" :offset="3">
+                    <el-input
+                            placeholder="密码"
+                            prefix-icon="el-icon-view"
+                            v-model="password"
+                            show-password>
+                    </el-input>
+                </el-col>
+            </el-row>
+            <el-row style="margin-top: 20px">
+                <el-col :span="18" :offset="3">
+                    <el-input
+                            placeholder="确认密码"
+                            prefix-icon="el-icon-view"
+                            v-model="repassword"
+                            show-password>
+                    </el-input>
+                </el-col>
+            </el-row>
+
+            <el-row style="margin-top: 30px">
+                <el-col :span="18" :offset="3">
+                    <div
+                            style="color: #fff; border-radius: 5px; font-size: 20px; width: 100%; height: 45px; background-color: #ff9c38;text-align: center; line-height: 45px; cursor: pointer"
+                            @click="registerHandler">
+                        注册
                     </div>
-                </div>
-            </div>
+                </el-col>
+            </el-row>
+            <el-row style="margin-top: 10px">
+                <el-col :span="18" :offset="3">
+                    <span>已有账号？</span>
+                    <router-link to="/login">点击登录</router-link>
+                </el-col>
+            </el-row>
+        </el-main>
+        <div class="fullscreen-bg"
+             style="background-image: url('https://images.mafengwo.net/images/signup/wallpaper/46.jpg')">
         </div>
-        <div style="padding-bottom: 20px;">
-            <div class="footer-company text-center visible-xs">
-                <a href="https://www.heweather.com/">迈味旅游服务条款</a>
-            </div>
-            <div class="footer-copyright text-center">
-                © 2020 迈味旅游版权所有 皖ICP备14028982号-1
-            </div>
-        </div>
-        <el-button :plain="true" @click="open_error" style="display: none">错误</el-button>
-        <el-button :plain="true" @click="open_success" style="display: none">成功</el-button>
-    </div>
+    </el-container>
 </template>
 
 <script>
     export default {
         name: "Register",
-        data(){
+        data() {
             return {
                 username: "",
                 password: "",
@@ -123,67 +71,99 @@
                 sms_code: ""
             }
         },
-        methods:{
-            registerHandler(){
-                console.log(this.phone + this.password);
-                if (this.password === this.repassword){
+        methods: {
+            registerHandler() {
+                if (this.checkAttrs()) {
                     this.$axios({
                         url: `${this.$settings.HOST}/register/`,
-                        method: "POST",
+                        method: 'POST',
                         data: {
                             phone: this.username,
                             password: this.password,
                             sms_code: this.sms_code
                         }
-                    }).then(response=>{
-                        localStorage.removeItem('token');
-                        localStorage.removeItem('username');
-                        localStorage.removeItem('id');
-                        sessionStorage.id = response.data.id;
-                        sessionStorage.username = response.data.username;
-                        sessionStorage.token = response.data.token;
-                        this.open_success();
+                    }).then(response => {
+                        sessionStorage.uid = response.data.id;
+                        sessionStorage.uname = response.data.username;
+                        sessionStorage.utoken = response.data.token;
+                        sessionStorage.uavatar = response.data.avatar;
+                        this.openSuccessMessage();
                         this.$router.push("/");
-                    }).catch(error=>{
-                        let message;
-                        if (error.response.data.phone){
-                            message = error.response.data.phone[0];
-                        }
-                        if (error.response.data.password){
-                            message = error.response.data.password[0];
-                        }
-                        this.open_error(message);
+                    }).catch(error => {
+                        let message = error.response.data.phone[0];
+                        this.openErrorMessage(message);
                     })
-                } else {
-                    this.open_error("亲亲，两次密码不一样哦！")
                 }
+
             },
-            open_error(message) {
-                this.$message.error(message);
+            openErrorMessage(message_) {
+                this.$message({
+                    message: message_,
+                    type: 'error',
+                    center: true
+                });
             },
-            open_success() {
-                this.$message.success("注册成功！");
+            openSuccessMessage() {
+                this.$message({
+                    message: '注册成功',
+                    type: 'success',
+                    center: true
+                });
             },
-            get_sms_code(){
-                this.$axios({
-                    url: `${this.$settings.HOST}/phone/${this.username}/`,
-                    methods: 'GET',
-                }).catch(error=>{
-                    this.open_error(error.response.data.message[0]);
-                })
+            // get_sms_code() {
+            //     this.$axios({
+            //         url: `${this.$settings.HOST}/phone/${this.username}/`,
+            //         method: 'GET',
+            //     }).catch(error => {
+            //         this.open_error(error.response.data.message[0]);
+            //     })
+            // }
+            checkAttrs() {
+                let flag = true;
+                if (this.password !== this.repassword) {
+                    this.openErrorMessage("两次密码不一样哦！");
+                    flag = false;
+                }
+                var reg = /^1[3456789]\d{9}$/;
+                if (!reg.test(this.username)) {
+                    this.openErrorMessage('请输入有效的手机号码');
+                    flag = false;
+                }
+                return flag;
             }
         }
     }
 </script>
 
 <style scoped>
-    .register1 {
+    .center-in-center {
+        position: absolute;
+        top: 45%;
+        left: 50%;
+        -webkit-transform: translate(-50%, -50%);
+        -moz-transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%);
+        -o-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%);
+    }
+
+    .fullscreen-bg {
+        background-position: 50% 50%;
         background-size: cover;
+        bottom: 0;
+        right: 0;
         position: fixed;
-        top: 0;
+        position: absolute \9;
+        width: 100% \9;
+        height: 100% \9;
+        overflow: hidden;
         left: 0;
-        width: 100%;
-        height: 100%;
-        background: url("http://attach.bbs.miui.com/forum/201112/14/223055hvzi1h6frov6o9fc.jpg") no-repeat center center;
+        top: 0;
+    }
+
+    .active {
+        padding-bottom: 5px;
+        border-bottom: 5px solid #ff9c38;
+        border-radius: 2px;
     }
 </style>

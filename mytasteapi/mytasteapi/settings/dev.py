@@ -232,5 +232,5 @@ REST_FRAMEWORK = {
 
 JWT_AUTH = {
     'JWT_EXPIRATION_DELTA': datetime.timedelta(weeks=1),
-    'JWT_RESPONSE_PAYLOAD_HANDLER': 'mytasteapi.utils.utils_function.jwt_response_payload_handler',
+    'JWT_RESPONSE_PAYLOAD_HANDLER': 'user.utils.jwt_response_payload_handler',
 }

@@ -4,7 +4,6 @@ import uuid
 from django.contrib.auth.models import AbstractUser
 from django.db import models
 
-
 class User(AbstractUser):
     GENDER_OPTION = (
         (1, "男"),
@@ -16,7 +15,7 @@ class User(AbstractUser):
         ext = filename.split('.')[-1]
         filename = '{}.{}'.format(uuid.uuid4().hex[:10], ext)
         return os.path.join(str(instance.id), "avatar", filename)
-    # id = models.IntegerField(primary_key=True)
+
     phone = models.CharField(max_length=15, null=True, blank=True, unique=True, verbose_name="电话号码")
     wxchat = models.CharField(max_length=64, null=True, blank=True, unique=True, verbose_name="微信号")
     qq = models.CharField(max_length=15, null=True, blank=True, unique=True, verbose_name="QQ号")
@@ -33,3 +32,31 @@ class User(AbstractUser):
         db_table = "mt_user"
         verbose_name = "用户"
         verbose_name_plural = verbose_name
+
+
+class UserLovedScene(models.Model):
+    TYPE_OPTION = (
+        (1, "收藏"),
+        (2, "去过"),
+    )
+    user = models.ForeignKey(to=User, verbose_name="用户", on_delete=models.CASCADE)
+    scene = models.ForeignKey(to='scene.Scene', verbose_name="收藏景点", on_delete=models.CASCADE)
+    type = models.IntegerField(choices=TYPE_OPTION, verbose_name="类型")
+    created_time = models.DateTimeField(auto_now_add=True, verbose_name="创建时间")
+
+    class Meta:
+        db_table = "mt_user_scene"
+
+class UserLovedHotel(models.Model):
+    TYPE_OPTION = (
+        (1, "收藏"),
+        (2, "去过"),
+    )
+    user = models.ForeignKey(to=User, verbose_name="用户", on_delete=models.CASCADE)
+    hotel = models.ForeignKey(to='hotel.Hotel', verbose_name="收藏酒店", on_delete=models.CASCADE)
+    type = models.IntegerField(choices=TYPE_OPTION, verbose_name="类型")
+    created_time = models.DateTimeField(auto_now_add=True, verbose_name="创建时间")
+
+
+    class Meta:
+        db_table = "mt_user_hotel"
