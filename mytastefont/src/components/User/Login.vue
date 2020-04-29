@@ -5,10 +5,12 @@
                 class="center-in-center">
             <el-row style="margin-top: 35px">
                 <el-col :span="7" :offset="6">
-                    <span :class="{active:loginMethod === 0}" style="font-size: 20px; cursor: pointer" @click="switch2Psw">密码登录</span>
+                    <span :class="{active:loginMethod === 0}" style="font-size: 20px; cursor: pointer"
+                          @click="switch2Psw">密码登录</span>
                 </el-col>
                 <el-col :span="7">
-                    <span :class="{active: loginMethod === 1}" style="font-size: 20px; cursor: pointer" @click="switch2Sms">验证码登录</span>
+                    <span :class="{active: loginMethod === 1}" style="font-size: 20px; cursor: pointer"
+                          @click="switch2Sms">验证码登录</span>
                 </el-col>
             </el-row>
             <div v-show="activeName === 'first'">
@@ -102,21 +104,11 @@
                         password: this.password
                     }
                 }).then(response => {
-                    if (this.remember) {
-                        // 记住登录
-                        sessionStorage.clear();
-                        localStorage.uavatar = response.data.avatar;
-                        localStorage.utoken = response.data.token;
-                        localStorage.uid = response.data.id;
-                        localStorage.uname = response.data.username;
-                    } else {
-                        // 未记住登录
-                        localStorage.clear();
-                        sessionStorage.uavatar = response.data.avatar;
-                        sessionStorage.utoken = response.data.token;
-                        sessionStorage.uid = response.data.id;
-                        sessionStorage.uname = response.data.username;
-                    }
+                    // 记住登录
+                    localStorage.uavatar = response.data.avatar;
+                    localStorage.utoken = response.data.token;
+                    localStorage.uid = response.data.id;
+                    localStorage.uname = response.data.username;
                     this.$router.back() || this.$router.push('/');
                 }).catch(error => {
                     this.open_error();

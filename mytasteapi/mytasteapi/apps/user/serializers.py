@@ -76,6 +76,7 @@ class UserCommentSerializer(serializers.ModelSerializer):
 class UserLovedHotelSerializer(serializers.ModelSerializer):
     name = serializers.SerializerMethodField(read_only=True)
     main_photo = serializers.SerializerMethodField(read_only=True)
+    created_time = serializers.DateTimeField(format='%Y-%m-%d %H:%M:%S', read_only=True)
 
     def get_main_photo(self, obj):
         return obj.hotel.main_photo.url
@@ -91,6 +92,7 @@ class UserLovedHotelSerializer(serializers.ModelSerializer):
 class UserLovedSceneSerializer(serializers.ModelSerializer):
     name = serializers.SerializerMethodField(read_only=True)
     main_photo = serializers.SerializerMethodField(read_only=True)
+    created_time = serializers.DateTimeField(format='%Y-%m-%d %H:%M:%S', read_only=True)
 
     def get_main_photo(self, obj):
         return obj.scene.main_photo.url
@@ -104,7 +106,11 @@ class UserLovedSceneSerializer(serializers.ModelSerializer):
 
 
 class UserInfoSerializer(serializers.ModelSerializer):
+    username = serializers.CharField(max_length=150,
+                                  validators=[UniqueValidator(queryset=User.objects.all(), message="用户名已经有人用过了哦！")])
 
+    email = serializers.CharField(max_length=254,
+                                  validators=[UniqueValidator(queryset=User.objects.all(), message="邮箱已经有人用过了哦！")])
     class Meta:
         model = User
-        fields = ['username', 'email', 'phone', 'wxchat', 'qq', 'birth', 'gender', 'avatar', 'city', 'province', 'address']
+        fields = ['username', 'email', 'birth', 'gender', 'address']

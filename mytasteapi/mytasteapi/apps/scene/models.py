@@ -10,6 +10,9 @@ class Province(models.Model):
         verbose_name = "省份"
         verbose_name_plural = verbose_name
 
+    def __str__(self):
+        return self.name
+
 
 class City(models.Model):
     city_index = models.IntegerField(verbose_name="省属市索引")
@@ -18,11 +21,13 @@ class City(models.Model):
     hot = models.IntegerField(default=1000, verbose_name="热度")
     summary = models.CharField(max_length=1024, default="", verbose_name="景点概括")
 
-
     class Meta:
         db_table = 'mt_city'
         verbose_name = "地级市"
         verbose_name_plural = verbose_name
+
+    def __str__(self):
+        return self.name
 
 
 class Scene(models.Model):

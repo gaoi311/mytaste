@@ -5,7 +5,7 @@
 # software: PyCharm
 
 from rest_framework import serializers
-from .models import Hotel, HotelComment
+from .models import *
 from scene.serializers import CitySerializer
 from user.serializers import UserCommentSerializer
 
@@ -20,6 +20,7 @@ class HotelSerializer(serializers.ModelSerializer):
 
 class HotelCommentSerializer(serializers.ModelSerializer):
     user_info = serializers.SerializerMethodField(read_only=True)
+    created_time = serializers.DateTimeField(format='%Y-%m-%d %H:%M:%S', read_only=True)
 
     def get_user_info(self, obj):
         return {
@@ -37,3 +38,30 @@ class HotelCommentSerializer(serializers.ModelSerializer):
                 "write_only": True
             }
         }
+
+class HotelRoomSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = HotelRoom
+        fields = ['id', 'room_type', 'room_count', 'room_price']
+
+
+class HotelOrderSerializer(serializers.ModelSerializer):
+    created_time = serializers.DateTimeField(format='%Y-%m-%d %H:%M:%S', read_only=True)
+    hotel_name = serializers.SerializerMethodField(read_only=True)
+    hotel_photo = serializers.SerializerMethodField(read_only=True)
+
+    def get_hotel_name(self, obj):
+        return obj.hotel.name + '-' + obj.room.room_type
+
+    def get_hotel_photo(self, obj):
+        return obj.hotel.main_photo.url
+
+    class Meta:
+        model = HotelOrder
+        fields = ['id', 'hotel', 'created_time', 'hotel_name', 'hotel_photo']
+
+class HotelsSearchSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Hotel
+        fields = ['id', 'name', 'around', 'address']

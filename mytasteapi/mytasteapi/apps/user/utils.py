@@ -14,12 +14,15 @@ class MutliLogin(ModelBackend):
     """
     def authenticate(self, request, username=None, password=None, **kwargs):
         try:
-            user = User.objects.get(phone=username)
+            user = User.objects.get(username=username)
         except:
             try:
-                user = User.objects.get(email=username)
+                user = User.objects.get(phone=username)
             except:
-                return None
+                try:
+                    user = User.objects.get(email=username)
+                except:
+                    return None
         # 判断密码
         if user.check_password(password):
             return user
@@ -30,7 +33,7 @@ class MutliLogin(ModelBackend):
 def jwt_response_payload_handler(token, user=None, request=None):
     return {
         'token': token,
-        'username': user.phone,
+        'username': user.username,
         'id': user.id,
         'avatar': user.avatar.url
     }

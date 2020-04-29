@@ -83,10 +83,10 @@
                             sms_code: this.sms_code
                         }
                     }).then(response => {
-                        sessionStorage.uid = response.data.id;
-                        sessionStorage.uname = response.data.username;
-                        sessionStorage.utoken = response.data.token;
-                        sessionStorage.uavatar = response.data.avatar;
+                        localStorage.uid = response.data.id;
+                        localStorage.uname = response.data.username;
+                        localStorage.utoken = response.data.token;
+                        localStorage.uavatar = response.data.avatar;
                         this.openSuccessMessage();
                         this.$router.push("/");
                     }).catch(error => {

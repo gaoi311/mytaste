@@ -14,4 +14,6 @@ urlpatterns = [
     re_path('scene_comments/(?P<pk>\d+)', views.SceneCommentAPIView.as_view()),
     path('scene_comment/', views.SceneCommentCreateAPIView.as_view()),
     path('scenes/', views.ScenesSummaryAPIView.as_view()),
+    path('fuzzy_scenes/', views.ScenesSearchAPIVIew.as_view()),
+    path('fuzzy_destinations/', views.CitiesSearchAPIVIew.as_view())
 ]

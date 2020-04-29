@@ -9,6 +9,8 @@ from rest_framework import serializers
 from .models import Carousel, NavigationBar
 
 class CarouselModelSerializer(serializers.ModelSerializer):
+    created_time = serializers.DateTimeField(format='%d %m/%Y', read_only=True)
+
     class Meta:
         model = Carousel
         fields = ['title', 'image_url', 'link', 'remark', 'created_time']

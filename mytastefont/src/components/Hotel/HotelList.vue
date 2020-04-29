@@ -47,7 +47,7 @@
                         <div class="btn-tel">
 
                             <el-link class="btn-detail" type="primary" target="_blank" :href="'/hotel/' + hotel.id + '#comment'">
-                                <span style="font-size: 20px">{{hotel.comment_num}}</span>条评论
+                                <span>查看评论</span>
                             </el-link>
                         </div>
                     </div>

@@ -1,12 +1,14 @@
 from time import sleep
 
+from django.db.models import Q
 from rest_framework.generics import ListAPIView, RetrieveAPIView, CreateAPIView
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from rest_framework.pagination import PageNumberPagination
 
-from .serializers import SceneSerializer, SceneSummarySerializer, CitySerializer, ProvinceSerializer, SceneCommentSerializer
-from .models import Scene, City, Province, SceneComment
+from .serializers import *
+from .models import *
+
 
 class Pagination(PageNumberPagination):
     page_query_param = "page"
@@ -15,15 +17,24 @@ class Pagination(PageNumberPagination):
     page_size = 1
 
 
-class ScenesSummaryAPIView(APIView):
-    def get(self, request):
-        country = request.query_params.dict().get('country', "中国")
-        province = request.query_params.dict().get('province', "")
-        city = request.query_params.dict().get('city', "")
-        scenes_queryset = Scene.objects.filter(country__contains=country, province__name__contains=province,
-                                             city__name__contains=city).order_by('-hot')[:8]
-        ser_obj = SceneSummarySerializer(scenes_queryset, many=True)
-        return Response(ser_obj.data)
+class ScenesSummaryAPIView(ListAPIView):
+    serializer_class = SceneSummarySerializer
+
+    def get_queryset(self):
+        country = self.request.query_params.dict().get('country', "中国")
+        province = self.request.query_params.dict().get('province', "")
+        city = self.request.query_params.dict().get('city', "")
+        queryset = Scene.objects.filter(country__contains=country, province__name__contains=province,
+                                        city__name__contains=city).order_by('-hot')[:8]
+        return queryset
+    # def get(self, request):
+    #     country = request.query_params.dict().get('country', "中国")
+    #     province = request.query_params.dict().get('province', "")
+    #     city = request.query_params.dict().get('city', "")
+    #     scenes_queryset = Scene.objects.filter(country__contains=country, province__name__contains=province,
+    #                                          city__name__contains=city).order_by('-hot')[:8]
+    #     ser_obj = SceneSummarySerializer(scenes_queryset, many=True)
+    #     return Response(ser_obj.data)
 
 
 class CityScenesAPIView(APIView):
@@ -59,6 +70,28 @@ class SceneCommentAPIView(APIView):
 class SceneCommentCreateAPIView(CreateAPIView):
     queryset = SceneComment
     serializer_class = SceneCommentSerializer
+
+
+class ScenesSearchAPIVIew(ListAPIView):
+    serializer_class = ScenesSearchSerializer
+
+    def get_queryset(self):
+        query_string = self.request.query_params.dict().get('search', '')
+        queryset = Scene.objects.filter(
+            Q(name__contains=query_string) | Q(address__contains=query_string))
+
+        return queryset
+
+
+class CitiesSearchAPIVIew(ListAPIView):
+    serializer_class = CitySerializer
+
+    def get_queryset(self):
+        query_string = self.request.query_params.dict().get('search', '')
+        queryset = City.objects.filter(name__contains=query_string)
+
+        return queryset
+
 
 '''
 import random

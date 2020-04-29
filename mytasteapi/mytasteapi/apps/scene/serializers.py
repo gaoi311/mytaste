@@ -35,6 +35,7 @@ class SceneSummarySerializer(serializers.ModelSerializer):
 class SceneSerializer(serializers.ModelSerializer):
     city = CitySerializer()
     province = ProvinceSerializer()
+    updated_time = serializers.DateTimeField(format='%Y-%m-%d %H:%M:%S', read_only=True)
 
     class Meta:
         model = Scene
@@ -43,6 +44,7 @@ class SceneSerializer(serializers.ModelSerializer):
 
 class SceneCommentSerializer(serializers.ModelSerializer):
     user_info = serializers.SerializerMethodField(read_only=True)
+    created_time = serializers.DateTimeField(format='%Y-%m-%d %H:%M:%S', read_only=True)
 
     def get_user_info(self, obj):
         return {
@@ -61,3 +63,9 @@ class SceneCommentSerializer(serializers.ModelSerializer):
                 "write_only": True
             }
         }
+
+
+class ScenesSearchSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Scene
+        fields = ['id', 'name', 'address']

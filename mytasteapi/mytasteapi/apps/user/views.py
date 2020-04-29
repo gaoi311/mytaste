@@ -1,10 +1,8 @@
 import re
 
 from django_filters.rest_framework import DjangoFilterBackend
-from rest_framework import filters
-from django_filters import rest_framework
 from rest_framework import status
-from rest_framework.generics import CreateAPIView, ListAPIView, RetrieveAPIView
+from rest_framework.generics import CreateAPIView, ListAPIView, RetrieveAPIView, UpdateAPIView
 from rest_framework.pagination import PageNumberPagination
 from rest_framework.response import Response
 from rest_framework.views import APIView
@@ -55,15 +53,15 @@ class UserLovedHotelAPIView(ListAPIView):
 
 
 class UserSceneLovedCreateAPIView(CreateAPIView):
-    queryset = UserLovedScene
+    queryset = UserLovedScene.objects.all()
     serializer_class = UserLovedSceneSerializer
 
 
 class UserHotelLovedCreateAPIView(CreateAPIView):
-    queryset = UserLovedHotel
+    queryset = UserLovedHotel.objects.all()
     serializer_class = UserLovedHotelSerializer
 
 
-class UserInfoAPIView(RetrieveAPIView):
-    queryset = User
+class UserInfoAPIView(RetrieveAPIView, UpdateAPIView):
+    queryset = User.objects.all()
     serializer_class = UserInfoSerializer

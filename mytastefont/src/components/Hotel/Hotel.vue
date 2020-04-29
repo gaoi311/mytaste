@@ -40,7 +40,6 @@
                         </el-button>
                     </el-row>
                     <hr>
-
                     <el-row>
                         <el-col :span="24">
                             <span style="font-size: 20px;margin-right: 100px">基本信息</span>
@@ -54,6 +53,30 @@
                             <span>{{hotel.traffic}}</span>
                         </el-col>
                     </el-row>
+                    <hr>
+
+                    <el-row>
+                        <el-col>
+                            <h3>房间详情</h3>
+                        </el-col>
+                    </el-row>
+                    <el-row v-for="(room, index) in rooms" :key="index" style="margin-top: 20px">
+                        <el-col :span="3">
+                            <p><span>类型 </span><span style="font-size: 18px;color: #2aabd2">{{room.room_type}}</span></p>
+                        </el-col>
+                        <el-col :span="3" :offset="3">
+                            <p><span>还有 </span><span style="font-size: 18px;color: #e38d13">{{room.room_count}}</span><span> 间</span></p>
+                        </el-col>
+                        <el-col :span="3" :offset="3">
+                            <p><span>￥ </span><span style="font-size: 18px;color: #ac2925">{{room.room_price}}</span></p>
+                        </el-col>
+                        <el-col :span="3" :offset="3">
+                            <el-button size="small" type="primary" @click="checkRoom(room.id)" style="margin-top: -5px">预订</el-button>
+                        </el-col>
+                    </el-row>
+
+
+
                 </el-col>
             </el-row>
             <hr>
@@ -127,7 +150,7 @@
             return {
                 uid: 0,
                 id: 0,
-                hotel: null,
+                hotel: undefined,
                 comments: [],
                 pageSize: 10,
                 commentsCount: 0,
@@ -138,7 +161,9 @@
                     content: '',
                 },
                 formLabelWidth: '120px',
-                colors: ['#99A9BF', '#F7BA2A', '#FF9900']
+                colors: ['#99A9BF', '#F7BA2A', '#FF9900'],
+
+                rooms: []
             }
         },
         computed: {
@@ -223,12 +248,25 @@
                     alert(error.response);
                 })
             },
+            getRooms(){
+                this.$axios({
+                    url: `${this.$settings.HOST}/rooms/`,
+                    method: 'GET',
+                    params: {
+                        hotel: this.id
+                    }
+                }).then(response => {
+                    this.rooms = response.data;
+                }).catch(error => {
+                    alert(error.response);
+                })
+            },
             handleCurrentChange(page) {
                 this.page = page;
                 location.href = '#comment';
                 this.getHotelComments(this.id);
             },
-            open() {
+            openNeedLogin() {
                 this.$confirm('亲，发表评论需要登录哦, 前往登录?', '提示', {
                     confirmButtonText: '确定',
                     cancelButtonText: '取消',
@@ -237,9 +275,30 @@
                     this.$router.push('/login')
                 })
             },
+            checkRoom(roomId) {
+                this.$confirm('确定预定吗？', '提示', {
+                    confirmButtonText: '确定',
+                    cancelButtonText: '取消',
+                    type: 'primary'
+                }).then(() => {
+                    this.$axios({
+                        url: `${this.$settings.HOST}/room/${roomId}/`,
+                        method: 'PUT',
+                        data: {
+                            user: this.uid,
+                            hotel: this.id
+                        }
+                    }).then(response=>{
+                        this.$message.success("预订成功！");
+                        this.getRooms();
+                    }).catch(error=>{
+                        console.log(error.response);
+                    })
+                })
+            },
             newComment() {
                 if (!this.uid) {
-                    this.open();
+                    this.openNeedLogin();
                 } else {
                     this.dialogFormVisible = true;
                 }
@@ -266,6 +325,7 @@
             this.id = this.$route.params.id;
             this.getHotel(this.id);
             this.getHotelComments(this.id);
+            this.getRooms(this.id);
             this.getUser();
         },
         components: {

@@ -31,14 +31,15 @@
                                             <div class="img">
                                                 <img :src="mainPhotoSrc(scene.main_photo)" width="192" height="130">
                                             </div>
-                                            <h3>{{scene.name}}</h3>
+                                            <p>{{scene.name}}</p>
+                                            <p>{{scene.created_time}}</p>
                                         </router-link>
                                     </li>
                                 </ul>
                             </el-col>
                         </el-row>
                         <el-pagination
-                                v-if="wantScenesCount"
+                                v-if="wentScenesCount"
                                 background
                                 layout="prev, pager, next"
                                 :page-size="pageSize"
@@ -53,12 +54,13 @@
                             <el-col :span="24">
                                 <ul class="scenic-list clearfix">
                                     <li class="scenes_list" v-for="hotel in wentHotels" :key="hotel.id">
-                                        <router-link class="img_a" :to="'/hotel/' + hotel.id" target="_blank"
+                                        <router-link class="img_a" :to="'/hotel/' + hotel.hotel" target="_blank"
                                                      style="color: #333;font-size: 14px;">
                                             <div class="img">
-                                                <img :src="mainPhotoSrc(hotel.main_photo)" width="192" height="130">
+                                                <img :src="mainPhotoSrc(hotel.hotel_photo)" width="192" height="130">
                                             </div>
-                                            <h3>{{hotel.name}}</h3>
+                                            <p>{{hotel.hotel_name}}</p>
+                                            <p>{{hotel.created_time}}</p>
                                         </router-link>
                                     </li>
                                 </ul>
@@ -91,17 +93,10 @@
                 uname: "",
                 uavatar: "",
                 pageSize: 4,
-                // wantScenesCount: 0,
-                // wantScenesPage: 1,
-                // wantScenes: [],
 
                 wentScenesCount: 0,
                 wentScenesPage: 1,
                 wentScenes: [],
-
-                // wantHotelsCount: 0,
-                // wantHotelsPage: 1,
-                // wantHotels: [],
 
                 wentHotelsCount: 0,
                 wentHotelsPage: 1,
@@ -117,27 +112,10 @@
         },
         methods: {
             getUserInfo() {
-                this.uid = sessionStorage.uid || localStorage.uid;
-                this.uname = sessionStorage.uname || localStorage.uname;
-                this.uavatar = `${this.$settings.HOST}` + (sessionStorage.uavatar || localStorage.uavatar);
+                this.uid = localStorage.uid;
+                this.uname = localStorage.uname;
+                this.uavatar = `${this.$settings.HOST}` + localStorage.uavatar;
             },
-            // getUserWantScenes(id) {
-            //     this.$axios({
-            //         url: `${this.$settings.HOST}/user/loved_scene/`,
-            //         method: "GET",
-            //         params: {
-            //             type: 1,
-            //             user: id,
-            //             page: this.wantScenesPage,
-            //             page_size: this.pageSize
-            //         }
-            //     }).then(response => {
-            //         this.wantScenes = response.data.results;
-            //         this.wantScenesCount = response.data.count;
-            //     }).catch(error => {
-            //         alert(error.response.data);
-            //     })
-            // },
             getUserWentScenes(id) {
                 this.$axios({
                     url: `${this.$settings.HOST}/user/loved_scene/`,
@@ -155,29 +133,11 @@
                     alert(error.response.data);
                 })
             },
-            // getUserWantHotels(id) {
-            //     this.$axios({
-            //         url: `${this.$settings.HOST}/user/loved_hotel/`,
-            //         method: "GET",
-            //         params: {
-            //             type: 1,
-            //             user: id,
-            //             page: this.wantHotelsPage,
-            //             page_size: this.pageSize
-            //         }
-            //     }).then(response => {
-            //         this.wantHotels = response.data.results;
-            //         this.wantHotelsCount = response.data.count;
-            //     }).catch(error => {
-            //         alert(error.response.data);
-            //     })
-            // },
             getUserWentHotels(id) {
                 this.$axios({
-                    url: `${this.$settings.HOST}/user/loved_hotel/`,
+                    url: `${this.$settings.HOST}/went_hotels/`,
                     method: "GET",
                     params: {
-                        type: 2,
                         user: id,
                         page: this.wentHotelsPage,
                         page_size: this.pageSize
@@ -189,18 +149,10 @@
                     alert(error.response.data);
                 })
             },
-            // handleCurrentChange1(page) {
-            //     this.wantScenesPage = page;
-            //     this.getUserWantScenes(this.id);
-            // },
             handleCurrentChange2(page) {
                 this.wentPage = page;
                 this.getUserWentScenes(this.id);
             },
-            // handleCurrentChange3(page) {
-            //     this.wantHotelsPage = page;
-            //     this.getUserWantHotels(this.id);
-            // },
             handleCurrentChange4(page) {
                 this.wentHotelsPage = page;
                 this.getUserWentHotels(this.id);
@@ -208,9 +160,7 @@
         },
         created() {
             this.getUserInfo();
-            // this.getUserWantScenes(this.uid);
             this.getUserWentScenes(this.uid);
-            // this.getUserWantHotels(this.uid);
             this.getUserWentHotels(this.uid);
         },
         components: {
@@ -233,12 +183,12 @@
         overflow: hidden
     }
 
-    .scenes_list .img_a h3 {
+    .scenes_list .img_a p {
         text-align: center;
         border: 1px solid #eee;
-        height: 43px;
+        height: 21px;
         font-size: 14px;
-        line-height: 42px;
+        line-height: 21px;
         padding: 0 10px;
         margin: 0 0 0 0;
         overflow: hidden;

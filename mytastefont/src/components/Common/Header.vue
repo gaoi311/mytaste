@@ -71,10 +71,10 @@
                 // this.activeIndex = key;
             },
             checkUserLogin() {
-                this.utoken = sessionStorage.utoken || localStorage.utoken;
-                this.uid = sessionStorage.uid || localStorage.uid;
-                this.uname = sessionStorage.uname || localStorage.uname;
-                this.uavatar = `${this.$settings.HOST}` + (sessionStorage.uavatar || localStorage.uavatar);
+                this.utoken = localStorage.utoken;
+                this.uid =localStorage.uid;
+                this.uname = localStorage.uname;
+                this.uavatar = `${this.$settings.HOST}` + localStorage.uavatar;
                 this.$emit('user', this.uid);
             },
             logoutHandler() {
@@ -82,12 +82,8 @@
                 localStorage.removeItem("uid");
                 localStorage.removeItem("uname");
                 localStorage.removeItem("uavatar");
-                sessionStorage.removeItem("utoken");
-                sessionStorage.removeItem("uid");
-                sessionStorage.removeItem("uname");
-                sessionStorage.removeItem("uavatar");
                 this.checkUserLogin();
-                // this.$router.push('/');
+                this.$router.push('/');
             },
         },
         created() {

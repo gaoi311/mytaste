@@ -31,7 +31,7 @@
                                 <router-link class="img_a" :to="'/scene/' + scene.id" target="_blank"
                                              style="color: #333;font-size: 14px;">
                                     <div class="img">
-                                        <img :src="mainPhotoSrc(scene.main_photo)" width="192" height="130">
+                                        <img :src="scene.main_photo" width="192" height="130">
                                     </div>
                                     <h3>{{scene.name}}</h3>
                                 </router-link>

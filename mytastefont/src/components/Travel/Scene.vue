@@ -139,7 +139,7 @@
             return {
                 uid: 0,
                 id: 0,
-                scene: null,
+                scene: undefined,
                 comments: [],
                 pageSize: 10,
                 commentsCount: 0,

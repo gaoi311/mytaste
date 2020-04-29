@@ -54,3 +54,35 @@ class HotelComment(models.Model):
 
     def __str__(self):
         return str(self.user) + str(self.hotel)
+
+
+class HotelRoom(models.Model):
+    hotel = models.ForeignKey(to=Hotel, verbose_name="酒店", on_delete=models.CASCADE)
+    room_type = models.CharField(max_length=32, verbose_name="房型")
+    room_price = models.IntegerField(verbose_name="房价")
+    room_count = models.IntegerField(verbose_name="房间数", default=0)
+    updated_time = models.DateTimeField(auto_now=True, verbose_name="修改时间")
+
+    class Meta:
+        db_table = "mt_hotel_room"
+        verbose_name = "酒店房间"
+        verbose_name_plural = verbose_name
+
+    def __str__(self):
+        return str(self.hotel) + str(self.room_type)
+
+
+class HotelOrder(models.Model):
+    user = models.ForeignKey(to=User, verbose_name="用户", on_delete=models.CASCADE)
+    hotel = models.ForeignKey(to=Hotel, verbose_name="酒店", on_delete=models.CASCADE)
+    room = models.ForeignKey(to=HotelRoom, verbose_name="房间", on_delete=models.CASCADE)
+    created_time = models.DateTimeField(auto_now_add=True, verbose_name="创建时间")
+
+    class Meta:
+        db_table = "mt_hotel_order"
+        verbose_name = "酒店订单"
+        verbose_name_plural = verbose_name
+
+    def __str__(self):
+        return str(self.user) + str(self.hotel)
+
