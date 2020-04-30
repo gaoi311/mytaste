@@ -12,6 +12,7 @@ from .models import User, UserLovedScene, UserLovedHotel
 
 
 class Pagination(PageNumberPagination):
+    """分页"""
     page_query_param = "page"
     page_size_query_param = "page_size"
     max_page_size = 100
@@ -19,11 +20,18 @@ class Pagination(PageNumberPagination):
 
 
 class UserAPIView(CreateAPIView):
+    """
+    新增用户
+    """
     queryset = User.objects.all()
     serializer_class = UserModelSerializer
 
 
 class PhoneAPIView(APIView):
+    """
+    验证手机号码
+    """
+
     def get(self, request, phone):
         if not re.match(r"^1[3-9]\d{9}$", phone):
             return Response(data={
@@ -37,6 +45,9 @@ class PhoneAPIView(APIView):
 
 
 class UserLovedSceneAPIView(ListAPIView):
+    """
+    用户收藏、去过的景点
+    """
     queryset = UserLovedScene.objects.all().order_by('-created_time')
     serializer_class = UserLovedSceneSerializer
     pagination_class = Pagination
@@ -44,24 +55,30 @@ class UserLovedSceneAPIView(ListAPIView):
     filter_fields = ['type', 'user']
 
 
-class UserLovedHotelAPIView(ListAPIView):
-    queryset = UserLovedHotel.objects.all().order_by('-created_time')
-    serializer_class = UserLovedHotelSerializer
-    pagination_class = Pagination
-    filter_backends = [DjangoFilterBackend, ]
-    filter_fields = ['type', 'user']
+# class UserLovedHotelAPIView(ListAPIView):
+#     queryset = UserLovedHotel.objects.all().order_by('-created_time')
+#     serializer_class = UserLovedHotelSerializer
+#     pagination_class = Pagination
+#     filter_backends = [DjangoFilterBackend, ]
+#     filter_fields = ['type', 'user']
 
 
 class UserSceneLovedCreateAPIView(CreateAPIView):
+    """
+    新增用户收藏、去过景点
+    """
     queryset = UserLovedScene.objects.all()
     serializer_class = UserLovedSceneSerializer
 
 
-class UserHotelLovedCreateAPIView(CreateAPIView):
-    queryset = UserLovedHotel.objects.all()
-    serializer_class = UserLovedHotelSerializer
+# class UserHotelLovedCreateAPIView(CreateAPIView):
+#     queryset = UserLovedHotel.objects.all()
+#     serializer_class = UserLovedHotelSerializer
 
 
 class UserInfoAPIView(RetrieveAPIView, UpdateAPIView):
+    """
+    用户信息展示、修改
+    """
     queryset = User.objects.all()
     serializer_class = UserInfoSerializer

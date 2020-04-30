@@ -1,4 +1,4 @@
-#-*- coding:utf-8 -*-
+# -*- coding:utf-8 -*-
 
 # author:   gaoi
 # datetime: 4/29/20 11:15 AM
@@ -6,6 +6,7 @@
 
 from django_filters import rest_framework
 from .models import Hotel
+
 
 class HotelFilter(rest_framework.FilterSet):
     name = rest_framework.CharFilter(field_name='name', lookup_expr='icontains', )

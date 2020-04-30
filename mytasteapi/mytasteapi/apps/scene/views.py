@@ -11,6 +11,9 @@ from .models import *
 
 
 class Pagination(PageNumberPagination):
+    """
+    分页
+    """
     page_query_param = "page"
     page_size_query_param = "page_size"
     max_page_size = 100
@@ -18,46 +21,71 @@ class Pagination(PageNumberPagination):
 
 
 class ScenesSummaryAPIView(ListAPIView):
+    """
+    国、省、市景点公用首页缩略图展示
+    """
+
     serializer_class = SceneSummarySerializer
 
     def get_queryset(self):
-        country = self.request.query_params.dict().get('country', "中国")
-        province = self.request.query_params.dict().get('province', "")
-        city = self.request.query_params.dict().get('city', "")
-        queryset = Scene.objects.filter(country__contains=country, province__name__contains=province,
-                                        city__name__contains=city).order_by('-hot')[:8]
+        province_id = self.request.query_params.dict().get('province')
+        city_id = self.request.query_params.dict().get('city')
+
+        queryset = Scene.objects.filter().order_by('-hot')
+        if province_id:
+            queryset = queryset.filter(province=province_id)
+        if city_id:
+            queryset = queryset.filter(city=city_id)
+        queryset = queryset[:8]
         return queryset
-    # def get(self, request):
-    #     country = request.query_params.dict().get('country', "中国")
-    #     province = request.query_params.dict().get('province', "")
-    #     city = request.query_params.dict().get('city', "")
-    #     scenes_queryset = Scene.objects.filter(country__contains=country, province__name__contains=province,
-    #                                          city__name__contains=city).order_by('-hot')[:8]
-    #     ser_obj = SceneSummarySerializer(scenes_queryset, many=True)
-    #     return Response(ser_obj.data)
 
 
 class CityScenesAPIView(APIView):
+    """
+    景点筛选展示
+    """
+
     def get(self, request, *args, **kwargs):
         city_id = kwargs.get('pk')
+        scene_type = request.query_params.dict().get('scene_type', '')
+        scene_grade = request.query_params.dict().get('scene_grade', '')
+        scene_order = request.query_params.dict().get('scene_order', '')
         page = Pagination()
         scenes_queryset = Scene.objects.filter(city_id=city_id).order_by('-hot')
+
+        if scene_type:
+            scenes_queryset = scenes_queryset.filter(type=scene_type)
+        if scene_grade:
+            scenes_queryset = scenes_queryset.filter(grade=scene_grade)
+        if scene_order:
+            scenes_queryset = scenes_queryset.order_by(scene_order)
+
         page_scenes = page.paginate_queryset(queryset=scenes_queryset, request=request, view=self)
         ser_obj = SceneSerializer(page_scenes, many=True)
         return page.get_paginated_response(ser_obj.data)
 
 
 class SceneAPIView(RetrieveAPIView):
+    """
+    单个景点详细展示
+    """
     queryset = Scene.objects.all()
     serializer_class = SceneSerializer
 
 
 class CityAPIView(RetrieveAPIView):
+    """
+    获取单个城市信息
+    """
     queryset = City.objects.all()
     serializer_class = CitySerializer
 
 
 class SceneCommentAPIView(APIView):
+    """
+    景点评论展示
+    """
+
     def get(self, request, *args, **kwargs):
         scene_id = kwargs.get('pk')
         page = Pagination()
@@ -68,22 +96,30 @@ class SceneCommentAPIView(APIView):
 
 
 class SceneCommentCreateAPIView(CreateAPIView):
+    """
+    新增景点评论
+    """
     queryset = SceneComment
     serializer_class = SceneCommentSerializer
 
 
 class ScenesSearchAPIVIew(ListAPIView):
+    """
+    首页景点模糊搜索
+    """
     serializer_class = ScenesSearchSerializer
 
     def get_queryset(self):
         query_string = self.request.query_params.dict().get('search', '')
-        queryset = Scene.objects.filter(
-            Q(name__contains=query_string) | Q(address__contains=query_string))
+        queryset = Scene.objects.filter(name__contains=query_string)
 
         return queryset
 
 
 class CitiesSearchAPIVIew(ListAPIView):
+    """
+    首页目的地模糊搜索
+    """
     serializer_class = CitySerializer
 
     def get_queryset(self):

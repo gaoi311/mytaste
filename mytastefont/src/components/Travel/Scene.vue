@@ -245,6 +245,8 @@
                         score: this.form.score,
                         scene: this.id
                     }
+                }).then(response=>{
+                    this.$message.success("评论发布成功！")
                 }).catch(error=>{
                     alert("啊呀，出错啦！请重试!");
                 });

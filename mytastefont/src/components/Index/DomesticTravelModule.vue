@@ -1,7 +1,6 @@
 <template>
     <el-container>
         <el-aside width="300px">
-            111
         </el-aside>
         <el-container>
             <el-header>
@@ -53,6 +52,8 @@
                 activeName: 'first',
                 domesticSceneList: [],
                 country: "中国",
+                province: 1,
+                city: 1,
             }
         },
         computed: {
@@ -67,10 +68,6 @@
                 this.$axios({
                     url: `${this.$settings.HOST}/scenes/`,
                     method: "GET",
-                    params: {
-                        country: this.country,
-                        order: "-hot"
-                    }
                 }).then(response => {
                     this.domesticSceneList = response.data;
                 }).catch(error => {
@@ -82,6 +79,8 @@
             }
         },
         created() {
+            this.province = localStorage.getItem('province', 1);
+            this.city = localStorage.getItem('city', 1);
             this.getDomesticSceneList();
         }
     }

@@ -1,13 +1,12 @@
 <template>
     <el-container>
         <el-aside width="300px">
-            111
         </el-aside>
         <el-container>
             <el-header>
                 <el-row>
                     <el-col :span="24">
-                        <h3>当地游 | 畅享娱乐</h3>
+                        <router-link :to="'/city/' + 1"><h3>当地游 | 畅享娱乐</h3></router-link>
                     </el-col>
                 </el-row>
                 <el-row>
@@ -18,7 +17,7 @@
                         </el-tabs>
                     </el-col>
                     <el-col :span="2" style="margin-top: 28px; margin-left: 20px;text-align: center">
-                        <router-link to="/scenes/1" target="_blank">更多景点</router-link>
+                        <router-link :to="'/' + module + '/' + city" target="_blank">更多{{title}}</router-link>
                     </el-col>
                 </el-row>
             </el-header>
@@ -71,8 +70,10 @@
                 localSceneList: [],
                 localHotelList: [],
                 country: "中国",
-                province: "安徽",
-                city: "合肥"
+                province: 1,
+                city: 1,
+                module: "scenes",
+                title: '景点'
             }
         },
         computed: {
@@ -88,7 +89,6 @@
                     url: `${this.$settings.HOST}/scenes/`,
                     method: "GET",
                     params: {
-                        country: this.country,
                         province: this.province,
                         city: this.city
                     }
@@ -103,7 +103,7 @@
                     url: `${this.$settings.HOST}/hotels/`,
                     method: "GET",
                     params: {
-                        city: 110,
+                        city: this.city
                     }
                 }).then(response => {
                     this.localHotelList = response.data;
@@ -113,13 +113,19 @@
             },
             handleClick(tab, event) {
                 if (tab.name === 'first') {
+                    this.title = "景点";
+                    this.module = "scenes";
                     this.getLocalSceneList();
                 } else if (tab.name === 'second') {
+                    this.title = "酒店";
+                    this.module = "hotels";
                     this.getLocalHotelList();
                 }
             }
         },
         created() {
+            this.province = localStorage.getItem('province', 1);
+            this.city = localStorage.getItem('city', 1);
             this.getLocalSceneList();
         }
     }
@@ -127,6 +133,21 @@
 
 <style scoped>
     * {
+        text-decoration: none;
+    }
+
+    a:link {
+        color: #000000;
+        text-decoration: none;
+    }
+
+    a:visited {
+        color: #000000;
+        text-decoration: none;
+    }
+
+    a:hover {
+        color: #000000;
         text-decoration: none;
     }
 

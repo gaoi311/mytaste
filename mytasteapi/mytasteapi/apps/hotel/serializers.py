@@ -27,6 +27,7 @@ class HotelCommentSerializer(serializers.ModelSerializer):
             "username": obj.user.phone,
             "avatar": obj.user.avatar.url
         }
+
     class Meta:
         model = HotelComment
         fields = "__all__"
@@ -38,6 +39,7 @@ class HotelCommentSerializer(serializers.ModelSerializer):
                 "write_only": True
             }
         }
+
 
 class HotelRoomSerializer(serializers.ModelSerializer):
     class Meta:
@@ -60,8 +62,8 @@ class HotelOrderSerializer(serializers.ModelSerializer):
         model = HotelOrder
         fields = ['id', 'hotel', 'created_time', 'hotel_name', 'hotel_photo']
 
-class HotelsSearchSerializer(serializers.ModelSerializer):
 
+class HotelsSearchSerializer(serializers.ModelSerializer):
     class Meta:
         model = Hotel
         fields = ['id', 'name', 'around', 'address']

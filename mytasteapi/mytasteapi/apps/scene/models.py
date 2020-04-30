@@ -2,6 +2,7 @@ from django.db import models
 
 from user.models import User
 
+
 class Province(models.Model):
     name = models.CharField(max_length=50, verbose_name="省份")
 
@@ -37,7 +38,8 @@ class Scene(models.Model):
         (3, "文化"),
         (4, "历史"),
         (5, "建筑"),
-        (6, "公园")
+        (6, "公园"),
+        (7, "休闲")
     )
     GRADE_OPTION = (
         (1, "无"),

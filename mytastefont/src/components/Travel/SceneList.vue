@@ -5,6 +5,50 @@
         </el-header>
         <el-main id="top">
             <div>
+                <el-row>
+                    <el-col :span="3" :offset="6">
+                        <el-select
+                                @change="getScenes"
+                                v-model="typeValue"
+                                style="margin-left: 20px;"
+                                placeholder="景点类型">
+                            <el-option
+                                    v-for="item in typeOption"
+                                    :key="item.value"
+                                    :label="item.label"
+                                    :value="item.value">
+                            </el-option>
+                        </el-select>
+                    </el-col>
+                    <el-col :span="3">
+                        <el-select
+                                @change="getScenes"
+                                v-model="gradeValue"
+                                style="margin-left: 20px;"
+                                placeholder="景区等级">
+                            <el-option
+                                    v-for="item in gradeOption"
+                                    :key="item.value"
+                                    :label="item.label"
+                                    :value="item.value">
+                            </el-option>
+                        </el-select>
+                    </el-col>
+                    <el-col :span="3">
+                        <el-select
+                                @change="getScenes"
+                                v-model="orderValue"
+                                style="margin-left: 20px;"
+                                placeholder="排序">
+                            <el-option
+                                    v-for="item in orderOption"
+                                    :key="item.value"
+                                    :label="item.label"
+                                    :value="item.value">
+                            </el-option>
+                        </el-select>
+                    </el-col>
+                </el-row>
                 <div class="hotel-item clearfix _j_hotel_item" style="width: 65%;margin-left: 200px"
                      v-for="scene in scenes" :key="scene.id">
                     <div class="hotel-pic">
@@ -21,7 +65,8 @@
                                 </router-link>
                             </h3>
                             <p>{{scene.ename}}</p>
-                            <span v-if="scene.ticket" style="margin-left: 480px;margin-bottom: 100px">{{scene.ticket}}元</span>
+                            <span v-if="scene.ticket"
+                                  style="margin-left: 480px;margin-bottom: 100px">{{scene.ticket}}元</span>
                             <br>
                         </div>
                     </div>
@@ -39,9 +84,6 @@
                                         text-color="#ff9900">
                                 </el-rate>
                             </li>
-                            <!--<li v-if="scene.ticket !== ''">-->
-                            <!--<span>￥</span><span style="font-size: 20px">{{scene.ticket}}</span><span>元</span>-->
-                            <!--</li>-->
                         </ul>
                         <p style="margin-left: 10px">热度 <span
                                 style="font-size: 24px;color: #c0a16b">{{scene.hot}}</span></p>
@@ -55,7 +97,8 @@
                             <el-link class="btn-detail" type="primary" style="text-decoration: none" target="_blank"
                                      :href="'/scene/' + scene.id + '#comment'">
                                 <span style="font-size: 20px">{{scene.comment_num}}</span>
-                            </el-link>条评论
+                            </el-link>
+                            条评论
                         </div>
                     </div>
                     <div class="hotel-btns" style="margin-top: 15px">
@@ -96,6 +139,34 @@
                 scenesCount: 0,
                 page: 1,
                 scenes: [],
+
+                typeOption: [
+                    {value: '2', label: '自然'},
+                    {value: '3', label: '文化'},
+                    {value: '4', label: '历史'},
+                    {value: '5', label: '建筑'},
+                    {value: '6', label: '公园'},
+                    {value: '7', label: '休闲'},
+                    {value: '1', label: '其他'},
+                ],
+
+                gradeOption: [
+                    {value: '2', label: 'A'},
+                    {value: '3', label: 'AA'},
+                    {value: '4', label: 'AAA'},
+                    {value: '5', label: 'AAAA'},
+                    {value: '6', label: 'AAAAA'},
+                ],
+
+                orderOption: [
+                    {value: '-hot', label: '热度最高'},
+                    {value: '-score', label: '评分最高'},
+                    {value: '-comment_num', label: '评论数最多'},
+                ],
+
+                gradeValue: '',
+                typeValue: '',
+                orderValue: ''
             }
         },
         computed: {
@@ -129,13 +200,16 @@
             }
         },
         methods: {
-            getScenes(id) {
+            getScenes() {
                 this.$axios({
-                    url: `${this.$settings.HOST}/scenes/${id}/`,
+                    url: `${this.$settings.HOST}/scenes/${this.id}/`,
                     method: "GET",
                     params: {
                         page: this.page,
-                        page_size: this.pageSize
+                        page_size: this.pageSize,
+                        scene_type: this.typeValue,
+                        scene_grade: this.gradeValue,
+                        scene_order: this.orderValue
                     }
                 }).then(response => {
                     this.scenes = response.data.results;
@@ -152,7 +226,7 @@
         },
         created() {
             this.id = this.$route.params.id;
-            this.getScenes(this.id);
+            this.getScenes();
         },
         components: {
             Footer,

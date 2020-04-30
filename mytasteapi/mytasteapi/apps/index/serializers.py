@@ -1,4 +1,4 @@
-#-*- coding:utf-8 -*-
+# -*- coding:utf-8 -*-
 
 # author:   gaoi
 # datetime: 3/27/20 9:20 PM
@@ -7,6 +7,7 @@
 from rest_framework import serializers
 
 from .models import Carousel, NavigationBar
+
 
 class CarouselModelSerializer(serializers.ModelSerializer):
     created_time = serializers.DateTimeField(format='%d %m/%Y', read_only=True)

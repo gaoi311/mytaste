@@ -53,7 +53,7 @@
                 radio: 1,
                 state: '',
                 tips: '请输入酒店/周边景点',
-                search_id: '',
+                search_id: 1,
             }
         },
         methods: {
@@ -92,7 +92,7 @@
                     for (var i = 0; i < response.data.length; i++) {
                         // suggestion[i].value = response.data[i].name;
                         suggestion.push({
-                            "value": response.data[i].name + '\xa0\xa0\xa0' + response.data[i].around,
+                            "value": response.data[i].name + (this.radio === 1 ? ('\xa0\xa0\xa0' +  response.data[i].around) : ''),
                             "name": response.data[i].name,
                             "id": response.data[i].id
                         })
@@ -133,7 +133,7 @@
                         break;
                 }
                 this.$router.push(url);
-            }
+            },
         },
         created() {
             this.getCarouselList();

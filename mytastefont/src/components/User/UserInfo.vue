@@ -26,7 +26,7 @@
                     <el-input v-model="form.address"></el-input>
                 </el-form-item>
 
-                <el-form-item label="邮箱">
+                <el-form-item label="邮箱" prop="email">
                     <el-input v-model="form.email"></el-input>
                 </el-form-item>
 
@@ -44,9 +44,24 @@
     export default {
         name: "UserInfo",
         data() {
+            var checkEmail = (rule, value, callback) => {
+                var reg = /^(\w)+(\.\w+)*@(\w)+((\.\w+)+)$/;
+                if (value === '') {
+                    this.checkFlag = true;
+                    callback();
+                }
+                if (!reg.test(value)) {
+                    this.checkFlag = false;
+                    callback(new Error("邮箱格式不对哦！"));
+                }
+                this.checkFlag = true;
+                callback();
+            };
             return {
                 uid: 0,
                 user: undefined,
+                checkFlag: true,
+
                 form: {
                     username: '',
                     gender: '',
@@ -57,6 +72,9 @@
                 rules: {
                     username: [
                         {required: true, message: '用户名不能为空', trigger: 'blur'},
+                    ],
+                    email: [
+                        {validator: checkEmail, trigger: 'blur'}
                     ],
                 },
                 genderOption: [
@@ -83,26 +101,28 @@
                 })
             },
             updateInfo() {
-                this.$axios({
-                    url: `${this.$settings.HOST}/user/info/${this.uid}/`,
-                    method: 'PUT',
-                    data: {
-                        username: this.form.username,
-                        gender: this.form.gender,
-                        birth: this.form.birth,
-                        address: this.form.address,
-                        email: this.form.email
-                    }
-                }).then(response => {
-                    this.$message.success('修改成功！');
-                    this.$router.push('/self');
-                }).catch(error => {
-                    let message = "";
-                    for (let key in error.response.data) {
-                        message = error.response.data[key][0];
-                    }
-                    this.$message.error(message);
-                })
+                if (this.checkFlag) {
+                    this.$axios({
+                        url: `${this.$settings.HOST}/user/info/${this.uid}/`,
+                        method: 'PUT',
+                        data: {
+                            username: this.form.username,
+                            gender: this.form.gender,
+                            birth: this.form.birth,
+                            address: this.form.address,
+                            email: this.form.email
+                        }
+                    }).then(response => {
+                        this.$message.success('修改成功！');
+                        this.$router.push('/self');
+                    }).catch(error => {
+                        let message = "";
+                        for (let key in error.response.data) {
+                            message = error.response.data[key][0];
+                        }
+                        this.$message.error(message);
+                    })
+                }
             }
         },
         created() {

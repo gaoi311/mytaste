@@ -13,6 +13,7 @@
                     <el-input
                             placeholder="手机"
                             prefix-icon="el-icon-user"
+                            @blur="checkPhoneFormat"
                             v-model="username">
                     </el-input>
                 </el-col>
@@ -124,12 +125,13 @@
                     this.openErrorMessage("两次密码不一样哦！");
                     flag = false;
                 }
+                return flag;
+            },
+            checkPhoneFormat(){
                 var reg = /^1[3456789]\d{9}$/;
                 if (!reg.test(this.username)) {
-                    this.openErrorMessage('请输入有效的手机号码');
-                    flag = false;
+                    this.openErrorMessage('请输入正确的手机号码');
                 }
-                return flag;
             }
         }
     }

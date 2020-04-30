@@ -9,7 +9,7 @@ from . import views
 
 urlpatterns = [
     re_path('hotel/(?P<pk>\d+)/', views.HotelAPIView.as_view()),
-    re_path('hotels/(?P<pk>\d+)/', views.HotelsListAPIView.as_view()),
+    re_path('hotelslist/(?P<pk>\d+)/', views.HotelsListAPIView.as_view()),
     re_path('hotel_comments/(?P<pk>\d+)/', views.HotelCommentAPIView.as_view()),
     re_path('room/(?P<pk>\d+)/', views.HotelRoomCheckAPIVIew.as_view()),
     path('hotel_comment/', views.HotelCommentCreateAPIView.as_view()),

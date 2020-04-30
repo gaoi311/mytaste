@@ -1,7 +1,6 @@
 <template>
     <el-container>
         <el-aside width="300px">
-            111
         </el-aside>
         <el-container>
             <el-header>
@@ -14,7 +13,6 @@
                     <el-col :span="18">
                         <el-tabs v-model="activeName" @tab-click="handleClick">
                             <el-tab-pane label="景点" name="first"></el-tab-pane>
-                            <el-tab-pane label="酒店" name="second"></el-tab-pane>
                         </el-tabs>
                     </el-col>
                     <el-col :span="2" style="margin-top: 28px; margin-left: 20px;text-align: center">
@@ -54,7 +52,8 @@
                 activeName: 'first',
                 provinceSceneList: [],
                 country: "中国",
-                province: "安徽",
+                province: 1,
+                city: 1,
             }
         },
         computed: {
@@ -70,9 +69,7 @@
                     url: `${this.$settings.HOST}/scenes/`,
                     method: "GET",
                     params: {
-                        country: this.country,
                         province: this.province,
-                        order: "-hot"
                     }
                 }).then(response => {
                     this.provinceSceneList = response.data;
@@ -84,6 +81,8 @@
             }
         },
         created() {
+            this.province = localStorage.getItem('province', 1);
+            this.city = localStorage.getItem('city', 1);
             this.getProvinceSceneList();
         }
     }

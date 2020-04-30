@@ -62,19 +62,23 @@
                     </el-row>
                     <el-row v-for="(room, index) in rooms" :key="index" style="margin-top: 20px">
                         <el-col :span="3">
-                            <p><span>类型 </span><span style="font-size: 18px;color: #2aabd2">{{room.room_type}}</span></p>
+                            <p><span>类型 </span><span style="font-size: 18px;color: #2aabd2">{{room.room_type}}</span>
+                            </p>
                         </el-col>
                         <el-col :span="3" :offset="3">
-                            <p><span>还有 </span><span style="font-size: 18px;color: #e38d13">{{room.room_count}}</span><span> 间</span></p>
+                            <p><span>还有 </span><span
+                                    style="font-size: 18px;color: #e38d13">{{room.room_count}}</span><span> 间</span></p>
                         </el-col>
                         <el-col :span="3" :offset="3">
-                            <p><span>￥ </span><span style="font-size: 18px;color: #ac2925">{{room.room_price}}</span></p>
+                            <p><span>￥ </span><span style="font-size: 18px;color: #ac2925">{{room.room_price}}</span>
+                            </p>
                         </el-col>
                         <el-col :span="3" :offset="3">
-                            <el-button size="small" type="primary" @click="checkRoom(room.id)" style="margin-top: -5px">预订</el-button>
+                            <el-button size="small" type="primary" @click="checkRoom(room.id)" style="margin-top: -5px">
+                                预订
+                            </el-button>
                         </el-col>
                     </el-row>
-
 
 
                 </el-col>
@@ -248,7 +252,7 @@
                     alert(error.response);
                 })
             },
-            getRooms(){
+            getRooms() {
                 this.$axios({
                     url: `${this.$settings.HOST}/rooms/`,
                     method: 'GET',
@@ -276,25 +280,29 @@
                 })
             },
             checkRoom(roomId) {
-                this.$confirm('确定预定吗？', '提示', {
-                    confirmButtonText: '确定',
-                    cancelButtonText: '取消',
-                    type: 'primary'
-                }).then(() => {
-                    this.$axios({
-                        url: `${this.$settings.HOST}/room/${roomId}/`,
-                        method: 'PUT',
-                        data: {
-                            user: this.uid,
-                            hotel: this.id
-                        }
-                    }).then(response=>{
-                        this.$message.success("预订成功！");
-                        this.getRooms();
-                    }).catch(error=>{
-                        console.log(error.response);
+                if (!this.uid) {
+                    this.openNeedLogin();
+                } else {
+                    this.$confirm('确定预定吗？', '提示', {
+                        confirmButtonText: '确定',
+                        cancelButtonText: '取消',
+                        type: 'primary'
+                    }).then(() => {
+                        this.$axios({
+                            url: `${this.$settings.HOST}/room/${roomId}/`,
+                            method: 'PUT',
+                            data: {
+                                user: this.uid,
+                                hotel: this.id
+                            }
+                        }).then(response => {
+                            this.$message.success("预订成功！");
+                            this.getRooms();
+                        }).catch(error => {
+                            console.log(error.response);
+                        })
                     })
-                })
+                }
             },
             newComment() {
                 if (!this.uid) {
@@ -314,7 +322,7 @@
                         score: this.form.score,
                         hotel: this.id
                     }
-                }).catch(error=>{
+                }).catch(error => {
                     alert("啊呀，出错啦！请重试!");
                 });
                 this.form.score = 0;

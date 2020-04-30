@@ -27,6 +27,9 @@
                         <h2>景点概括</h2>
                         <p>{{city.summary}}</p>
                     </el-col>
+                    <el-col :span="2" style="position: absolute; right: 150px; margin-top: 30px">
+                        <router-link :to="'/scenes/' + city.id">查看景点详情</router-link>
+                    </el-col>
                 </el-row>
                 <el-row>
                     <el-col :span="18" :offset="3">
@@ -53,6 +56,9 @@
                     <el-col :span="18" :offset="3">
                         <h2>酒店</h2>
                     </el-col>
+                    <el-col :span="2" style="position: absolute; right: 150px; margin-top: 30px">
+                        <router-link :to="'/hotelslist/' + city.id">查看酒店详情</router-link>
+                    </el-col>
                 </el-row>
                 <hr>
                 <el-row>
@@ -70,12 +76,6 @@
                         </ul>
                     </el-col>
                 </el-row>
-            </div>
-            <div v-show="activeName==='third'">
-                xxxxxxxt
-            </div>
-            <div v-show="activeName==='fourth'">
-                xxxxxxxs
             </div>
 
             <el-pagination
@@ -144,7 +144,7 @@
             },
             getHotels(id) {
                 this.$axios({
-                    url: `${this.$settings.HOST}/hotels/${id}/`,
+                    url: `${this.$settings.HOST}/hotelslist/${id}/`,
                     method: "GET",
                     params: {
                         page: this.page,

@@ -4,6 +4,7 @@ import uuid
 from django.contrib.auth.models import AbstractUser
 from django.db import models
 
+
 class User(AbstractUser):
     GENDER_OPTION = (
         (1, "男"),
@@ -47,6 +48,7 @@ class UserLovedScene(models.Model):
     class Meta:
         db_table = "mt_user_scene"
 
+
 class UserLovedHotel(models.Model):
     TYPE_OPTION = (
         (1, "收藏"),
@@ -56,7 +58,6 @@ class UserLovedHotel(models.Model):
     hotel = models.ForeignKey(to='hotel.Hotel', verbose_name="收藏酒店", on_delete=models.CASCADE)
     type = models.IntegerField(choices=TYPE_OPTION, verbose_name="类型")
     created_time = models.DateTimeField(auto_now_add=True, verbose_name="创建时间")
-
 
     class Meta:
         db_table = "mt_user_hotel"

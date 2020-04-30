@@ -5,6 +5,55 @@
         </el-header>
         <el-main id="top">
             <div>
+                <el-row>
+                    <el-col :span="3" :offset="6">
+                        <el-cascader
+                                placeholder="地区"
+                                :options="options"
+                                v-model="address"
+                                :props="{expandTrigger: 'hover'}"
+                                clearable
+                                @change="getHotels"
+                        ></el-cascader>
+                    </el-col>
+                    <el-col :span="3">
+                        <el-input
+                                placeholder="周边"
+                                v-model="aroundValue"
+                                @change="getHotels"
+                                style="margin-left: 20px;width: 140px"
+                                clearable>
+                        </el-input>
+                    </el-col>
+                    <el-col :span="3">
+                        <el-select
+                                @change="getHotels"
+                                v-model="gradeValue"
+                                style="margin-left: 20px;"
+                                placeholder="景区等级">
+                            <el-option
+                                    v-for="item in gradeOption"
+                                    :key="item.value"
+                                    :label="item.label"
+                                    :value="item.value">
+                            </el-option>
+                        </el-select>
+                    </el-col>
+                    <el-col :span="3">
+                        <el-select
+                                @change="getHotels"
+                                v-model="orderValue"
+                                style="margin-left: 20px;"
+                                placeholder="排序">
+                            <el-option
+                                    v-for="item in orderOption"
+                                    :key="item.value"
+                                    :label="item.label"
+                                    :value="item.value">
+                            </el-option>
+                        </el-select>
+                    </el-col>
+                </el-row>
                 <div class="hotel-item clearfix _j_hotel_item" style="width: 65%;margin-left: 200px"
                      v-for="hotel in hotels" :key="hotel.id">
                     <div class="hotel-pic">
@@ -46,14 +95,17 @@
                     <div class="hotel-btns">
                         <div class="btn-tel">
 
-                            <el-link class="btn-detail" type="primary" target="_blank" :href="'/hotel/' + hotel.id + '#comment'">
+                            <el-link class="btn-detail" type="primary" target="_blank"
+                                     :href="'/hotel/' + hotel.id + '#comment'">
                                 <span>查看评论</span>
                             </el-link>
                         </div>
                     </div>
                     <div class="hotel-btns" style="margin-top: 15px">
                         <div class="btn-tel">
-                            <a :href="'/hotel/' + hotel.id" target="_blank"><el-button size="small" type="primary">查看详情</el-button></a>
+                            <a :href="'/hotel/' + hotel.id" target="_blank">
+                                <el-button size="small" type="primary">查看详情</el-button>
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -88,7 +140,143 @@
                 hotelsCount: 0,
                 page: 1,
                 hotels: [],
-                value: 4.6
+                value: 4.6,
+
+                address: [],
+                options: [
+                    {
+                        value: '1',
+                        label: '北京',
+                        children: [
+                            {
+                                value: '1',
+                                label: '北京',
+                            }
+                        ],
+                    },
+                    {
+                        value: '2',
+                        label: '天津',
+                        children: [
+                            {
+                                value: '2',
+                                label: '天津',
+                            }
+                        ]
+                    },
+                    {
+                        value: '3',
+                        label: '上海',
+                        children: [
+                            {
+                                value: '3',
+                                label: '上海',
+                            }
+                        ]
+                    },
+                    {
+                        value: '4',
+                        label: '重庆',
+                        children: [
+                            {
+                                value: '4',
+                                label: '重庆',
+                            }
+                        ]
+                    },
+                    {
+                        value: '13',
+                        label: '安徽',
+                        children: [
+                            {
+                                value: '110',
+                                label: '合肥',
+                            },
+                            {
+                                value: '111',
+                                label: '芜湖',
+                            },
+                            {
+                                value: '112',
+                                label: '蚌埠',
+                            },
+                            {
+                                value: '113',
+                                label: '淮南',
+                            },
+                            {
+                                value: '114',
+                                label: '马鞍山',
+                            },
+                            {
+                                value: '115',
+                                label: '淮北',
+                            },
+                            {
+                                value: '116',
+                                label: '铜陵',
+                            },
+                            {
+                                value: '117',
+                                label: '安庆',
+                            },
+                            {
+                                value: '118',
+                                label: '黄山',
+                            },
+                            {
+                                value: '119',
+                                label: '滁州',
+                            },
+                            {
+                                value: '120',
+                                label: '阜阳',
+                            },
+                            {
+                                value: '121',
+                                label: '宿州',
+                            },
+                            {
+                                value: '122',
+                                label: '巢湖',
+                            },
+                            {
+                                value: '123',
+                                label: '六安',
+                            },
+                            {
+                                value: '124',
+                                label: '亳州',
+                            },
+                            {
+                                value: '125',
+                                label: '池州',
+                            },
+                            {
+                                value: '126',
+                                label: '宣城',
+                            },
+                        ]
+                    }
+                ],
+
+                gradeOption: [
+                    {value: '2', label: '一星级'},
+                    {value: '3', label: '二星级'},
+                    {value: '4', label: '三星级'},
+                    {value: '5', label: '四星级'},
+                    {value: '6', label: '五星级'},
+                ],
+
+                orderOption: [
+                    {value: 'price', label: '价格最低'},
+                    {value: '-score', label: '评分最高'},
+                    {value: '-comment_num', label: '评论数最多'},
+                ],
+
+                gradeValue: '',
+                aroundValue: '',
+                orderValue: ''
             }
         },
         computed: {
@@ -122,13 +310,17 @@
             }
         },
         methods: {
-            getHotels(id) {
+            getHotels() {
                 this.$axios({
-                    url: `${this.$settings.HOST}/hotels/${id}/`,
+                    url: `${this.$settings.HOST}/hotelslist/${this.id}/`,
                     method: "GET",
                     params: {
                         page: this.page,
-                        page_size: this.pageSize
+                        page_size: this.pageSize,
+                        search_city: this.address[1],
+                        hotel_around: this.aroundValue,
+                        hotel_grade: this.gradeValue,
+                        hotel_order: this.orderValue
                     }
                 }).then(response => {
                     this.hotels = response.data.results;
@@ -145,7 +337,7 @@
         },
         created() {
             this.id = this.$route.params.id;
-            this.getHotels(this.id);
+            this.getHotels();
         },
         components: {
             Footer,

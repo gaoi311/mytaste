@@ -17,10 +17,11 @@ class UserModelSerializer(serializers.ModelSerializer):
     token = serializers.CharField(max_length=1024, read_only=True, help_text="token认证字符串")
     #########################################################
     #                                                       #
-    #特别注意，在进行唯一性验证时，此处就开始，不会等到钩子函数！！#
+    # 特别注意，在进行唯一性验证时，此处就开始，不会等到钩子函数！！#
     #                                                       #
     #########################################################
-    phone = serializers.CharField(max_length=15, validators=[UniqueValidator(queryset=User.objects.all(), message="手机号已被注册！")])
+    phone = serializers.CharField(max_length=15,
+                                  validators=[UniqueValidator(queryset=User.objects.all(), message="手机号已被注册！")])
 
     class Meta:
         model = User
@@ -107,10 +108,10 @@ class UserLovedSceneSerializer(serializers.ModelSerializer):
 
 class UserInfoSerializer(serializers.ModelSerializer):
     username = serializers.CharField(max_length=150,
-                                  validators=[UniqueValidator(queryset=User.objects.all(), message="用户名已经有人用过了哦！")])
+                                     validators=[UniqueValidator(queryset=User.objects.all(), message="用户名已经有人用过了哦！")])
 
-    email = serializers.CharField(max_length=254,
-                                  validators=[UniqueValidator(queryset=User.objects.all(), message="邮箱已经有人用过了哦！")])
+    # email = serializers.CharField(max_length=254,
+    #                               validators=[UniqueValidator(queryset=User.objects.all(), message="邮箱已经有人用过了哦！")])
     class Meta:
         model = User
         fields = ['username', 'email', 'birth', 'gender', 'address']

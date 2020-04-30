@@ -12,6 +12,7 @@ class MutliLogin(ModelBackend):
     """
     多条件登录
     """
+
     def authenticate(self, request, username=None, password=None, **kwargs):
         try:
             user = User.objects.get(username=username)
