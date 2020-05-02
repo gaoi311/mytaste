@@ -92,7 +92,7 @@
                     for (var i = 0; i < response.data.length; i++) {
                         // suggestion[i].value = response.data[i].name;
                         suggestion.push({
-                            "value": response.data[i].name + (this.radio === 1 ? ('\xa0\xa0\xa0' +  response.data[i].around) : ''),
+                            "value": response.data[i].name + (this.radio === 1 ? ('\xa0\xa0\xa0' + response.data[i].around) : ''),
                             "name": response.data[i].name,
                             "id": response.data[i].id
                         })
@@ -119,20 +119,24 @@
                         break;
                 }
             },
-            search(){
-                let url = '';
-                switch (this.radio) {
-                    case 1:
-                        url = `/hotel/${this.search_id}/`;
-                        break;
-                    case 2:
-                        url = `/scene/${this.search_id}/`;
-                        break;
-                    case 3:
-                        url = `/city/${this.search_id}/`;
-                        break;
+            search() {
+                if (this.state) {
+                    let url = '';
+                    switch (this.radio) {
+                        case 1:
+                            url = `/hotel/${this.search_id}/`;
+                            break;
+                        case 2:
+                            url = `/scene/${this.search_id}/`;
+                            break;
+                        case 3:
+                            url = `/city/${this.search_id}/`;
+                            break;
+                    }
+                    this.$router.push(url);
+                }else {
+                    this.$message("抱歉，此功能正在开发中！请给程序员小哥哥一点鼓励哦！")
                 }
-                this.$router.push(url);
             },
         },
         created() {

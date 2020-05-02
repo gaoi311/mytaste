@@ -13,5 +13,15 @@ class SceneCommentAdmin(admin.ModelAdmin):
     list_display = ('user', 'scene', 'content', 'created_time')
 
 
+class CityAdmin(admin.ModelAdmin):
+    list_display = ('city_index', 'name', 'hot', 'province')
+
+
+class ProvinceAdmin(admin.ModelAdmin):
+    list_display = ('name', )
+
 admin.site.register(Scene, SceneAdmin)
 admin.site.register(SceneComment, SceneCommentAdmin)
+admin.site.register(City, CityAdmin)
+admin.site.register(Province, ProvinceAdmin)
+

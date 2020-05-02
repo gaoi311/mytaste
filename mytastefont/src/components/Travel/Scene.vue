@@ -80,7 +80,8 @@
                                             width="48" height="48">
                                     </router-link>
                                 </div>
-                                <router-link class="name" :to="'/user/' + 1" target="_blank">{{comment.user_info.username}}
+                                <router-link class="name" :to="'/user/' + 1" target="_blank">
+                                    {{comment.user_info.username}}
                                 </router-link>
                                 <span class="s-star" :class="score2Stars(comment.score)"></span>
                                 <p class="rev-txt">
@@ -184,7 +185,7 @@
             }
         },
         methods: {
-            getUser(e){
+            getUser(e) {
                 this.uid = e;
             },
             getScene(id) {
@@ -226,15 +227,14 @@
                     this.$router.push('/login')
                 })
             },
-            newComment(){
-                if (!this.uid){
+            newComment() {
+                if (!this.uid) {
                     this.open();
-                }
-                else{
+                } else {
                     this.dialogFormVisible = true;
                 }
             },
-            onSubmit(){
+            onSubmit() {
                 this.dialogFormVisible = false;
                 this.$axios({
                     url: `${this.$settings.HOST}/scene_comment/`,
@@ -245,9 +245,9 @@
                         score: this.form.score,
                         scene: this.id
                     }
-                }).then(response=>{
+                }).then(response => {
                     this.$message.success("评论发布成功！")
-                }).catch(error=>{
+                }).catch(error => {
                     alert("啊呀，出错啦！请重试!");
                 });
                 this.form.score = 0;
@@ -260,7 +260,7 @@
                         type: 2,
                         scene: this.id
                     }
-                }).catch(error=>{
+                }).catch(error => {
                     alert("啊呀，出错啦！请重试!");
                 });
             }

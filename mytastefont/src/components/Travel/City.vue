@@ -15,8 +15,8 @@
                     <el-tabs v-model="activeName" @tab-click="handleClick">
                         <el-tab-pane label="景点" name="first"></el-tab-pane>
                         <el-tab-pane label="酒店" name="second"></el-tab-pane>
-                        <el-tab-pane label="攻略" name="third"></el-tab-pane>
-                        <el-tab-pane label="驴友说" name="fourth"></el-tab-pane>
+                        <!--<el-tab-pane label="攻略" name="third"></el-tab-pane>-->
+                        <!--<el-tab-pane label="驴友说" name="fourth"></el-tab-pane>-->
                     </el-tabs>
                 </el-col>
             </el-row>
@@ -175,10 +175,10 @@
                 } else if (tab.name === 'second') {
                     this.page = 1;
                     this.getHotels(this.id);
-                } else if (tab.name === 'third') {
-                    this.getLocalHotelList();
-                } else if (tab.name === 'fourth') {
-                    this.getLocalHotelList();
+                // } else if (tab.name === 'third') {
+                //     this.getLocalHotelList();
+                // } else if (tab.name === 'fourth') {
+                //     this.getLocalHotelList();
                 }
             }
         },

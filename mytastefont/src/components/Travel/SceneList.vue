@@ -11,6 +11,7 @@
                                 @change="getScenes"
                                 v-model="typeValue"
                                 style="margin-left: 20px;"
+                                clearable
                                 placeholder="景点类型">
                             <el-option
                                     v-for="item in typeOption"
@@ -25,6 +26,7 @@
                                 @change="getScenes"
                                 v-model="gradeValue"
                                 style="margin-left: 20px;"
+                                clearable
                                 placeholder="景区等级">
                             <el-option
                                     v-for="item in gradeOption"
@@ -39,6 +41,7 @@
                                 @change="getScenes"
                                 v-model="orderValue"
                                 style="margin-left: 20px;"
+                                clearable
                                 placeholder="排序">
                             <el-option
                                     v-for="item in orderOption"

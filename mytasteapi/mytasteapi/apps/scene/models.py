@@ -18,7 +18,7 @@ class Province(models.Model):
 class City(models.Model):
     city_index = models.IntegerField(verbose_name="省属市索引")
     province = models.ForeignKey(to=Province, on_delete=models.CASCADE, verbose_name="所在省")
-    name = models.CharField(max_length=100)
+    name = models.CharField(max_length=100, verbose_name="名称")
     hot = models.IntegerField(default=1000, verbose_name="热度")
     summary = models.CharField(max_length=1024, default="", verbose_name="景点概括")
 

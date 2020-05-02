@@ -15,7 +15,7 @@ urlpatterns = [
     path('login/', obtain_jwt_token),
     path('register/', views.UserAPIView.as_view()),
     path('user/loved_scene/', views.UserLovedSceneAPIView.as_view()),
-    path('user/loved_hotel/', views.UserLovedHotelAPIView.as_view()),
+    # path('user/loved_hotel/', views.UserLovedHotelAPIView.as_view()),
     path('user/new_loved_scene/', views.UserSceneLovedCreateAPIView.as_view()),
-    path('user/new_loved_hotel/', views.UserHotelLovedCreateAPIView.as_view())
+    # path('user/new_loved_hotel/', views.UserHotelLovedCreateAPIView.as_view())
 ]

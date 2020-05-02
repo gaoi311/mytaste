@@ -47,6 +47,8 @@ class UserLovedScene(models.Model):
 
     class Meta:
         db_table = "mt_user_scene"
+        verbose_name = "用户收藏/去过的景点"
+        verbose_name_plural = verbose_name
 
 
 class UserLovedHotel(models.Model):
@@ -61,3 +63,5 @@ class UserLovedHotel(models.Model):
 
     class Meta:
         db_table = "mt_user_hotel"
+        verbose_name = "用户收藏/去过的酒店"
+        verbose_name_plural = verbose_name
