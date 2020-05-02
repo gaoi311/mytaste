@@ -11,6 +11,9 @@ from user.serializers import UserCommentSerializer
 
 
 class HotelSerializer(serializers.ModelSerializer):
+    """
+    单个酒店信息
+    """
     city = CitySerializer(read_only=True)
 
     class Meta:
@@ -19,6 +22,9 @@ class HotelSerializer(serializers.ModelSerializer):
 
 
 class HotelCommentSerializer(serializers.ModelSerializer):
+    """
+    酒店评论
+    """
     user_info = serializers.SerializerMethodField(read_only=True)
     created_time = serializers.DateTimeField(format='%Y-%m-%d %H:%M:%S', read_only=True)
 
@@ -42,12 +48,18 @@ class HotelCommentSerializer(serializers.ModelSerializer):
 
 
 class HotelRoomSerializer(serializers.ModelSerializer):
+    """
+    酒店房间
+    """
     class Meta:
         model = HotelRoom
         fields = ['id', 'room_type', 'room_count', 'room_price']
 
 
 class HotelOrderSerializer(serializers.ModelSerializer):
+    """
+    酒店订单（用户足迹）
+    """
     created_time = serializers.DateTimeField(format='%Y-%m-%d %H:%M:%S', read_only=True)
     hotel_name = serializers.SerializerMethodField(read_only=True)
     hotel_photo = serializers.SerializerMethodField(read_only=True)
@@ -64,6 +76,9 @@ class HotelOrderSerializer(serializers.ModelSerializer):
 
 
 class HotelsSearchSerializer(serializers.ModelSerializer):
+    """
+    首页模糊查询
+    """
     class Meta:
         model = Hotel
         fields = ['id', 'name', 'around', 'address']
