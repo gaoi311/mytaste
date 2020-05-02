@@ -389,12 +389,12 @@
       <workItem from="1588125717952" duration="14243000" />
       <workItem from="1588163425054" duration="9350000" />
       <workItem from="1588208118328" duration="3976000" />
-      <workItem from="1588382119054" duration="1407000" />
+      <workItem from="1588382119054" duration="1728000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="205024000" />
+    <option name="totallyTimeSpent" value="205345000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -407,13 +407,12 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-3" y="-1" width="1372" height="771" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49885058" visible="true" weight="0.22163388" />
       <window_info id="Structure" order="1" sideWeight="0.5011494" side_tool="true" weight="0.21331316" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Run" order="0" sideWeight="0.4977307" weight="0.32662538" />
-      <window_info anchor="bottom" id="Terminal" order="1" sideWeight="0.49924356" weight="0.32662538" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="1" sideWeight="0.49924356" visible="true" weight="0.32662538" />
       <window_info anchor="bottom" id="Database Console" order="2" weight="0.32817337" />
       <window_info anchor="bottom" id="Message" order="3" />
       <window_info anchor="bottom" id="Find" order="4" />
