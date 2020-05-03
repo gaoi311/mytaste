@@ -10,6 +10,7 @@ djangorestframework-stubs==1.1.0
 mysqlclient==1.4.6
 Pillow==7.1.1
 PyJWT==1.7.1
+PyMySQL==0.9.3
 pytz==2019.3
 redis==3.4.1
 sqlparse==0.3.1

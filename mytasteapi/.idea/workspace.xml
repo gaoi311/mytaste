@@ -9,7 +9,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/mytasteapi$manage.coverage" NAME="manage Coverage Results" MODIFIED="1588429900786" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/mytasteapi$manage.coverage" NAME="manage Coverage Results" MODIFIED="1588473824850" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
   <component name="DatabaseView">
     <option name="SHOW_INTERMEDIATE" value="true" />
@@ -101,14 +101,23 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/mytasteapi/settings/prod.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="285">
-              <caret line="101" column="28" lean-forward="true" selection-start-line="101" selection-start-column="28" selection-end-line="101" selection-end-column="28" />
+            <state relative-caret-position="1843">
+              <caret line="97" column="27" selection-start-line="97" selection-start-column="27" selection-end-line="97" selection-end-column="27" />
               <folding>
                 <element signature="e#310#325#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/mytasteapi/__init__.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state>
+              <caret column="6" selection-start-column="6" selection-end-line="1" selection-end-column="11" />
             </state>
           </provider>
         </entry>
@@ -199,6 +208,7 @@
         <option value="$PROJECT_DIR$/mytasteapi/wsgi.py" />
         <option value="$PROJECT_DIR$/uwsgi.ini" />
         <option value="$PROJECT_DIR$/mytasteapi/settings/prod.py" />
+        <option value="$PROJECT_DIR$/mytasteapi/__init__.py" />
       </list>
     </option>
   </component>
@@ -319,12 +329,12 @@
       <workItem from="1588163425054" duration="9350000" />
       <workItem from="1588208118328" duration="3976000" />
       <workItem from="1588382119054" duration="10301000" />
-      <workItem from="1588472358750" duration="672000" />
+      <workItem from="1588472358750" duration="938000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="214590000" />
+    <option name="totallyTimeSpent" value="214856000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -338,11 +348,11 @@
   <component name="ToolWindowManager">
     <frame x="687" y="0" width="679" height="767" extended-state="0" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49885058" weight="0.46422893" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49885058" visible="true" weight="0.46422893" />
       <window_info id="Structure" order="1" sideWeight="0.5011494" side_tool="true" weight="0.21331316" />
       <window_info id="Favorites" order="2" side_tool="true" />
-      <window_info anchor="bottom" id="Run" order="0" sideWeight="0.4977307" weight="0.32554516" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="1" sideWeight="0.49924356" visible="true" weight="0.32866043" />
+      <window_info active="true" anchor="bottom" id="Run" order="0" sideWeight="0.4977307" visible="true" weight="0.32554516" />
+      <window_info anchor="bottom" id="Terminal" order="1" sideWeight="0.49924356" weight="0.32866043" />
       <window_info anchor="bottom" id="Database Console" order="2" weight="0.32817337" />
       <window_info anchor="bottom" id="Message" order="3" />
       <window_info anchor="bottom" id="Find" order="4" />
@@ -372,9 +382,6 @@
     </ignored-roots>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/mytasteapi/apps/__init__.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="das://b91841ec-a8a4-443c-8466-4e4cc833a6b8/schema/myTaste/table/mt_user_user_permissions">
       <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
         <state>
@@ -767,11 +774,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/mytasteapi/settings/prod.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="101" column="28" lean-forward="true" selection-start-line="101" selection-start-column="28" selection-end-line="101" selection-end-column="28" />
+        <state relative-caret-position="1843">
+          <caret line="97" column="27" selection-start-line="97" selection-start-column="27" selection-end-line="97" selection-end-column="27" />
           <folding>
             <element signature="e#310#325#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mytasteapi/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="6" selection-start-column="6" selection-end-line="1" selection-end-column="11" />
         </state>
       </provider>
     </entry>
