@@ -27,8 +27,9 @@ SECRET_KEY = '@a)@e4_)mt3)nou%ec1sf$%y6r45i(+s3l1-s1-lm#dh115b_k'
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    'api.mytaste.com',
-    'www.mytaste.com'
+    # 'api.mytaste.com',
+    # 'www.mytaste.com',
+    '*'
 ]
 
 # Application definition
