@@ -97,7 +97,7 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'myTaste',
-        'USER': 'root',
+        'USER': 'gy',
         'PASSWORD': 'gy',
         'HOST': 'localhost',
         'PORT': '3306',
