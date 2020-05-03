@@ -4744,3 +4744,5 @@ django.core.exceptions.FieldError: Cannot resolve keyword 'price' into field. Ch
 {levelname} {asctime} {module} {process:d} {thread:d} {message}
 {levelname} {asctime} {module} {process:d} {thread:d} {message}
 {levelname} {asctime} {module} {process:d} {thread:d} {message}
+{levelname} {asctime} {module} {process:d} {thread:d} {message}
+{levelname} {asctime} {module} {process:d} {thread:d} {message}
