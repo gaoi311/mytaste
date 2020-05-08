@@ -57,7 +57,7 @@
                         <h2>酒店</h2>
                     </el-col>
                     <el-col :span="2" style="position: absolute; right: 150px; margin-top: 30px">
-                        <router-link :to="'/hotelslist/' + city.id">查看酒店详情</router-link>
+                        <router-link :to="'/hotel/' + city.id">查看酒店详情</router-link>
                     </el-col>
                 </el-row>
                 <hr>

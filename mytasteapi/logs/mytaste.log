@@ -4746,3 +4746,491 @@ django.core.exceptions.FieldError: Cannot resolve keyword 'price' into field. Ch
 {levelname} {asctime} {module} {process:d} {thread:d} {message}
 {levelname} {asctime} {module} {process:d} {thread:d} {message}
 {levelname} {asctime} {module} {process:d} {thread:d} {message}
+{levelname} {asctime} {module} {process:d} {thread:d} {message}
+{levelname} {asctime} {module} {process:d} {thread:d} {message}
+{levelname} {asctime} {module} {process:d} {thread:d} {message}
+Traceback (most recent call last):
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/django/core/handlers/base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/django/core/handlers/base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/django/views/generic/base.py", line 71, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/rest_framework/views.py", line 505, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/rest_framework/views.py", line 465, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/rest_framework/views.py", line 476, in raise_uncaught_exception
+    raise exc
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/rest_framework/views.py", line 502, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/gaoi/PycharmProjects/myTaste/mytasteapi/mytasteapi/apps/hotel/views.py", line 36, in get
+    return Response(ser_obj.data)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/rest_framework/serializers.py", line 760, in data
+    ret = super().data
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/rest_framework/serializers.py", line 260, in data
+    self._data = self.to_representation(self.instance)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/rest_framework/serializers.py", line 678, in to_representation
+    self.child.to_representation(item) for item in iterable
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/rest_framework/serializers.py", line 678, in <listcomp>
+    self.child.to_representation(item) for item in iterable
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/rest_framework/serializers.py", line 514, in to_representation
+    for field in fields:
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/rest_framework/serializers.py", line 375, in _readable_fields
+    for field in self.fields.values():
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/django/utils/functional.py", line 48, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/rest_framework/serializers.py", line 363, in fields
+    for key, value in self.get_fields().items():
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/rest_framework/serializers.py", line 1038, in get_fields
+    field_names = self.get_field_names(declared_fields, info)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/rest_framework/serializers.py", line 1115, in get_field_names
+    serializer_class=self.__class__.__name__
+AssertionError: ("Creating a ModelSerializer without either the 'fields' attribute or the 'exclude' attribute has been deprecated since 3.3.0, and is now disallowed. Add an explicit fields = '__all__' to the HotelSummarySerializer serializer.",)
+{levelname} {asctime} {module} {process:d} {thread:d} {message}
+{levelname} {asctime} {module} {process:d} {thread:d} {message}
+Traceback (most recent call last):
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/django/core/handlers/base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/django/core/handlers/base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/django/views/generic/base.py", line 71, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/rest_framework/views.py", line 505, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/rest_framework/views.py", line 465, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/rest_framework/views.py", line 476, in raise_uncaught_exception
+    raise exc
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/rest_framework/views.py", line 502, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/gaoi/PycharmProjects/myTaste/mytasteapi/mytasteapi/apps/hotel/views.py", line 36, in get
+    return Response(ser_obj.data)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/rest_framework/serializers.py", line 760, in data
+    ret = super().data
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/rest_framework/serializers.py", line 260, in data
+    self._data = self.to_representation(self.instance)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/rest_framework/serializers.py", line 678, in to_representation
+    self.child.to_representation(item) for item in iterable
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/rest_framework/serializers.py", line 678, in <listcomp>
+    self.child.to_representation(item) for item in iterable
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/rest_framework/serializers.py", line 514, in to_representation
+    for field in fields:
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/rest_framework/serializers.py", line 375, in _readable_fields
+    for field in self.fields.values():
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/django/utils/functional.py", line 48, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/rest_framework/serializers.py", line 363, in fields
+    for key, value in self.get_fields().items():
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/rest_framework/serializers.py", line 1038, in get_fields
+    field_names = self.get_field_names(declared_fields, info)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/rest_framework/serializers.py", line 1115, in get_field_names
+    serializer_class=self.__class__.__name__
+AssertionError: ("Creating a ModelSerializer without either the 'fields' attribute or the 'exclude' attribute has been deprecated since 3.3.0, and is now disallowed. Add an explicit fields = '__all__' to the HotelSummarySerializer serializer.",)
+{levelname} {asctime} {module} {process:d} {thread:d} {message}
+{levelname} {asctime} {module} {process:d} {thread:d} {message}
+Traceback (most recent call last):
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/django/core/handlers/base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/django/core/handlers/base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/django/views/generic/base.py", line 71, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/rest_framework/views.py", line 505, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/rest_framework/views.py", line 465, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/rest_framework/views.py", line 476, in raise_uncaught_exception
+    raise exc
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/rest_framework/views.py", line 502, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/gaoi/PycharmProjects/myTaste/mytasteapi/mytasteapi/apps/scene/views.py", line 60, in get
+    ser_obj = SceneSerializer(page_scenes, many=True)
+NameError: name 'SceneSerializer' is not defined
+{levelname} {asctime} {module} {process:d} {thread:d} {message}
+{levelname} {asctime} {module} {process:d} {thread:d} {message}
+Traceback (most recent call last):
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/django/core/handlers/base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/django/core/handlers/base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/django/views/generic/base.py", line 71, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/rest_framework/views.py", line 505, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/rest_framework/views.py", line 465, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/rest_framework/views.py", line 476, in raise_uncaught_exception
+    raise exc
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/rest_framework/views.py", line 502, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/rest_framework/generics.py", line 199, in get
+    return self.list(request, *args, **kwargs)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/rest_framework/mixins.py", line 46, in list
+    return Response(serializer.data)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/rest_framework/serializers.py", line 760, in data
+    ret = super().data
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/rest_framework/serializers.py", line 260, in data
+    self._data = self.to_representation(self.instance)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/rest_framework/serializers.py", line 678, in to_representation
+    self.child.to_representation(item) for item in iterable
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/rest_framework/serializers.py", line 678, in <listcomp>
+    self.child.to_representation(item) for item in iterable
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/rest_framework/serializers.py", line 514, in to_representation
+    for field in fields:
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/rest_framework/serializers.py", line 375, in _readable_fields
+    for field in self.fields.values():
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/django/utils/functional.py", line 48, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/rest_framework/serializers.py", line 363, in fields
+    for key, value in self.get_fields().items():
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/rest_framework/serializers.py", line 1038, in get_fields
+    field_names = self.get_field_names(declared_fields, info)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/rest_framework/serializers.py", line 1139, in get_field_names
+    serializer_class=self.__class__.__name__
+AssertionError: The field 'province' was declared on serializer SceneSummarySerializer, but has not been included in the 'fields' option.
+{levelname} {asctime} {module} {process:d} {thread:d} {message}
+Traceback (most recent call last):
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/django/core/handlers/base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/django/core/handlers/base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/django/views/generic/base.py", line 71, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/rest_framework/views.py", line 505, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/rest_framework/views.py", line 465, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/rest_framework/views.py", line 476, in raise_uncaught_exception
+    raise exc
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/rest_framework/views.py", line 502, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/rest_framework/generics.py", line 199, in get
+    return self.list(request, *args, **kwargs)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/rest_framework/mixins.py", line 46, in list
+    return Response(serializer.data)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/rest_framework/serializers.py", line 760, in data
+    ret = super().data
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/rest_framework/serializers.py", line 260, in data
+    self._data = self.to_representation(self.instance)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/rest_framework/serializers.py", line 678, in to_representation
+    self.child.to_representation(item) for item in iterable
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/rest_framework/serializers.py", line 678, in <listcomp>
+    self.child.to_representation(item) for item in iterable
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/rest_framework/serializers.py", line 514, in to_representation
+    for field in fields:
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/rest_framework/serializers.py", line 375, in _readable_fields
+    for field in self.fields.values():
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/django/utils/functional.py", line 48, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/rest_framework/serializers.py", line 363, in fields
+    for key, value in self.get_fields().items():
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/rest_framework/serializers.py", line 1038, in get_fields
+    field_names = self.get_field_names(declared_fields, info)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/rest_framework/serializers.py", line 1139, in get_field_names
+    serializer_class=self.__class__.__name__
+AssertionError: The field 'province' was declared on serializer SceneSummarySerializer, but has not been included in the 'fields' option.
+{levelname} {asctime} {module} {process:d} {thread:d} {message}
+{levelname} {asctime} {module} {process:d} {thread:d} {message}
+{levelname} {asctime} {module} {process:d} {thread:d} {message}
+Traceback (most recent call last):
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/django/core/handlers/base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/django/core/handlers/base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/django/views/generic/base.py", line 71, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/rest_framework/views.py", line 505, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/rest_framework/views.py", line 465, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/rest_framework/views.py", line 476, in raise_uncaught_exception
+    raise exc
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/rest_framework/views.py", line 502, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/rest_framework/generics.py", line 199, in get
+    return self.list(request, *args, **kwargs)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/rest_framework/mixins.py", line 46, in list
+    return Response(serializer.data)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/rest_framework/serializers.py", line 760, in data
+    ret = super().data
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/rest_framework/serializers.py", line 260, in data
+    self._data = self.to_representation(self.instance)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/rest_framework/serializers.py", line 678, in to_representation
+    self.child.to_representation(item) for item in iterable
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/rest_framework/serializers.py", line 678, in <listcomp>
+    self.child.to_representation(item) for item in iterable
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/rest_framework/serializers.py", line 514, in to_representation
+    for field in fields:
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/rest_framework/serializers.py", line 375, in _readable_fields
+    for field in self.fields.values():
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/django/utils/functional.py", line 48, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/rest_framework/serializers.py", line 363, in fields
+    for key, value in self.get_fields().items():
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/rest_framework/serializers.py", line 1038, in get_fields
+    field_names = self.get_field_names(declared_fields, info)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/rest_framework/serializers.py", line 1139, in get_field_names
+    serializer_class=self.__class__.__name__
+AssertionError: The field 'province' was declared on serializer SceneSummarySerializer, but has not been included in the 'fields' option.
+{levelname} {asctime} {module} {process:d} {thread:d} {message}
+{levelname} {asctime} {module} {process:d} {thread:d} {message}
+Traceback (most recent call last):
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/django/core/handlers/base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/django/core/handlers/base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/django/views/generic/base.py", line 71, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/rest_framework/views.py", line 505, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/rest_framework/views.py", line 465, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/rest_framework/views.py", line 476, in raise_uncaught_exception
+    raise exc
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/rest_framework/views.py", line 502, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/rest_framework/generics.py", line 199, in get
+    return self.list(request, *args, **kwargs)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/rest_framework/mixins.py", line 46, in list
+    return Response(serializer.data)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/rest_framework/serializers.py", line 760, in data
+    ret = super().data
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/rest_framework/serializers.py", line 260, in data
+    self._data = self.to_representation(self.instance)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/rest_framework/serializers.py", line 678, in to_representation
+    self.child.to_representation(item) for item in iterable
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/rest_framework/serializers.py", line 678, in <listcomp>
+    self.child.to_representation(item) for item in iterable
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/rest_framework/serializers.py", line 514, in to_representation
+    for field in fields:
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/rest_framework/serializers.py", line 375, in _readable_fields
+    for field in self.fields.values():
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/django/utils/functional.py", line 48, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/rest_framework/serializers.py", line 363, in fields
+    for key, value in self.get_fields().items():
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/rest_framework/serializers.py", line 1063, in get_fields
+    source, info, model, depth
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/rest_framework/serializers.py", line 1208, in build_field
+    return self.build_unknown_field(field_name, model_class)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/rest_framework/serializers.py", line 1325, in build_unknown_field
+    (field_name, model_class.__name__)
+django.core.exceptions.ImproperlyConfigured: Field name `comment` is not valid for model `Scene`.
+{levelname} {asctime} {module} {process:d} {thread:d} {message}
+Traceback (most recent call last):
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/django/core/handlers/base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/django/core/handlers/base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/django/views/generic/base.py", line 71, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/rest_framework/views.py", line 505, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/rest_framework/views.py", line 465, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/rest_framework/views.py", line 476, in raise_uncaught_exception
+    raise exc
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/rest_framework/views.py", line 502, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/rest_framework/generics.py", line 199, in get
+    return self.list(request, *args, **kwargs)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/rest_framework/mixins.py", line 46, in list
+    return Response(serializer.data)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/rest_framework/serializers.py", line 760, in data
+    ret = super().data
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/rest_framework/serializers.py", line 260, in data
+    self._data = self.to_representation(self.instance)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/rest_framework/serializers.py", line 678, in to_representation
+    self.child.to_representation(item) for item in iterable
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/rest_framework/serializers.py", line 678, in <listcomp>
+    self.child.to_representation(item) for item in iterable
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/rest_framework/serializers.py", line 514, in to_representation
+    for field in fields:
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/rest_framework/serializers.py", line 375, in _readable_fields
+    for field in self.fields.values():
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/django/utils/functional.py", line 48, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/rest_framework/serializers.py", line 363, in fields
+    for key, value in self.get_fields().items():
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/rest_framework/serializers.py", line 1063, in get_fields
+    source, info, model, depth
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/rest_framework/serializers.py", line 1208, in build_field
+    return self.build_unknown_field(field_name, model_class)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/rest_framework/serializers.py", line 1325, in build_unknown_field
+    (field_name, model_class.__name__)
+django.core.exceptions.ImproperlyConfigured: Field name `comment` is not valid for model `Scene`.
+{levelname} {asctime} {module} {process:d} {thread:d} {message}
+Traceback (most recent call last):
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/django/core/handlers/base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/django/core/handlers/base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/django/views/generic/base.py", line 71, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/rest_framework/views.py", line 505, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/rest_framework/views.py", line 465, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/rest_framework/views.py", line 476, in raise_uncaught_exception
+    raise exc
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/rest_framework/views.py", line 502, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/rest_framework/generics.py", line 199, in get
+    return self.list(request, *args, **kwargs)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/rest_framework/mixins.py", line 46, in list
+    return Response(serializer.data)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/rest_framework/serializers.py", line 760, in data
+    ret = super().data
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/rest_framework/serializers.py", line 260, in data
+    self._data = self.to_representation(self.instance)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/rest_framework/serializers.py", line 678, in to_representation
+    self.child.to_representation(item) for item in iterable
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/rest_framework/serializers.py", line 678, in <listcomp>
+    self.child.to_representation(item) for item in iterable
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/rest_framework/serializers.py", line 514, in to_representation
+    for field in fields:
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/rest_framework/serializers.py", line 375, in _readable_fields
+    for field in self.fields.values():
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/django/utils/functional.py", line 48, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/rest_framework/serializers.py", line 363, in fields
+    for key, value in self.get_fields().items():
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/rest_framework/serializers.py", line 1063, in get_fields
+    source, info, model, depth
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/rest_framework/serializers.py", line 1208, in build_field
+    return self.build_unknown_field(field_name, model_class)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/rest_framework/serializers.py", line 1325, in build_unknown_field
+    (field_name, model_class.__name__)
+django.core.exceptions.ImproperlyConfigured: Field name `comment` is not valid for model `Scene`.
+{levelname} {asctime} {module} {process:d} {thread:d} {message}
+{levelname} {asctime} {module} {process:d} {thread:d} {message}
+{levelname} {asctime} {module} {process:d} {thread:d} {message}
+{levelname} {asctime} {module} {process:d} {thread:d} {message}
+Traceback (most recent call last):
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/django/core/handlers/base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/django/core/handlers/base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/django/views/generic/base.py", line 71, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/rest_framework/views.py", line 505, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/rest_framework/views.py", line 465, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/rest_framework/views.py", line 476, in raise_uncaught_exception
+    raise exc
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/rest_framework/views.py", line 502, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/gaoi/PycharmProjects/myTaste/mytasteapi/mytasteapi/apps/user/views.py", line 90, in get
+    redis_conn.setex("phone_%s" % phone, time, constants.SMS_INTERVAL_TIME, '_')
+TypeError: setex() takes 4 positional arguments but 5 were given
+{levelname} {asctime} {module} {process:d} {thread:d} {message}
+{levelname} {asctime} {module} {process:d} {thread:d} {message}
+Traceback (most recent call last):
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/django/core/handlers/base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/django/core/handlers/base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/django/views/generic/base.py", line 71, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/rest_framework/views.py", line 505, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/rest_framework/views.py", line 465, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/rest_framework/views.py", line 476, in raise_uncaught_exception
+    raise exc
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/rest_framework/views.py", line 502, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/gaoi/PycharmProjects/myTaste/mytasteapi/mytasteapi/apps/user/views.py", line 90, in get
+    redis_conn.setex("phone_%s" % phone, time, constants.SMS_INTERVAL_TIME, '_')
+TypeError: setex() takes 4 positional arguments but 5 were given
+{levelname} {asctime} {module} {process:d} {thread:d} {message}
+{levelname} {asctime} {module} {process:d} {thread:d} {message}
+Traceback (most recent call last):
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/django/core/handlers/base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/django/core/handlers/base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/django/views/generic/base.py", line 71, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/rest_framework/views.py", line 505, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/rest_framework/views.py", line 465, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/rest_framework/views.py", line 476, in raise_uncaught_exception
+    raise exc
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/rest_framework/views.py", line 502, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/rest_framework/generics.py", line 190, in post
+    return self.create(request, *args, **kwargs)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/rest_framework/mixins.py", line 18, in create
+    serializer.is_valid(raise_exception=True)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/rest_framework/serializers.py", line 234, in is_valid
+    self._validated_data = self.run_validation(self.initial_data)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/rest_framework/serializers.py", line 433, in run_validation
+    value = self.to_internal_value(data)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/rest_framework/serializers.py", line 486, in to_internal_value
+    for field in fields:
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/rest_framework/serializers.py", line 369, in _writable_fields
+    for field in self.fields.values():
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/django/utils/functional.py", line 48, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/rest_framework/serializers.py", line 363, in fields
+    for key, value in self.get_fields().items():
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/rest_framework/serializers.py", line 1038, in get_fields
+    field_names = self.get_field_names(declared_fields, info)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/rest_framework/serializers.py", line 1139, in get_field_names
+    serializer_class=self.__class__.__name__
+AssertionError: The field 'sms_code' was declared on serializer UserModelSerializer, but has not been included in the 'fields' option.
+{levelname} {asctime} {module} {process:d} {thread:d} {message}
+{levelname} {asctime} {module} {process:d} {thread:d} {message}
+{levelname} {asctime} {module} {process:d} {thread:d} {message}

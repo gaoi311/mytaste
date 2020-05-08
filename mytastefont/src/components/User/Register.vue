@@ -1,7 +1,7 @@
 <template>
     <el-container>
         <el-main
-                style="width: 500px; height: 400px; background-color: #ffffff; border-radius: 5%; position: absolute; z-index: 9"
+                style="width: 500px; height: 450px; background-color: #ffffff; border-radius: 5%; position: absolute; z-index: 9"
                 class="center-in-center">
             <el-row style="margin-top: 15px">
                 <el-col :span="9" :offset="7" style="text-align: center; font-size: 20px" class="active">
@@ -38,6 +38,17 @@
                     </el-input>
                 </el-col>
             </el-row>
+            <!--<el-row style="margin-top: 20px">-->
+                <!--<el-col :span="12" :offset="3">-->
+                    <!--<el-input-->
+                            <!--placeholder="验证码"-->
+                            <!--v-model="sms_code">-->
+                    <!--</el-input>-->
+                <!--</el-col>-->
+                <!--<el-col :span="3" :offset="1">-->
+                    <!--<el-button type="primary" :disabled="disabledClick" @click="getSmsCode">{{sms_text}}</el-button>-->
+                <!--</el-col>-->
+            <!--</el-row>-->
 
             <el-row style="margin-top: 30px">
                 <el-col :span="18" :offset="3">
@@ -69,7 +80,10 @@
                 username: "",
                 password: "",
                 repassword: "",
-                sms_code: ""
+                sms_code: "",
+
+                disabledClick: false,
+                sms_text: "点击发送"
             }
         },
         methods: {
@@ -88,7 +102,7 @@
                         localStorage.uname = response.data.username;
                         localStorage.utoken = response.data.token;
                         localStorage.uavatar = response.data.avatar;
-                        this.openSuccessMessage();
+                        this.openSuccessMessage("注册成功！");
                         this.$router.push("/");
                     }).catch(error => {
                         let message = error.response.data.phone[0];
@@ -104,21 +118,52 @@
                     center: true
                 });
             },
-            openSuccessMessage() {
+            openSuccessMessage(message_) {
                 this.$message({
-                    message: '注册成功',
+                    message: message_,
                     type: 'success',
                     center: true
                 });
             },
-            // get_sms_code() {
-            //     this.$axios({
-            //         url: `${this.$settings.HOST}/phone/${this.username}/`,
-            //         method: 'GET',
-            //     }).catch(error => {
-            //         this.open_error(error.response.data.message[0]);
-            //     })
-            // }
+            getSmsCode() {
+                if (!/^1[3456789]\d{9}$/.test(this.username)) {
+                    this.openErrorMessage("请输入正确的手机号码！");
+                    return false;
+                } else {
+                    this.$axios({
+                        url: `${this.$settings.HOST}/sms/${this.username}/`,
+                        method: 'GET',
+                    }).then(response => {
+                        if (response.data.status === 1) {
+                            this.openSuccessMessage(response.data.message);
+                            let time = 120;
+                            let timer = setInterval(() => {
+                                if (time <= 1) {
+                                    // 停止倒计时，允许用户点击发送短信
+                                    clearInterval(timer);
+                                    this.disabledClick = false; // 设置短信发送段的间隔状态为false,允许点击发送短信
+                                    this.sms_text = "点击发送";
+                                } else {
+                                    time--;
+                                    this.disabledClick = true;
+                                    this.sms_text = `还需要等待${time}秒哦`;
+                                }
+                            }, 1000);
+                        }
+                        if (response.data.status === -1) {
+                            this.openErrorMessage(response.data.message);
+                        }
+                        if (response.data.status === -2) {
+                            this.openErrorMessage(response.data.message);
+                        }
+                        if (response.data.status === 101) {
+                            this.openErrorMessage(response.data.message);
+                        }
+                    }).catch(error => {
+                        console.log(error.response);
+                    })
+                }
+            },
             checkAttrs() {
                 let flag = true;
                 if (this.password !== this.repassword) {
@@ -127,10 +172,10 @@
                 }
                 return flag;
             },
-            checkPhoneFormat(){
+            checkPhoneFormat() {
                 var reg = /^1[3456789]\d{9}$/;
                 if (!reg.test(this.username)) {
-                    this.openErrorMessage('请输入正确的手机号码');
+                    this.openErrorMessage('请输入正确的手机号码！');
                 }
             }
         }

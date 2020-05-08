@@ -19,7 +19,7 @@ class City(models.Model):
     city_index = models.IntegerField(verbose_name="省属市索引")
     province = models.ForeignKey(to=Province, on_delete=models.CASCADE, verbose_name="所在省")
     name = models.CharField(max_length=100, verbose_name="名称")
-    hot = models.IntegerField(default=1000, verbose_name="热度")
+    hot = models.PositiveIntegerField(default=1000, verbose_name="热度")
     summary = models.CharField(max_length=1024, default="", verbose_name="景点概括")
 
     class Meta:
@@ -29,6 +29,10 @@ class City(models.Model):
 
     def __str__(self):
         return self.name
+
+    def viewed(self):
+        self.hot += 1
+        self.save(update_fields=['hot'])
 
 
 class Scene(models.Model):
@@ -55,7 +59,7 @@ class Scene(models.Model):
     province = models.ForeignKey(to=Province, on_delete=models.CASCADE, verbose_name="所在省")
     country = models.CharField(max_length=255, default="中国", verbose_name="所在国家")
     address = models.CharField(max_length=1024, blank=True, verbose_name="地址")
-    hot = models.IntegerField(default=0, verbose_name="热度（点击量）")
+    hot = models.PositiveIntegerField(default=0, verbose_name="热度（点击量）")
     main_photo = models.ImageField(upload_to="scene", blank=True, null=True, verbose_name="主展示图片")
     score = models.CharField(max_length=10, default="暂无评分", verbose_name="评分")
     comment_num = models.IntegerField(default=0, verbose_name="评论数")
@@ -80,6 +84,10 @@ class Scene(models.Model):
 
     def __str__(self):
         return self.name
+
+    def viewed(self):
+        self.hot += 1
+        self.save(update_fields=['hot'])
 
 
 class SceneComment(models.Model):

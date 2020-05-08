@@ -5,34 +5,43 @@
 # software: PyCharm
 
 from rest_framework import serializers
-
 from .models import Scene, City, Province, SceneComment
-
-from user.serializers import UserCommentSerializer
 
 
 class CitySerializer(serializers.ModelSerializer):
+    """
+    城市信息
+    """
     class Meta:
         model = City
         fields = ['id', 'name', 'hot', 'summary']
 
 
 class ProvinceSerializer(serializers.ModelSerializer):
+    """
+    省份信息
+    """
     class Meta:
         model = Province
         fields = ['id', 'name']
 
 
 class SceneSummarySerializer(serializers.ModelSerializer):
-    city = CitySerializer()
-    province = ProvinceSerializer()
+    """
+    景点缩略信息
+    """
+    # city = CitySerializer()
+    # province = ProvinceSerializer()
 
     class Meta:
         model = Scene
-        fields = ['id', 'name', 'hot', 'main_photo', 'grade', 'city', 'province']
+        fields = ['id', 'name', 'ename', 'ticket', 'score', 'address', 'comment_num', 'hot', 'main_photo', 'grade']
 
 
-class SceneSerializer(serializers.ModelSerializer):
+class SceneDetailSerializer(serializers.ModelSerializer):
+    """
+    景点详细信息
+    """
     city = CitySerializer()
     province = ProvinceSerializer()
     updated_time = serializers.DateTimeField(format='%Y-%m-%d %H:%M:%S', read_only=True)
@@ -43,6 +52,9 @@ class SceneSerializer(serializers.ModelSerializer):
 
 
 class SceneCommentSerializer(serializers.ModelSerializer):
+    """
+    景点评论信息
+    """
     user_info = serializers.SerializerMethodField(read_only=True)
     created_time = serializers.DateTimeField(format='%Y-%m-%d %H:%M:%S', read_only=True)
 
@@ -65,7 +77,10 @@ class SceneCommentSerializer(serializers.ModelSerializer):
         }
 
 
-class ScenesSearchSerializer(serializers.ModelSerializer):
+class SceneSearchSerializer(serializers.ModelSerializer):
+    """
+    首页景点模糊查询
+    """
     class Meta:
         model = Scene
         fields = ['id', 'name', 'address']

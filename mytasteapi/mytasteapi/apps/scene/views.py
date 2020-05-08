@@ -36,7 +36,7 @@ class ScenesSummaryAPIView(ListAPIView):
         return queryset
 
 
-class CityScenesAPIView(APIView):
+class ScenesListAPIView(APIView):
     """
     景点筛选展示
     """
@@ -57,16 +57,17 @@ class CityScenesAPIView(APIView):
             scenes_queryset = scenes_queryset.order_by(scene_order)
 
         page_scenes = page.paginate_queryset(queryset=scenes_queryset, request=request, view=self)
-        ser_obj = SceneSerializer(page_scenes, many=True)
+        ser_obj = SceneSummarySerializer(page_scenes, many=True)
         return page.get_paginated_response(ser_obj.data)
 
 
-class SceneAPIView(RetrieveAPIView):
+class SceneDetailAPIView(RetrieveAPIView):
     """
     单个景点详细展示
     """
     queryset = Scene.objects.all()
-    serializer_class = SceneSerializer
+    serializer_class = SceneDetailSerializer
+
 
 
 class CityAPIView(RetrieveAPIView):
@@ -77,7 +78,7 @@ class CityAPIView(RetrieveAPIView):
     serializer_class = CitySerializer
 
 
-class SceneCommentAPIView(APIView):
+class SceneCommentsAPIView(APIView):
     """
     景点评论展示
     """
@@ -103,7 +104,7 @@ class ScenesSearchAPIVIew(ListAPIView):
     """
     首页景点模糊搜索
     """
-    serializer_class = ScenesSearchSerializer
+    serializer_class = SceneSearchSerializer
 
     def get_queryset(self):
         query_string = self.request.query_params.dict().get('search', '')
@@ -112,7 +113,7 @@ class ScenesSearchAPIVIew(ListAPIView):
         return queryset
 
 
-class CitiesSearchAPIVIew(ListAPIView):
+class DestinationsSearchAPIVIew(ListAPIView):
     """
     首页目的地模糊搜索
     """

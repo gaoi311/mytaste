@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import Carousel, NavigationBar
+from .models import Carousel
 
 
 class CarouselAdmin(admin.ModelAdmin):

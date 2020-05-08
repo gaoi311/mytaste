@@ -24,7 +24,7 @@ class Pagination(PageNumberPagination):
     page_size = 1
 
 
-class HotelsAPIView(APIView):
+class HotelsSummaryAPIView(APIView):
     """
     首页酒店缩略展示
     """
@@ -32,16 +32,16 @@ class HotelsAPIView(APIView):
     def get(self, request):
         city = request.query_params.dict().get('city', "")
         hotel_queryset = Hotel.objects.filter(city=city).order_by('-score', 'price', '-comment_num')[:8]
-        ser_obj = HotelSerializer(hotel_queryset, many=True)
+        ser_obj = HotelSummarySerializer(hotel_queryset, many=True)
         return Response(ser_obj.data)
 
 
-class HotelAPIView(RetrieveAPIView):
+class HotelDetailAPIView(RetrieveAPIView):
     """
     单个景点详细展示
     """
     queryset = Hotel.objects.all()
-    serializer_class = HotelSerializer
+    serializer_class = HotelDetailSerializer
 
 
 class HotelsListAPIView(APIView):
@@ -70,7 +70,7 @@ class HotelsListAPIView(APIView):
 
         page = Pagination()
         page_hotels = page.paginate_queryset(queryset=hotels_queryset, request=request, view=self)
-        ser_obj = HotelSerializer(page_hotels, many=True)
+        ser_obj = HotelSummarySerializer(page_hotels, many=True)
         return page.get_paginated_response(ser_obj.data)
 
 
@@ -78,7 +78,7 @@ class HotelsSearchAPIView(ListAPIView):
     """
     首页酒店模糊搜索
     """
-    serializer_class = HotelsSearchSerializer
+    serializer_class = HotelSearchSerializer
 
     def get_queryset(self):
         query_string = self.request.query_params.dict().get('search', '')
@@ -89,7 +89,7 @@ class HotelsSearchAPIView(ListAPIView):
         return queryset
 
 
-class HotelCommentAPIView(APIView):
+class HotelCommentsAPIView(APIView):
     """
     酒店评论展示
     """
@@ -111,7 +111,7 @@ class HotelCommentCreateAPIView(CreateAPIView):
     serializer_class = HotelCommentSerializer
 
 
-class HotelRoomAPIView(ListAPIView):
+class HotelRoomsAPIView(ListAPIView):
     """
     酒店房间展示
     """

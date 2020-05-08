@@ -104,6 +104,40 @@ DATABASES = {
     }
 }
 
+# 设置redis缓存
+CACHES = {
+    # 默认缓存
+    "default": {
+        "BACKEND": "django_redis.cache.RedisCache",
+        # 项目上线时,需要调整这里的路径
+        "LOCATION": "redis://127.0.0.1:6379/0",
+
+        "OPTIONS": {
+            "CLIENT_CLASS": "django_redis.client.DefaultClient",
+        }
+    },
+    # 提供给admin的session存储
+    "session": {
+        "BACKEND": "django_redis.cache.RedisCache",
+        "LOCATION": "redis://127.0.0.1:6379/1",
+        "OPTIONS": {
+            "CLIENT_CLASS": "django_redis.client.DefaultClient",
+        }
+    },
+    # 提供存储短信验证码
+    "sms_code": {
+        "BACKEND": "django_redis.cache.RedisCache",
+        "LOCATION": "redis://127.0.0.1:6379/2",
+        "OPTIONS": {
+            "CLIENT_CLASS": "django_redis.client.DefaultClient",
+        }
+    }
+}
+
+# 设置admin用户登录时,登录信息session保存到redis
+SESSION_ENGINE = "django.contrib.sessions.backends.cache"
+SESSION_CACHE_ALIAS = "session"
+
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
 
@@ -236,4 +270,24 @@ REST_FRAMEWORK = {
 JWT_AUTH = {
     'JWT_EXPIRATION_DELTA': datetime.timedelta(weeks=1),
     'JWT_RESPONSE_PAYLOAD_HANDLER': 'user.utils.jwt_response_payload_handler',
+}
+
+# 短信息接口配置
+
+SMS = {
+    # 说明：主账号，登陆云通讯网站后，可在"控制台-应用"中看到开发者主账号ACCOUNT SID
+    '_accountSid': '8a216da871bf71a10171ecf7d36d0d32',
+    # 说明：主账号Token，登陆云通讯网站后，可在控制台-应用中看到开发者主账号AUTH TOKEN
+    '_accountToken': 'd65e204ad7d944dd884c935e1d78beaf',
+    # 6dd01b2b60104b3dbc88b2b74158bac6
+    # 请使用管理控制台首页的APPID或自己创建应用的APPID
+    '_appId': '8a216da871bf71a10171ecf7d3d30d39',
+    # 8a216da863f8e6c20164139688400c21
+    # 说明：请求地址，生产环境配置成app.cloopen.com
+    # 沙箱环境地址： sandboxapp.cloopen.com
+    '_serverIP': 'sandboxapp.cloopen.com',
+    # 说明：请求端口 ，生产环境为8883
+    '_serverPort': "8883",
+    # 说明：REST API版本号保持不变
+    '_softVersion': '2013-12-26'
 }

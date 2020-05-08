@@ -7,12 +7,20 @@
 from rest_framework import serializers
 from .models import *
 from scene.serializers import CitySerializer
-from user.serializers import UserCommentSerializer
 
 
-class HotelSerializer(serializers.ModelSerializer):
+class HotelSummarySerializer(serializers.ModelSerializer):
     """
-    单个酒店信息
+    酒店缩略信息
+    """
+    class Meta:
+        model = Hotel
+        fields = ['id', 'name', 'ename', 'main_photo', 'score', 'price', 'around', 'score_comment', 'grade']
+
+
+class HotelDetailSerializer(serializers.ModelSerializer):
+    """
+    酒店详细信息
     """
     city = CitySerializer(read_only=True)
 
@@ -75,9 +83,9 @@ class HotelOrderSerializer(serializers.ModelSerializer):
         fields = ['id', 'hotel', 'created_time', 'hotel_name', 'hotel_photo']
 
 
-class HotelsSearchSerializer(serializers.ModelSerializer):
+class HotelSearchSerializer(serializers.ModelSerializer):
     """
-    首页模糊查询
+    首页酒店模糊查询
     """
     class Meta:
         model = Hotel

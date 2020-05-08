@@ -9,7 +9,9 @@ from django.contrib.auth.hashers import make_password
 from rest_framework.validators import UniqueValidator
 from rest_framework_jwt import serializers as jwt_serializers
 from rest_framework import serializers
-from .models import User, UserLovedHotel, UserLovedScene
+from django_redis import get_redis_connection
+
+from .models import *
 
 
 class UserModelSerializer(serializers.ModelSerializer):
@@ -50,7 +52,12 @@ class UserModelSerializer(serializers.ModelSerializer):
         # 验证手机格式
         if not re.match(r"^1[3-9]\d{9}$", phone):
             raise serializers.ValidationError("手机号码格式有误！")
-        # todo 验证短信验证码是否正确
+
+        # redis_conn = get_redis_connection("sms_code")
+        # redis_sms_code = redis_conn.get("sms_%s" % phone).decode()
+        # if redis_sms_code != sms_code:
+        #     raise serializers.ValidationError("对不起，短信验证码有误！")
+
         return attrs
 
     def create(self, validated_data):
@@ -68,7 +75,10 @@ class UserModelSerializer(serializers.ModelSerializer):
         return user
 
 
-class UserCommentSerializer(serializers.ModelSerializer):
+class UserInfoForCommentSerializer(serializers.ModelSerializer):
+    """
+    评论模块中，需要用户的用户名和头像
+    """
     class Meta:
         model = User
         fields = ['username', 'avatar']
