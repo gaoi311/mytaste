@@ -29,9 +29,9 @@ class ScenesSummaryAPIView(ListAPIView):
 
         queryset = Scene.objects.filter().order_by('-hot')
         if province_id:
-            queryset = queryset.filter(province=province_id)
+            queryset = queryset.filter(province_id=province_id)
         if city_id:
-            queryset = queryset.filter(city=city_id)
+            queryset = queryset.filter(city_id=city_id)
         queryset = queryset[:8]
         return queryset
 

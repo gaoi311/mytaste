@@ -113,10 +113,10 @@ class HotelCommentCreateAPIView(CreateAPIView):
 
 class HotelRoomsAPIView(ListAPIView):
     """
-    酒店房间展示
+    酒店房间类型展示
     """
-    queryset = HotelRoom.objects.all()
-    serializer_class = HotelRoomSerializer
+    queryset = HotelRoomType.objects.all()
+    serializer_class = HotelRoomTypeSerializer
     filter_backends = [DjangoFilterBackend, ]
     filter_fields = ['hotel']
 
@@ -126,25 +126,37 @@ class HotelRoomCheckAPIVIew(APIView):
     酒店房间预订（修改）
     """
 
-    def put(self, request, *args, **kwargs):
-        room_id = kwargs.get('pk')
-        room_obj = HotelRoom.objects.get(id=room_id)
-        room_obj.room_count -= 1
-        room_obj.save()
+    def post(self, request, *args, **kwargs):
 
-        hotel_id = request.data.get('hotel')
-        user_id = request.data.get('user')
-        HotelOrder.objects.create(hotel_id=hotel_id, user_id=user_id, room_id=room_id)
+        user = int(request.data.get('user'))
+        in_date = request.data.get('in_date')
+        out_date = request.data.get('out_date')
+        name = request.data.get('name')
+        phone = request.data.get('phone')
+        hotel = int(request.data.get('hotel'))
+        type = int(request.data.get('type'))
+        check_room_num = int(request.data.get('check_room_num'))
 
-        return Response(HotelRoomSerializer(room_obj).data)
+
+        blank_rooms = HotelRoom.objects.filter(hotel=hotel, status=0, hotel_room_type__type=type)
+        if blank_rooms.count() < check_room_num:
+            return Response(data={'status': -1, 'message': "没有足够的房间了"})
+
+        blank_rooms = blank_rooms.order_by('number')[:check_room_num]
+        for blank_room in blank_rooms:
+            blank_room.status = 2
+            blank_room.save()
+
+        HotelReservation.objects.create(in_date=in_date, out_date=out_date, hotel_id=hotel, type=type, user_id=user, check_room_num=check_room_num, phone=phone, name=name).save()
+        return Response(data={'status': 1, 'message': "预订成功"})
 
 
-class HotelOrderAPIView(ListAPIView):
+class HotelReservationAPIView(ListAPIView):
     """
     用户足迹展示（酒店记录）
     """
-    queryset = HotelOrder.objects.all().order_by('-created_time')
-    serializer_class = HotelOrderSerializer
+    queryset = HotelReservation.objects.all().order_by('-created_time')
+    serializer_class = HotelReservationSerializer
     pagination_class = Pagination
     filter_backends = [DjangoFilterBackend, ]
     filter_fields = ['user']

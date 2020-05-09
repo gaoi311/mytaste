@@ -26,5 +26,6 @@ urlpatterns = [
     path('', include('index.urls')),
     path('', include('user.urls')),
     path('', include('scene.urls')),
-    path('', include('hotel.urls'))
+    path('', include('hotel.urls')),
+    path(r'chaining/', include('smart_selects.urls')),
 ]

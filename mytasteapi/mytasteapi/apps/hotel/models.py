@@ -1,6 +1,10 @@
+import os
+import uuid
+
 from django.db import models
 
 from scene.models import City
+from smart_selects.db_fields import ChainedForeignKey
 from user.models import User
 
 
@@ -56,31 +60,98 @@ class HotelComment(models.Model):
         return str(self.user) + str(self.hotel)
 
 
-class HotelRoom(models.Model):
+class HotelRoomType(models.Model):
+    ROOM_TYPE = (
+        (1, "标准间"),
+        (2, "单人间"),
+        (3, "双人间"),
+        (4, "三人间"),
+        (5, "大床房"),
+        (6, "亲子间")
+    )
+    HAS_DEVICE = (
+        (0, "无"),
+        (1, "有")
+    )
+
+    def hotel_room_photo_path(instance, filename):
+        ext = filename.split('.')[-1]
+        filename = '{}.{}'.format(uuid.uuid4().hex[:10], ext)
+        return os.path.join("hotelroom", filename)
+
     hotel = models.ForeignKey(to=Hotel, verbose_name="酒店", on_delete=models.CASCADE)
-    room_type = models.CharField(max_length=32, verbose_name="房型")
-    room_price = models.IntegerField(verbose_name="房价")
-    room_count = models.IntegerField(verbose_name="房间数", default=0)
+    type = models.IntegerField(choices=ROOM_TYPE, verbose_name="房型")
+    main_photo = models.ImageField(upload_to=hotel_room_photo_path, default="0/avator/default.png", verbose_name="房型照片")
+    price = models.IntegerField(verbose_name="房价")
+    # count = models.IntegerField(verbose_name="房间数", default=0)
+    area = models.IntegerField(verbose_name="面积")
+    has_tv = models.IntegerField(choices=HAS_DEVICE, verbose_name="电视")
+    has_phone = models.IntegerField(choices=HAS_DEVICE, verbose_name="电话")
+    has_toilet = models.IntegerField(choices=HAS_DEVICE, verbose_name="独立卫生间")
     updated_time = models.DateTimeField(auto_now=True, verbose_name="修改时间")
 
+    class Meta:
+        db_table = "mt_hotel_room_type"
+        verbose_name = "各酒店房间类型"
+        verbose_name_plural = verbose_name
+        unique_together = ('hotel', 'type')
+
+    def __str__(self):
+        return self.hotel.name + "-" + self.get_type_display()
+
+
+class HotelRoom(models.Model):
+    ROOM_STATUS = (
+        (0, "空闲"),
+        (1, "入住中"),
+        (2, "已预订"),
+        (3, "不可用")
+    )
+    hotel = models.ForeignKey(to=Hotel, on_delete=models.CASCADE, verbose_name="酒店")
+    # room = ChainedForeignKey(
+    #     to=HotelRoomType,
+    #     chained_field="Hotel",
+    #     chained_model_field="Hotel",
+    #     show_all=False,
+    #     auto_choose=True,
+    #     sort=True
+    # )
+    hotel_room_type = models.ForeignKey(to=HotelRoomType, on_delete=models.CASCADE, verbose_name="房型")
+    number = models.IntegerField(verbose_name="房间号码")
+    status = models.IntegerField(choices=ROOM_STATUS, default=0, verbose_name="房间状态")
     class Meta:
         db_table = "mt_hotel_room"
         verbose_name = "酒店房间"
         verbose_name_plural = verbose_name
+        unique_together = ('hotel', 'number')
 
     def __str__(self):
-        return str(self.hotel) + str(self.room_type)
+        return str(self.hotel) + str(self.number)
 
 
-class HotelOrder(models.Model):
+class HotelReservation(models.Model):
+    ROOM_TYPE = (
+        (1, "标准间"),
+        (2, "单人间"),
+        (3, "双人间"),
+        (4, "三人间"),
+        (5, "大床房"),
+        (6, "亲子间")
+    )
     user = models.ForeignKey(to=User, verbose_name="用户", on_delete=models.CASCADE)
+    name = models.CharField(max_length=32, verbose_name="姓名")
+    phone = models.CharField(max_length=15, verbose_name="电话")
     hotel = models.ForeignKey(to=Hotel, verbose_name="酒店", on_delete=models.CASCADE)
-    room = models.ForeignKey(to=HotelRoom, verbose_name="房间", on_delete=models.CASCADE)
+    type = models.IntegerField(choices=ROOM_TYPE, verbose_name="房间类型")
+    people_number = models.IntegerField(default=1, verbose_name="入住人数")
+    in_date = models.DateField(verbose_name="入住时间")
+    out_date = models.DateField(verbose_name="离开时间")
+    check_room_num = models.IntegerField(default=1, verbose_name="预订数量")
     created_time = models.DateTimeField(auto_now_add=True, verbose_name="创建时间")
 
     class Meta:
-        db_table = "mt_hotel_order"
-        verbose_name = "酒店订单"
+        db_table = "mt_hotel_reservation"
+        verbose_name = "酒店预订"
         verbose_name_plural = verbose_name
 
     def __str__(self):

@@ -5234,3 +5234,681 @@ AssertionError: The field 'sms_code' was declared on serializer UserModelSeriali
 {levelname} {asctime} {module} {process:d} {thread:d} {message}
 {levelname} {asctime} {module} {process:d} {thread:d} {message}
 {levelname} {asctime} {module} {process:d} {thread:d} {message}
+{levelname} {asctime} {module} {process:d} {thread:d} {message}
+{levelname} {asctime} {module} {process:d} {thread:d} {message}
+{levelname} {asctime} {module} {process:d} {thread:d} {message}
+Traceback (most recent call last):
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/django/core/handlers/base.py", line 145, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/django/core/handlers/base.py", line 143, in _get_response
+    response = response.render()
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/django/template/response.py", line 105, in render
+    self.content = self.rendered_content
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/django/template/response.py", line 83, in rendered_content
+    return template.render(context, self._request)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/django/template/backends/django.py", line 61, in render
+    return self.template.render(context)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/django/template/base.py", line 171, in render
+    return self._render(context)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/django/template/base.py", line 163, in _render
+    return self.nodelist.render(context)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/django/template/base.py", line 936, in render
+    bit = node.render_annotated(context)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/django/template/base.py", line 903, in render_annotated
+    return self.render(context)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/django/template/loader_tags.py", line 150, in render
+    return compiled_parent._render(context)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/django/template/base.py", line 163, in _render
+    return self.nodelist.render(context)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/django/template/base.py", line 936, in render
+    bit = node.render_annotated(context)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/django/template/base.py", line 903, in render_annotated
+    return self.render(context)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/django/template/loader_tags.py", line 150, in render
+    return compiled_parent._render(context)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/django/template/base.py", line 163, in _render
+    return self.nodelist.render(context)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/django/template/base.py", line 936, in render
+    bit = node.render_annotated(context)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/django/template/base.py", line 903, in render_annotated
+    return self.render(context)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/django/template/loader_tags.py", line 62, in render
+    result = block.nodelist.render(context)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/django/template/base.py", line 936, in render
+    bit = node.render_annotated(context)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/django/template/base.py", line 903, in render_annotated
+    return self.render(context)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/django/template/loader_tags.py", line 62, in render
+    result = block.nodelist.render(context)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/django/template/base.py", line 936, in render
+    bit = node.render_annotated(context)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/django/template/base.py", line 903, in render_annotated
+    return self.render(context)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/django/template/defaulttags.py", line 209, in render
+    nodelist.append(node.render_annotated(context))
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/django/template/base.py", line 903, in render_annotated
+    return self.render(context)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/django/template/loader_tags.py", line 188, in render
+    return template.render(context)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/django/template/base.py", line 173, in render
+    return self._render(context)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/django/template/base.py", line 163, in _render
+    return self.nodelist.render(context)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/django/template/base.py", line 936, in render
+    bit = node.render_annotated(context)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/django/template/base.py", line 903, in render_annotated
+    return self.render(context)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/django/template/defaulttags.py", line 209, in render
+    nodelist.append(node.render_annotated(context))
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/django/template/base.py", line 903, in render_annotated
+    return self.render(context)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/django/template/defaulttags.py", line 209, in render
+    nodelist.append(node.render_annotated(context))
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/django/template/base.py", line 903, in render_annotated
+    return self.render(context)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/django/template/defaulttags.py", line 309, in render
+    return nodelist.render(context)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/django/template/base.py", line 936, in render
+    bit = node.render_annotated(context)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/django/template/base.py", line 903, in render_annotated
+    return self.render(context)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/django/template/defaulttags.py", line 309, in render
+    return nodelist.render(context)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/django/template/base.py", line 936, in render
+    bit = node.render_annotated(context)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/django/template/base.py", line 903, in render_annotated
+    return self.render(context)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/django/template/base.py", line 992, in render
+    return render_value_in_context(output, context)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/django/template/base.py", line 971, in render_value_in_context
+    value = str(value)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/django/utils/html.py", line 373, in <lambda>
+    klass.__str__ = lambda self: mark_safe(klass_str(self))
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/django/forms/boundfield.py", line 33, in __str__
+    return self.as_widget()
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/django/forms/boundfield.py", line 96, in as_widget
+    renderer=self.form.renderer,
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/django/forms/widgets.py", line 241, in render
+    context = self.get_context(name, value, attrs)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/django/contrib/admin/widgets.py", line 288, in get_context
+    'rendered_widget': self.widget.render(name, value, attrs),
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/smart_selects/widgets.py", line 107, in render
+    url = URL_PREFIX + ("/".join(reverse(view_name, kwargs=kwargs).split("/")[:-2]))
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/django/urls/base.py", line 87, in reverse
+    return iri_to_uri(resolver._reverse_with_prefix(view, prefix, *args, **kwargs))
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/django/urls/resolvers.py", line 677, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'chained_filter' not found. 'chained_filter' is not a valid view function or pattern name.
+{levelname} {asctime} {module} {process:d} {thread:d} {message}
+{levelname} {asctime} {module} {process:d} {thread:d} {message}
+Traceback (most recent call last):
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/django/core/handlers/base.py", line 145, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/django/core/handlers/base.py", line 143, in _get_response
+    response = response.render()
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/django/template/response.py", line 105, in render
+    self.content = self.rendered_content
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/django/template/response.py", line 83, in rendered_content
+    return template.render(context, self._request)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/django/template/backends/django.py", line 61, in render
+    return self.template.render(context)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/django/template/base.py", line 171, in render
+    return self._render(context)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/django/template/base.py", line 163, in _render
+    return self.nodelist.render(context)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/django/template/base.py", line 936, in render
+    bit = node.render_annotated(context)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/django/template/base.py", line 903, in render_annotated
+    return self.render(context)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/django/template/loader_tags.py", line 150, in render
+    return compiled_parent._render(context)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/django/template/base.py", line 163, in _render
+    return self.nodelist.render(context)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/django/template/base.py", line 936, in render
+    bit = node.render_annotated(context)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/django/template/base.py", line 903, in render_annotated
+    return self.render(context)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/django/template/loader_tags.py", line 150, in render
+    return compiled_parent._render(context)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/django/template/base.py", line 163, in _render
+    return self.nodelist.render(context)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/django/template/base.py", line 936, in render
+    bit = node.render_annotated(context)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/django/template/base.py", line 903, in render_annotated
+    return self.render(context)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/django/template/loader_tags.py", line 62, in render
+    result = block.nodelist.render(context)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/django/template/base.py", line 936, in render
+    bit = node.render_annotated(context)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/django/template/base.py", line 903, in render_annotated
+    return self.render(context)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/django/template/base.py", line 992, in render
+    return render_value_in_context(output, context)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/django/template/base.py", line 971, in render_value_in_context
+    value = str(value)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/django/utils/html.py", line 373, in <lambda>
+    klass.__str__ = lambda self: mark_safe(klass_str(self))
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/django/forms/widgets.py", line 63, in __str__
+    return self.render()
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/django/forms/widgets.py", line 78, in render
+    return mark_safe('\n'.join(chain.from_iterable(getattr(self, 'render_' + name)() for name in MEDIA_TYPES)))
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/django/forms/widgets.py", line 78, in <genexpr>
+    return mark_safe('\n'.join(chain.from_iterable(getattr(self, 'render_' + name)() for name in MEDIA_TYPES)))
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/django/forms/widgets.py", line 85, in render_js
+    ) for path in self._js
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/django/forms/widgets.py", line 85, in <listcomp>
+    ) for path in self._js
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/django/forms/widgets.py", line 105, in absolute_path
+    if path.startswith(('http://', 'https://', '/')):
+AttributeError: 'bool' object has no attribute 'startswith'
+{levelname} {asctime} {module} {process:d} {thread:d} {message}
+{levelname} {asctime} {module} {process:d} {thread:d} {message}
+Traceback (most recent call last):
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/django/core/handlers/base.py", line 145, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/django/core/handlers/base.py", line 143, in _get_response
+    response = response.render()
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/django/template/response.py", line 105, in render
+    self.content = self.rendered_content
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/django/template/response.py", line 83, in rendered_content
+    return template.render(context, self._request)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/django/template/backends/django.py", line 61, in render
+    return self.template.render(context)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/django/template/base.py", line 171, in render
+    return self._render(context)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/django/template/base.py", line 163, in _render
+    return self.nodelist.render(context)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/django/template/base.py", line 936, in render
+    bit = node.render_annotated(context)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/django/template/base.py", line 903, in render_annotated
+    return self.render(context)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/django/template/loader_tags.py", line 150, in render
+    return compiled_parent._render(context)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/django/template/base.py", line 163, in _render
+    return self.nodelist.render(context)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/django/template/base.py", line 936, in render
+    bit = node.render_annotated(context)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/django/template/base.py", line 903, in render_annotated
+    return self.render(context)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/django/template/loader_tags.py", line 150, in render
+    return compiled_parent._render(context)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/django/template/base.py", line 163, in _render
+    return self.nodelist.render(context)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/django/template/base.py", line 936, in render
+    bit = node.render_annotated(context)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/django/template/base.py", line 903, in render_annotated
+    return self.render(context)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/django/template/loader_tags.py", line 62, in render
+    result = block.nodelist.render(context)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/django/template/base.py", line 936, in render
+    bit = node.render_annotated(context)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/django/template/base.py", line 903, in render_annotated
+    return self.render(context)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/django/template/base.py", line 992, in render
+    return render_value_in_context(output, context)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/django/template/base.py", line 971, in render_value_in_context
+    value = str(value)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/django/utils/html.py", line 373, in <lambda>
+    klass.__str__ = lambda self: mark_safe(klass_str(self))
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/django/forms/widgets.py", line 63, in __str__
+    return self.render()
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/django/forms/widgets.py", line 78, in render
+    return mark_safe('\n'.join(chain.from_iterable(getattr(self, 'render_' + name)() for name in MEDIA_TYPES)))
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/django/forms/widgets.py", line 78, in <genexpr>
+    return mark_safe('\n'.join(chain.from_iterable(getattr(self, 'render_' + name)() for name in MEDIA_TYPES)))
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/django/forms/widgets.py", line 85, in render_js
+    ) for path in self._js
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/django/forms/widgets.py", line 85, in <listcomp>
+    ) for path in self._js
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/django/forms/widgets.py", line 105, in absolute_path
+    if path.startswith(('http://', 'https://', '/')):
+AttributeError: 'bool' object has no attribute 'startswith'
+{levelname} {asctime} {module} {process:d} {thread:d} {message}
+{levelname} {asctime} {module} {process:d} {thread:d} {message}
+{levelname} {asctime} {module} {process:d} {thread:d} {message}
+{levelname} {asctime} {module} {process:d} {thread:d} {message}
+Traceback (most recent call last):
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/rest_framework/fields.py", line 454, in get_attribute
+    return get_attribute(instance, self.source_attrs)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/rest_framework/fields.py", line 94, in get_attribute
+    instance = getattr(instance, attr)
+AttributeError: 'HotelRoom' object has no attribute 'type'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/django/core/handlers/base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/django/core/handlers/base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/django/views/generic/base.py", line 71, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/rest_framework/views.py", line 505, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/rest_framework/views.py", line 465, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/rest_framework/views.py", line 476, in raise_uncaught_exception
+    raise exc
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/rest_framework/views.py", line 502, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/rest_framework/generics.py", line 199, in get
+    return self.list(request, *args, **kwargs)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/rest_framework/mixins.py", line 46, in list
+    return Response(serializer.data)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/rest_framework/serializers.py", line 760, in data
+    ret = super().data
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/rest_framework/serializers.py", line 260, in data
+    self._data = self.to_representation(self.instance)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/rest_framework/serializers.py", line 678, in to_representation
+    self.child.to_representation(item) for item in iterable
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/rest_framework/serializers.py", line 678, in <listcomp>
+    self.child.to_representation(item) for item in iterable
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/rest_framework/serializers.py", line 516, in to_representation
+    attribute = field.get_attribute(instance)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/rest_framework/fields.py", line 487, in get_attribute
+    raise type(exc)(msg)
+AttributeError: Got AttributeError when attempting to get a value for field `type` on serializer `HotelRoomTypeSerializer`.
+The serializer field might be named incorrectly and not match any attribute or key on the `HotelRoom` instance.
+Original exception text was: 'HotelRoom' object has no attribute 'type'.
+{levelname} {asctime} {module} {process:d} {thread:d} {message}
+{levelname} {asctime} {module} {process:d} {thread:d} {message}
+Traceback (most recent call last):
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/django/core/handlers/base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/django/core/handlers/base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/django/views/generic/base.py", line 71, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/rest_framework/views.py", line 505, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/rest_framework/views.py", line 465, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/rest_framework/views.py", line 476, in raise_uncaught_exception
+    raise exc
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/rest_framework/views.py", line 502, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/rest_framework/generics.py", line 199, in get
+    return self.list(request, *args, **kwargs)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/rest_framework/mixins.py", line 46, in list
+    return Response(serializer.data)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/rest_framework/serializers.py", line 760, in data
+    ret = super().data
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/rest_framework/serializers.py", line 260, in data
+    self._data = self.to_representation(self.instance)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/rest_framework/serializers.py", line 678, in to_representation
+    self.child.to_representation(item) for item in iterable
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/rest_framework/serializers.py", line 678, in <listcomp>
+    self.child.to_representation(item) for item in iterable
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/rest_framework/serializers.py", line 529, in to_representation
+    ret[field.field_name] = field.to_representation(attribute)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/rest_framework/fields.py", line 1905, in to_representation
+    return method(value)
+  File "/home/gaoi/PycharmProjects/myTaste/mytasteapi/mytasteapi/apps/hotel/serializers.py", line 93, in get_type
+    return obj.type.get_type_display()
+AttributeError: 'int' object has no attribute 'get_type_display'
+{levelname} {asctime} {module} {process:d} {thread:d} {message}
+{levelname} {asctime} {module} {process:d} {thread:d} {message}
+Traceback (most recent call last):
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/django/core/handlers/base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/django/core/handlers/base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/django/views/generic/base.py", line 71, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/rest_framework/views.py", line 505, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/rest_framework/views.py", line 465, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/rest_framework/views.py", line 476, in raise_uncaught_exception
+    raise exc
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/rest_framework/views.py", line 502, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/rest_framework/generics.py", line 199, in get
+    return self.list(request, *args, **kwargs)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/rest_framework/mixins.py", line 46, in list
+    return Response(serializer.data)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/rest_framework/serializers.py", line 760, in data
+    ret = super().data
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/rest_framework/serializers.py", line 260, in data
+    self._data = self.to_representation(self.instance)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/rest_framework/serializers.py", line 678, in to_representation
+    self.child.to_representation(item) for item in iterable
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/rest_framework/serializers.py", line 678, in <listcomp>
+    self.child.to_representation(item) for item in iterable
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/rest_framework/serializers.py", line 529, in to_representation
+    ret[field.field_name] = field.to_representation(attribute)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/rest_framework/fields.py", line 1905, in to_representation
+    return method(value)
+  File "/home/gaoi/PycharmProjects/myTaste/mytasteapi/mytasteapi/apps/hotel/serializers.py", line 93, in get_type
+    return obj.type.get_type_display()
+AttributeError: 'int' object has no attribute 'get_type_display'
+{levelname} {asctime} {module} {process:d} {thread:d} {message}
+{levelname} {asctime} {module} {process:d} {thread:d} {message}
+Traceback (most recent call last):
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/django/core/handlers/base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/django/core/handlers/base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/django/views/generic/base.py", line 71, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/rest_framework/views.py", line 505, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/rest_framework/views.py", line 465, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/rest_framework/views.py", line 476, in raise_uncaught_exception
+    raise exc
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/rest_framework/views.py", line 502, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/rest_framework/generics.py", line 199, in get
+    return self.list(request, *args, **kwargs)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/rest_framework/mixins.py", line 46, in list
+    return Response(serializer.data)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/rest_framework/serializers.py", line 760, in data
+    ret = super().data
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/rest_framework/serializers.py", line 260, in data
+    self._data = self.to_representation(self.instance)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/rest_framework/serializers.py", line 678, in to_representation
+    self.child.to_representation(item) for item in iterable
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/rest_framework/serializers.py", line 678, in <listcomp>
+    self.child.to_representation(item) for item in iterable
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/rest_framework/serializers.py", line 529, in to_representation
+    ret[field.field_name] = field.to_representation(attribute)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/rest_framework/fields.py", line 1905, in to_representation
+    return method(value)
+  File "/home/gaoi/PycharmProjects/myTaste/mytasteapi/mytasteapi/apps/hotel/serializers.py", line 95, in get_has_tv
+    return obj.get_display_has_tv()
+AttributeError: 'HotelRoomType' object has no attribute 'get_display_has_tv'
+{levelname} {asctime} {module} {process:d} {thread:d} {message}
+{levelname} {asctime} {module} {process:d} {thread:d} {message}
+{levelname} {asctime} {module} {process:d} {thread:d} {message}
+{levelname} {asctime} {module} {process:d} {thread:d} {message}
+Traceback (most recent call last):
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/rest_framework/request.py", line 409, in __getattr__
+    return getattr(self._request, attr)
+AttributeError: 'WSGIRequest' object has no attribute 'date'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/django/core/handlers/base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/django/core/handlers/base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/django/views/generic/base.py", line 71, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/rest_framework/views.py", line 505, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/rest_framework/views.py", line 465, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/rest_framework/views.py", line 476, in raise_uncaught_exception
+    raise exc
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/rest_framework/views.py", line 502, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/gaoi/PycharmProjects/myTaste/mytasteapi/mytasteapi/apps/hotel/views.py", line 134, in post
+    name = request.date.get('name')
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/rest_framework/request.py", line 411, in __getattr__
+    return self.__getattribute__(attr)
+AttributeError: 'Request' object has no attribute 'date'
+{levelname} {asctime} {module} {process:d} {thread:d} {message}
+{levelname} {asctime} {module} {process:d} {thread:d} {message}
+Traceback (most recent call last):
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/rest_framework/request.py", line 409, in __getattr__
+    return getattr(self._request, attr)
+AttributeError: 'WSGIRequest' object has no attribute 'date'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/django/core/handlers/base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/django/core/handlers/base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/django/views/generic/base.py", line 71, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/rest_framework/views.py", line 505, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/rest_framework/views.py", line 465, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/rest_framework/views.py", line 476, in raise_uncaught_exception
+    raise exc
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/rest_framework/views.py", line 502, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/gaoi/PycharmProjects/myTaste/mytasteapi/mytasteapi/apps/hotel/views.py", line 134, in post
+    name = request.date.get('name')
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/rest_framework/request.py", line 411, in __getattr__
+    return self.__getattribute__(attr)
+AttributeError: 'Request' object has no attribute 'date'
+{levelname} {asctime} {module} {process:d} {thread:d} {message}
+{levelname} {asctime} {module} {process:d} {thread:d} {message}
+Traceback (most recent call last):
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/django/core/handlers/base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/django/core/handlers/base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/django/views/generic/base.py", line 71, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/rest_framework/views.py", line 505, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/rest_framework/views.py", line 465, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/rest_framework/views.py", line 476, in raise_uncaught_exception
+    raise exc
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/rest_framework/views.py", line 502, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/gaoi/PycharmProjects/myTaste/mytasteapi/mytasteapi/apps/hotel/views.py", line 131, in post
+    user = request.data.dict().get('user')
+AttributeError: 'dict' object has no attribute 'dict'
+{levelname} {asctime} {module} {process:d} {thread:d} {message}
+{levelname} {asctime} {module} {process:d} {thread:d} {message}
+Traceback (most recent call last):
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/django/core/handlers/base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/django/core/handlers/base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/django/views/generic/base.py", line 71, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/rest_framework/views.py", line 505, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/rest_framework/views.py", line 465, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/rest_framework/views.py", line 476, in raise_uncaught_exception
+    raise exc
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/rest_framework/views.py", line 502, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/gaoi/PycharmProjects/myTaste/mytasteapi/mytasteapi/apps/hotel/views.py", line 130, in post
+    user = request.data.dict().get('user')
+AttributeError: 'dict' object has no attribute 'dict'
+{levelname} {asctime} {module} {process:d} {thread:d} {message}
+{levelname} {asctime} {module} {process:d} {thread:d} {message}
+Traceback (most recent call last):
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/rest_framework/request.py", line 409, in __getattr__
+    return getattr(self._request, attr)
+AttributeError: 'WSGIRequest' object has no attribute 'date'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/django/core/handlers/base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/django/core/handlers/base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/django/views/generic/base.py", line 71, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/rest_framework/views.py", line 505, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/rest_framework/views.py", line 465, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/rest_framework/views.py", line 476, in raise_uncaught_exception
+    raise exc
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/rest_framework/views.py", line 502, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/gaoi/PycharmProjects/myTaste/mytasteapi/mytasteapi/apps/hotel/views.py", line 134, in post
+    name = request.date.get('name')
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/rest_framework/request.py", line 411, in __getattr__
+    return self.__getattribute__(attr)
+AttributeError: 'Request' object has no attribute 'date'
+{levelname} {asctime} {module} {process:d} {thread:d} {message}
+{levelname} {asctime} {module} {process:d} {thread:d} {message}
+Traceback (most recent call last):
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/django/core/handlers/base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/django/core/handlers/base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/django/views/generic/base.py", line 71, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/rest_framework/views.py", line 505, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/rest_framework/views.py", line 465, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/rest_framework/views.py", line 476, in raise_uncaught_exception
+    raise exc
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/rest_framework/views.py", line 502, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/gaoi/PycharmProjects/myTaste/mytasteapi/mytasteapi/apps/hotel/views.py", line 142, in post
+    if blank_rooms.count() < check_room_num:
+TypeError: '<' not supported between instances of 'int' and 'str'
+{levelname} {asctime} {module} {process:d} {thread:d} {message}
+{levelname} {asctime} {module} {process:d} {thread:d} {message}
+Traceback (most recent call last):
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/django/core/handlers/base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/django/core/handlers/base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/django/views/generic/base.py", line 71, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/rest_framework/views.py", line 505, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/rest_framework/views.py", line 465, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/rest_framework/views.py", line 476, in raise_uncaught_exception
+    raise exc
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/rest_framework/views.py", line 502, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/gaoi/PycharmProjects/myTaste/mytasteapi/mytasteapi/apps/hotel/views.py", line 156, in post
+    HotelReservation.objects.create(in_date=in_date, out_date=out_date, hotel=hotel, type=room_type, user=user, check_room_num=check_room_num, phone=phone, name=name)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/django/db/models/manager.py", line 82, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/django/db/models/query.py", line 431, in create
+    obj = self.model(**kwargs)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/django/db/models/base.py", line 482, in __init__
+    _setattr(self, field.name, rel_obj)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/django/db/models/fields/related_descriptors.py", line 219, in __set__
+    self.field.remote_field.model._meta.object_name,
+ValueError: Cannot assign "'1'": "HotelReservation.user" must be a "User" instance.
+{levelname} {asctime} {module} {process:d} {thread:d} {message}
+{levelname} {asctime} {module} {process:d} {thread:d} {message}
+Traceback (most recent call last):
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/django/core/handlers/base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/django/core/handlers/base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/django/views/generic/base.py", line 71, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/rest_framework/views.py", line 505, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/rest_framework/views.py", line 465, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/rest_framework/views.py", line 476, in raise_uncaught_exception
+    raise exc
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/rest_framework/views.py", line 502, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/gaoi/PycharmProjects/myTaste/mytasteapi/mytasteapi/apps/hotel/views.py", line 156, in post
+    HotelReservation.objects.create(in_date=in_date, out_date=out_date, hotel=hotel, type=room_type, user=user, check_room_num=check_room_num, phone=phone, name=name)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/django/db/models/manager.py", line 82, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/django/db/models/query.py", line 431, in create
+    obj = self.model(**kwargs)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/django/db/models/base.py", line 482, in __init__
+    _setattr(self, field.name, rel_obj)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/django/db/models/fields/related_descriptors.py", line 219, in __set__
+    self.field.remote_field.model._meta.object_name,
+ValueError: Cannot assign "1": "HotelReservation.user" must be a "User" instance.
+{levelname} {asctime} {module} {process:d} {thread:d} {message}
+{levelname} {asctime} {module} {process:d} {thread:d} {message}
+{levelname} {asctime} {module} {process:d} {thread:d} {message}
+{levelname} {asctime} {module} {process:d} {thread:d} {message}
+Traceback (most recent call last):
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/django/core/handlers/base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/django/core/handlers/base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/django/views/generic/base.py", line 71, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/rest_framework/views.py", line 505, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/rest_framework/views.py", line 465, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/rest_framework/views.py", line 476, in raise_uncaught_exception
+    raise exc
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/rest_framework/views.py", line 502, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/gaoi/PycharmProjects/myTaste/mytasteapi/mytasteapi/apps/hotel/views.py", line 156, in post
+    HotelReservation.objects.create(in_date=in_date, out_date=out_date, hotel=hotel, type=room_type, user_id=user, check_room_num=check_room_num, phone=phone, name=name).save()
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/django/db/models/manager.py", line 82, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/django/db/models/query.py", line 431, in create
+    obj = self.model(**kwargs)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/django/db/models/base.py", line 482, in __init__
+    _setattr(self, field.name, rel_obj)
+  File "/home/gaoi/.virtualenvs/mytaste/lib/python3.6/site-packages/django/db/models/fields/related_descriptors.py", line 219, in __set__
+    self.field.remote_field.model._meta.object_name,
+ValueError: Cannot assign "49": "HotelReservation.hotel" must be a "Hotel" instance.
+{levelname} {asctime} {module} {process:d} {thread:d} {message}

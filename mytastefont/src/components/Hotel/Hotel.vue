@@ -42,7 +42,7 @@
                     <hr>
                     <el-row>
                         <el-col :span="24">
-                            <span style="font-size: 20px;margin-right: 100px">基本信息</span>
+                            <span style="font-size: 24px;margin-right: 100px">基本信息</span>
                             <span>入住时间: 14:00 - 00:00 离店时间: 12:00之前</span>
                         </el-col>
                     </el-row>
@@ -56,27 +56,62 @@
                     <hr>
 
                     <el-row>
-                        <el-col>
-                            <h3>房间详情</h3>
+                        <el-col :span="6">
+                            <p style="font-size: 24px">房间详情</p>
+                        </el-col>
+                        <el-col :span="12">
+                            <el-date-picker
+                                    v-model="reservationForm.inOutDate"
+                                    type="daterange"
+                                    value-format="yyyy-MM-dd"
+                                    range-separator="至"
+                                    start-placeholder="入住日期"
+                                    end-placeholder="退房日期">
+                            </el-date-picker>
                         </el-col>
                     </el-row>
-                    <el-row v-for="(room, index) in rooms" :key="index" style="margin-top: 20px">
-                        <el-col :span="3">
-                            <p><span>类型 </span><span style="font-size: 18px;color: #2aabd2">{{room.room_type}}</span>
+                    <el-row v-for="(room, index) in rooms" :key="index"
+                            style="margin-top: 20px;  padding: 10px 10px 10px 10px; border: solid 1px #FFF0F4">
+                        <el-col :span="1">
+                            <p><span>房型 </span>
+                            </p>
+                        </el-col>
+                        <el-col :span="6">
+                            <el-popover
+                                    placement="right"
+                                    width="500"
+                                    trigger="click">
+                                <div>
+                                    <p style="font-size: 20px">{{typeNumber2TypeName(room.type)}}</p>
+                                    <div style="float: left; padding-right: 20px">
+                                        <img :src="room.main_photo" style="width: 280px" alt="">
+                                    </div>
+                                    <div style="margin-left: 20px; position: relative;">
+                                        <p>基础设施</p>
+                                        <p>电视: {{room.has_tv}}</p>
+                                        <p>电话: {{room.has_phone}}</p>
+                                        <p>独立卫生间: {{room.has_toilet}}</p>
+                                    </div>
+                                </div>
+                                <el-link style="color: #e38d13;" slot="reference">{{typeNumber2TypeName(room.type)}}
+                                </el-link>
+                            </el-popover>
+                        </el-col>
+                        <el-col :span="6" :offset="3">
+                            <p><span>￥ </span><span style="font-size: 18px;color: #ac2925">{{room.price}}</span>
                             </p>
                         </el-col>
                         <el-col :span="3" :offset="3">
-                            <p><span>还有 </span><span
-                                    style="font-size: 18px;color: #e38d13">{{room.room_count}}</span><span> 间</span></p>
-                        </el-col>
-                        <el-col :span="3" :offset="3">
-                            <p><span>￥ </span><span style="font-size: 18px;color: #ac2925">{{room.room_price}}</span>
-                            </p>
-                        </el-col>
-                        <el-col :span="3" :offset="3">
-                            <el-button size="small" type="primary" @click="checkRoom(room.id)" style="margin-top: -5px">
-                                预订
-                            </el-button>
+                            <div>
+                                <el-button size="small" :disabled="room.count <= 0" type="primary"
+                                           @click="checkRoom(room.type, room.price)"
+                                           style="margin-top: 0px; display: block;">
+                                    预订
+                                </el-button>
+                                <span v-if="room.count <= 3 && room.count >= 1"
+                                      style="font-size: 10px; margin-left: 7px; color: #ac2925">房量紧张</span>
+                                <span v-if="room.count <= 0" style="font-size: 10px; margin-left: 7px; color: #ac2925">预订完</span>
+                            </div>
                         </el-col>
                     </el-row>
 
@@ -84,6 +119,11 @@
                 </el-col>
             </el-row>
             <hr>
+            <el-row>
+                <el-col :span="18" :offset="3">
+                    <p style="font-size: 24px">评论详情</p>
+                </el-col>
+            </el-row>
             <el-row id="comment">
                 <el-col :span="18" :offset="3">
                     <div class="rev-list">
@@ -137,6 +177,41 @@
                     <el-button type="primary" @click="onSubmit">确 定</el-button>
                 </div>
             </el-dialog>
+
+            <el-dialog title="预订" :visible.sync="reservationDialogFormVisible">
+                <el-form :model="reservationForm" :rules="rules" ref="reservationForm">
+                    <el-form-item label="入住时间段">
+                        <el-date-picker
+                                v-model="reservationForm.inOutDate"
+                                type="daterange"
+                                value-format="yyyy-MM-dd"
+                                range-separator="至"
+                                start-placeholder="入住日期"
+                                end-placeholder="退房日期">
+                        </el-date-picker>
+                    </el-form-item>
+                    <el-form-item label="姓名" prop="name">
+                        <el-input type="text" v-model="reservationForm.name" placeholder="所填姓名需与入住时所持证件一致"></el-input>
+                    </el-form-item>
+                    <el-form-item label="联系电话" prop="phone">
+                        <el-input type="text" v-model="reservationForm.phone" placeholder="接收短信使用"></el-input>
+                    </el-form-item>
+                    <el-form-item label="房间数量" prop="num">
+                        <el-select v-model="reservationForm.roomNum" placeholder="每间房最多住两人">
+                            <el-option label="一间" value="1"></el-option>
+                            <el-option label="二间" value="2"></el-option>
+                            <el-option label="三间" value="3"></el-option>
+                            <el-option label="四间" value="4"></el-option>
+                            <el-option label="五间" value="5"></el-option>
+                        </el-select>
+                    </el-form-item>
+                    <h3>合计{{checkRoomPrice * reservationForm.roomNum}}元</h3>
+                </el-form>
+                <div slot="footer" class="dialog-footer">
+                    <el-button @click="reservationDialogFormVisible = false">取 消</el-button>
+                    <el-button type="primary" @click="onSubmitRoom('reservationForm')">预 订</el-button>
+                </div>
+            </el-dialog>
         </el-main>
         <el-footer>
             <Footer></Footer>
@@ -160,12 +235,33 @@
                 commentsCount: 0,
                 page: 1,
                 dialogFormVisible: false,
+                reservationDialogFormVisible: false,
                 form: {
                     score: 0,
                     content: '',
                 },
                 formLabelWidth: '120px',
                 colors: ['#99A9BF', '#F7BA2A', '#FF9900'],
+
+                reservationForm: {
+                    inDate: '',
+                    inOutDate: [],
+                    name: '',
+                    phone: '',
+                    roomNum: "1",
+                },
+
+                rules: {
+                    name: [
+                        {required: true, message: '请输入姓名', trigger: 'blur'},
+                    ],
+                    phone: [
+                        {required: true, message: '请输入联系电话', trigger: 'blur'}
+                    ],
+                },
+
+                checkRoomType: 0,
+                checkRoomPrice: 0,
 
                 rooms: []
             }
@@ -221,7 +317,33 @@
                     }
                     return star
                 }
-            }
+            },
+            typeNumber2TypeName() {
+                return grade => {
+                    let type = "出错啦";
+                    switch (grade) {
+                        case 1:
+                            type = "标准间";
+                            break;
+                        case 2:
+                            type = "单人间";
+                            break;
+                        case 3:
+                            type = "双人间";
+                            break;
+                        case 4:
+                            type = "三人间";
+                            break;
+                        case 5:
+                            type = "大床房";
+                            break;
+                        case 6:
+                            type = "亲子间";
+                            break;
+                    }
+                    return type
+                }
+            },
         },
         methods: {
             getUser(e) {
@@ -279,29 +401,13 @@
                     this.$router.push('/login')
                 })
             },
-            checkRoom(roomId) {
+            checkRoom(type, price) {
                 if (!this.uid) {
                     this.openNeedLogin();
                 } else {
-                    this.$confirm('确定预定吗？', '提示', {
-                        confirmButtonText: '确定',
-                        cancelButtonText: '取消',
-                        type: 'primary'
-                    }).then(() => {
-                        this.$axios({
-                            url: `${this.$settings.HOST}/room/${roomId}/`,
-                            method: 'PUT',
-                            data: {
-                                user: this.uid,
-                                hotel: this.id
-                            }
-                        }).then(response => {
-                            this.$message.success("预订成功！");
-                            this.getRooms();
-                        }).catch(error => {
-                            console.log(error.response);
-                        })
-                    })
+                    this.reservationDialogFormVisible = true;
+                    this.checkRoomType = type;
+                    this.checkRoomPrice = price;
                 }
             },
             newComment() {
@@ -327,6 +433,46 @@
                 });
                 this.form.score = 0;
                 this.form.content = "";
+            },
+            onSubmitRoom(formName) {
+                this.$refs[formName].validate((valid) => {
+                    if (valid) {
+                        this.reservationDialogFormVisible = false;
+                        this.$axios({
+                            url: `${this.$settings.HOST}/room/`,
+                            method: 'POST',
+                            data: {
+                                user: this.uid,
+                                in_date: this.reservationForm.inDate,
+                                out_date: this.reservationForm.outDate,
+                                name: this.reservationForm.name,
+                                phone: this.reservationForm.phone,
+                                check_room_num: this.reservationForm.roomNum,
+                                hotel: this.id,
+                                type: this.checkRoomType,
+                            }
+                        }).then(response => {
+                            if (response.data.status === 1) {
+                                this.$message.success(response.data.message);
+                                this.getRooms();
+                            } else if (response.data.status === -1) {
+                                this.$message.error(response.data.message);
+                            }
+                        }).catch(error => {
+                            alert("啊呀，出错啦！请重试!");
+                        });
+                    } else {
+                        console.log('error submit!!');
+                        return false;
+                    }
+                });
+            },
+            getDate() {
+                var day = new Date();
+                var today = day.getFullYear() + "-" + (day.getMonth() + 1) + "-" + day.getDate();
+                day.setTime(day.getTime() + 24 * 60 * 60 * 1000);
+                var tomorrow = day.getFullYear() + "-" + (day.getMonth() + 1) + "-" + day.getDate();
+                this.reservationForm.inOutDate = [today, tomorrow];
             }
         },
         created() {
@@ -335,6 +481,7 @@
             this.getHotelComments(this.id);
             this.getRooms(this.id);
             this.getUser();
+            this.getDate();
         },
         components: {
             Footer,
@@ -427,5 +574,9 @@
         margin: 8px 0 10px;
         font-size: 14px;
         line-height: 22px
+    }
+
+    .el-link {
+        text-decoration: none;
     }
 </style>

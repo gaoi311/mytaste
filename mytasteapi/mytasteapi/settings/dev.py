@@ -51,6 +51,9 @@ INSTALLED_APPS = [
     # 字段筛选
     'django_filters',
 
+    # admin下拉联动
+    'smart_selects',
+
     # 子应用
     'index',
     'user',
@@ -291,3 +294,5 @@ SMS = {
     # 说明：REST API版本号保持不变
     '_softVersion': '2013-12-26'
 }
+
+USE_DJANGO_JQUERY = True
