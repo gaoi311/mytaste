@@ -131,3 +131,41 @@ class HotelSearchSerializer(serializers.ModelSerializer):
     class Meta:
         model = Hotel
         fields = ['id', 'name', 'around', 'address']
+
+
+class HotelRoomOtherSerializer(serializers.ModelSerializer):
+    """
+    酒店房间类型
+    """
+    has_tv = serializers.SerializerMethodField()
+    has_phone = serializers.SerializerMethodField()
+    has_toilet = serializers.SerializerMethodField()
+    main_photo = serializers.SerializerMethodField()
+    price = serializers.SerializerMethodField()
+    area = serializers.SerializerMethodField()
+    type = serializers.SerializerMethodField()
+
+    def get_has_tv(self, obj):
+        return obj.hotel_room_type.get_has_tv_display()
+
+    def get_has_phone(self, obj):
+        return obj.hotel_room_type.get_has_phone_display()
+
+    def get_has_toilet(self, obj):
+        return obj.hotel_room_type.get_has_toilet_display()
+
+    def get_main_photo(self, obj):
+        return obj.hotel_room_type.main_photo.url
+
+    def get_price(self, obj):
+        return obj.hotel_room_type.price
+
+    def get_area(self, obj):
+        return obj.hotel_room_type.area
+
+    def get_type(self, obj):
+        return obj.hotel_room_type.type
+
+    class Meta:
+        model = HotelRoomOther
+        fields = ['id', 'main_photo', 'type', 'day', 'price', 'area', 'has_tv', 'has_phone', 'has_toilet', 'count']

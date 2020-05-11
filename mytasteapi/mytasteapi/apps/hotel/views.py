@@ -1,3 +1,5 @@
+import datetime
+
 from django.db.models import Q
 from django.shortcuts import render
 
@@ -111,44 +113,42 @@ class HotelCommentCreateAPIView(CreateAPIView):
     serializer_class = HotelCommentSerializer
 
 
-class HotelRoomsAPIView(ListAPIView):
-    """
-    酒店房间类型展示
-    """
-    queryset = HotelRoomType.objects.all()
-    serializer_class = HotelRoomTypeSerializer
-    filter_backends = [DjangoFilterBackend, ]
-    filter_fields = ['hotel']
+# class HotelRoomsAPIView(ListAPIView):
+#     """
+#     酒店房间类型展示
+#     """
+#     queryset = HotelRoomType.objects.all()
+#     serializer_class = HotelRoomTypeSerializer
+#     filter_backends = [DjangoFilterBackend, ]
+#     filter_fields = ['hotel']
 
 
-class HotelRoomCheckAPIVIew(APIView):
-    """
-    酒店房间预订（修改）
-    """
-
-    def post(self, request, *args, **kwargs):
-
-        user = int(request.data.get('user'))
-        in_date = request.data.get('in_date')
-        out_date = request.data.get('out_date')
-        name = request.data.get('name')
-        phone = request.data.get('phone')
-        hotel = int(request.data.get('hotel'))
-        type = int(request.data.get('type'))
-        check_room_num = int(request.data.get('check_room_num'))
-
-
-        blank_rooms = HotelRoom.objects.filter(hotel=hotel, status=0, hotel_room_type__type=type)
-        if blank_rooms.count() < check_room_num:
-            return Response(data={'status': -1, 'message': "没有足够的房间了"})
-
-        blank_rooms = blank_rooms.order_by('number')[:check_room_num]
-        for blank_room in blank_rooms:
-            blank_room.status = 2
-            blank_room.save()
-
-        HotelReservation.objects.create(in_date=in_date, out_date=out_date, hotel_id=hotel, type=type, user_id=user, check_room_num=check_room_num, phone=phone, name=name).save()
-        return Response(data={'status': 1, 'message': "预订成功"})
+# class HotelRoomCheckAPIVIew(APIView):
+#     """
+#     酒店房间预订（修改）
+#     """
+#     def post(self, request, *args, **kwargs):
+#         user = int(request.data.get('user'))
+#         in_date = request.data.get('in_date')
+#         out_date = request.data.get('out_date')
+#         name = request.data.get('name')
+#         phone = request.data.get('phone')
+#         hotel = int(request.data.get('hotel'))
+#         type = int(request.data.get('type'))
+#         check_room_num = int(request.data.get('check_room_num'))
+#
+#
+#         blank_rooms = HotelRoom.objects.filter(hotel=hotel, status=0, hotel_room_type__type=type)
+#         if blank_rooms.count() < check_room_num:
+#             return Response(data={'status': -1, 'message': "没有足够的房间了"})
+#
+#         blank_rooms = blank_rooms.order_by('number')[:check_room_num]
+#         for blank_room in blank_rooms:
+#             blank_room.status = 2
+#             blank_room.save()
+#
+#         HotelReservation.objects.create(in_date=in_date, out_date=out_date, hotel_id=hotel, type=type, user_id=user, check_room_num=check_room_num, phone=phone, name=name).save()
+#         return Response(data={'status': 1, 'message': "预订成功"})
 
 
 class HotelReservationAPIView(ListAPIView):
@@ -160,3 +160,65 @@ class HotelReservationAPIView(ListAPIView):
     pagination_class = Pagination
     filter_backends = [DjangoFilterBackend, ]
     filter_fields = ['user']
+
+
+class HotelRoomsAPIView(APIView):
+    """
+    酒店房间类型展示
+    """
+
+    def get(self, request):
+        hotel = request.query_params.dict().get('hotel')
+        day = request.query_params.dict().get('day')
+
+        # if day is not None:
+        #     day = day[0]
+
+        rooms_queryset = HotelRoomOther.objects.filter(hotel_id=hotel, day=day)
+        ser_obj = HotelRoomOtherSerializer(rooms_queryset, many=True)
+        return Response(ser_obj.data)
+
+
+class HotelRoomCheckAPIVIew(APIView):
+    """
+    酒店房间预订（修改）
+    """
+
+    def post(self, request, *args, **kwargs):
+        user = int(request.data.get('user'))
+        in_date = request.data.get('in_date')
+        out_date = request.data.get('out_date')
+        name = request.data.get('name')
+        phone = request.data.get('phone')
+        hotel = int(request.data.get('hotel'))
+        type = int(request.data.get('type'))
+        check_room_num = int(request.data.get('check_room_num'))
+
+        blank_rooms = HotelRoomOther.objects.filter(hotel=hotel, hotel_room_type__type=type)
+
+        pass_date = in_date
+        stop_date = out_date
+        # 判断每天的房间数是否都够用
+        while pass_date != stop_date:
+            every_day_blank_rooms = blank_rooms.filter(day=pass_date)
+            if not every_day_blank_rooms:
+                return Response(data={'status': -2, 'message': "只能预订今后五天内的房间哦！"})
+            if every_day_blank_rooms[0].count < check_room_num:
+                return Response(data={'status': -3, 'message': pass_date + "房间不够用哦！"})
+            pass_date = datetime.datetime.strftime(
+                datetime.datetime.strptime(pass_date, "%Y-%m-%d") + datetime.timedelta(days=1), '%Y-%m-%d')
+
+        pass_date = in_date
+        stop_date = out_date
+        # 每天都够用的情况下，减去所需房间数
+        while pass_date != stop_date:
+            blank_room = blank_rooms.get(day=pass_date)
+            blank_room.count -= check_room_num
+            blank_room.save()
+            pass_date = datetime.datetime.strftime(
+                datetime.datetime.strptime(pass_date, "%Y-%m-%d") + datetime.timedelta(days=1), '%Y-%m-%d')
+
+
+        HotelReservation.objects.create(in_date=in_date, out_date=out_date, hotel_id=hotel, type=type, user_id=user,
+                                        check_room_num=check_room_num, phone=phone, name=name).save()
+        return Response(data={'status': 1, 'message': "预订成功"})

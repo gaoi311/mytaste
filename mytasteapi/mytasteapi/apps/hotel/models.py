@@ -156,3 +156,17 @@ class HotelReservation(models.Model):
 
     def __str__(self):
         return str(self.user) + str(self.hotel)
+
+class HotelRoomOther(models.Model):
+    hotel = models.ForeignKey(to=Hotel, on_delete=models.CASCADE, verbose_name="酒店")
+    hotel_room_type = models.ForeignKey(to=HotelRoomType, on_delete=models.CASCADE, verbose_name="房型")
+    count = models.IntegerField(verbose_name="空闲房间数")
+    day = models.DateField(verbose_name="日期")
+    class Meta:
+        db_table = "mt_hotel_room_other"
+        verbose_name = "酒店房间other"
+        verbose_name_plural = verbose_name
+        # unique_together = ('hotel', 'number')
+
+    def __str__(self):
+        return str(self.hotel) + str(self.hotel_room_type.get_type_display())

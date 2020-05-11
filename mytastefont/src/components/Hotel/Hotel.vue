@@ -65,6 +65,7 @@
                                     type="daterange"
                                     value-format="yyyy-MM-dd"
                                     range-separator="至"
+                                    @change="dateChanged"
                                     start-placeholder="入住日期"
                                     end-placeholder="退房日期">
                             </el-date-picker>
@@ -186,6 +187,7 @@
                                 type="daterange"
                                 value-format="yyyy-MM-dd"
                                 range-separator="至"
+                                @change="dateChanged"
                                 start-placeholder="入住日期"
                                 end-placeholder="退房日期">
                         </el-date-picker>
@@ -244,7 +246,6 @@
                 colors: ['#99A9BF', '#F7BA2A', '#FF9900'],
 
                 reservationForm: {
-                    inDate: '',
                     inOutDate: [],
                     name: '',
                     phone: '',
@@ -379,7 +380,8 @@
                     url: `${this.$settings.HOST}/rooms/`,
                     method: 'GET',
                     params: {
-                        hotel: this.id
+                        hotel: this.id,
+                        day: this.reservationForm.inOutDate[0]
                     }
                 }).then(response => {
                     this.rooms = response.data;
@@ -443,8 +445,8 @@
                             method: 'POST',
                             data: {
                                 user: this.uid,
-                                in_date: this.reservationForm.inDate,
-                                out_date: this.reservationForm.outDate,
+                                in_date: this.reservationForm.inOutDate[0],
+                                out_date: this.reservationForm.inOutDate[1],
                                 name: this.reservationForm.name,
                                 phone: this.reservationForm.phone,
                                 check_room_num: this.reservationForm.roomNum,
@@ -455,7 +457,7 @@
                             if (response.data.status === 1) {
                                 this.$message.success(response.data.message);
                                 this.getRooms();
-                            } else if (response.data.status === -1) {
+                            } else if (response.data.status !== 1) {
                                 this.$message.error(response.data.message);
                             }
                         }).catch(error => {
@@ -473,15 +475,18 @@
                 day.setTime(day.getTime() + 24 * 60 * 60 * 1000);
                 var tomorrow = day.getFullYear() + "-" + (day.getMonth() + 1) + "-" + day.getDate();
                 this.reservationForm.inOutDate = [today, tomorrow];
+            },
+            dateChanged(){
+                this.getRooms();
             }
         },
         created() {
             this.id = this.$route.params.id;
             this.getHotel(this.id);
             this.getHotelComments(this.id);
-            this.getRooms(this.id);
             this.getUser();
             this.getDate();
+            this.getRooms(this.id);
         },
         components: {
             Footer,
